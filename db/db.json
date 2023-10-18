@@ -1,0 +1,89 @@
+{
+  "tabs": [
+    {
+      "tabName": "Kids pizza",
+      "tabDescription": "Kids pizza - pizza without any fats. It's more usefull than meat or vegan pizza. That's rather good for children under 12 y.o.",
+      "tabImg": "/pizza-2.webp",
+      "id": 1
+    },
+    {
+      "tabName": "Vegan pizza",
+      "tabDescription": "Vegan pizza - pizza, who doesn't like the taste of meat. We add there mushrooms, vegetables, fruit and PBM.",
+      "tabImg": "/pizza-3.webp",
+      "id": 2
+    },
+    {
+      "tabName": "Meat pizza",
+      "tabDescription": "Classical meat pizza - pizza for those people, who likes any meat. The most popular pizza in our pizzeria.",
+      "tabImg": "/pizza-1.webp",
+      "id": 3
+    }
+  ],
+  "cards": [
+    {
+      "pizzaImage": "/pizza-1.webp",
+      "pizzaTitle": "Pepperoni Fresh",
+      "pizzaDescription": "Spicy pepperoni, increased portion of mozzarella, tomatoes, signature tomato sauce.",
+      "pizzaPrice": 10,
+      "pizzaId": 1,
+      "id": 1
+    },
+    {
+      "pizzaImage": "/pizza-2.webp",
+      "pizzaTitle": "Double chick",
+      "pizzaDescription": "Chicken, mozzarella, special alfredo sauce.",
+      "pizzaPrice": 13,
+      "pizzaId": 2,
+      "id": 2
+    },
+    {
+      "pizzaImage": "/pizza-3.webp",
+      "pizzaTitle": "Chorizo ​​fresh",
+      "pizzaDescription": "Signature tomato sauce, mozzarella, spicy chorizo, sweet pepper.",
+      "pizzaPrice": 11,
+      "pizzaId": 3,
+      "id": 3
+    },
+    {
+      "pizzaImage": "/pizza-4.webp",
+      "pizzaTitle": "Ham and Cheese pizza",
+      "pizzaDescription": "Pizza with ham and too much cheese. For those people who loves a lot of cheese.",
+      "pizzaPrice": 12,
+      "pizzaId": 4,
+      "id": 4
+    },
+    {
+      "pizzaImage": "/pizza-5.webp",
+      "pizzaTitle": "Full Vegan Pizza",
+      "pizzaDescription": "Full vegan pizza without any meat and pepperoni. There are only vegetables, cheese and fruits.",
+      "pizzaPrice": 15,
+      "pizzaId": 5,
+      "id": 5
+    },
+    {
+      "pizzaImage": "/pizza-6.webp",
+      "pizzaTitle": "Vegetables and Mashrooms",
+      "pizzaDescription": "Champignons, tomatoes, sweet peppers, red onions, cheese cubes, mozzarella, signature tomato sauce, Italian herbs.",
+      "pizzaPrice": 13,
+      "pizzaId": 6,
+      "id": 6
+    },
+    {
+      "pizzaImage": "/pizza-7.webp",
+      "pizzaTitle": "Margharita",
+      "pizzaDescription": "Increased portion of mozzarella, tomatoes, Italian herbs, signature tomato sauce.",
+      "pizzaPrice": 14,
+      "pizzaId": 7,
+      "id": 7
+    },
+    {
+      "pizzaImage": "/pizza-8.webp",
+      "pizzaTitle": "Ham and Mashrooms",
+      "pizzaDescription": "Ham, champignons, increased portion of mozzarella, special tomato sauce.",
+      "pizzaPrice": 13,
+      "pizzaId": 8,
+      "id": 8
+    }
+  ],
+  "cart": []
+}
