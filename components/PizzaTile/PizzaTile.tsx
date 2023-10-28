@@ -4,12 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 //Types
-import { PizzaTileType } from "@/types/types";
+import { IPizzaTileItem } from "@/types/types";
 
 //Styles
 import styles from "../../styles/styles.module.css";
 
-const PizzaTile: FC<{ pizza: PizzaTileType }> = ({ pizza }) => {
+const PizzaTile: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
   const { id, pizzaDescription, pizzaImage, pizzaPrice, pizzaTitle } = pizza;
 
   return (
@@ -19,7 +19,7 @@ const PizzaTile: FC<{ pizza: PizzaTileType }> = ({ pizza }) => {
       <p className={styles.pizzaTileDescription}>{pizzaDescription}</p>
       <section className={styles.pizzaTileBlock}>
         <Link href={`/pizzas/${id}`}>more details</Link>
-        <p className={styles.pizzaTilePrice}>{pizzaPrice} $</p>
+        <p className={styles.pizzaTilePrice}>{`${pizzaPrice} $`}</p>
       </section>
     </li>
   );

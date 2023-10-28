@@ -3,7 +3,7 @@ import { FC } from "react";
 import axios from "axios";
 
 //Types
-import { PizzaTileType } from "@/types/types";
+import { IPizzaTileItem } from "@/types/types";
 
 //Components
 import { Spinner } from "@/components/Spinner/Spinner";
@@ -18,7 +18,7 @@ import { getDataFromApi } from "@/services/services";
 import styles from "../../styles/styles.module.css";
 
 const SinglePizza: FC = async () => {
-  const tiles = await getDataFromApi<PizzaTileType[]>(
+  const tiles = await getDataFromApi<IPizzaTileItem[]>(
     "http://localhost:4000/cards"
   );
 

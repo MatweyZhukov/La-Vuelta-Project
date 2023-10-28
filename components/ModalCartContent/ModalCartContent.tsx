@@ -24,7 +24,7 @@ const ModalCartContent: FC = () => {
   const dispatch = useAppDispatch();
 
   const totalPrice = cart.reduce(
-      (sum, currItem) => sum + currItem.pizzaPrice,
+      (sum, currItem) => sum + currItem.totalPrice,
       0
     ),
     totalQuantity = cart.reduce((sum, currItem) => sum + currItem.count, 0);
@@ -61,7 +61,12 @@ const ModalCartContent: FC = () => {
         ) : null}
         <div className={styles.cardsWrapper}>
           {cart.length ? (
-            <ModalCartList cart={cart} />
+            <>
+              <ModalCartList cart={cart} />
+              <button className={styles.modalCartButtonOrder}>
+                Make an order
+              </button>
+            </>
           ) : (
             <ModalCartContentEmpty />
           )}

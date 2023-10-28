@@ -23,21 +23,21 @@ const ToggleButtonComponent: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const buttonsSize = ["small", "middle", "large"],
+  const buttonsSize = [24, 30, 35],
     buttonsDough = ["traditional", "thin"];
 
   const changePizzaSize = (
     event: React.MouseEvent<HTMLElement>,
     newSize: string
   ) => {
-    dispatch(setPizzaSize(newSize));
+    newSize && dispatch(setPizzaSize(newSize));
   };
 
   const changePizzaDough = (
     event: React.MouseEvent<HTMLElement>,
     newSize: string
   ) => {
-    dispatch(setDoughSize(newSize));
+    newSize && dispatch(setDoughSize(newSize));
   };
 
   return (
@@ -57,7 +57,7 @@ const ToggleButtonComponent: FC = () => {
               className={styles.toggleButton}
               value={size}
             >
-              {size}
+              {`${size}сm`}
             </ToggleButton>
           ))}
         </ToggleButtonGroup>

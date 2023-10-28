@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 //Types
-import { PizzaTileType } from "@/types/types";
+import { IPizzaTileItem } from "@/types/types";
 
 //Components
 import { PizzaTile } from "../PizzaTile/PizzaTile";
@@ -10,7 +10,7 @@ import { PizzaTile } from "../PizzaTile/PizzaTile";
 //Styles
 import styles from "../../styles/styles.module.css";
 
-const PizzaTilesList: FC<{ tiles: PizzaTileType[] }> = ({ tiles }) => {
+const PizzaTilesList: FC<{ tiles: IPizzaTileItem[] }> = ({ tiles }) => {
   return (
     <ul className={styles.pizzaTilesWrapper}>
       {tiles.map((tile) => (

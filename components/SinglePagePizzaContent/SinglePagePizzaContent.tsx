@@ -2,6 +2,8 @@
 
 //Global
 import { FC } from "react";
+import { ToastContainer } from "react-toastify";
+import { showToastMessage } from "@/app/layout";
 
 //Types
 import { IPizzaTileItem, IPizzaCartItem } from "@/types/types";
@@ -28,6 +30,7 @@ import { ToggleButtonComponent } from "@/components/ToggleButtonComponent/Toggle
 
 //Styles
 import styles from "../../styles/styles.module.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
   const { cart } = useTyppedSelector((state) => state.cart),
@@ -35,68 +38,93 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
       (state) => state.pizzaOptions
     );
 
-  const { pizzaPrice, pizzaDescription, pizzaTitle, pizzaImage, id, pizzaId } =
-    pizza;
+  const {
+    pizzaPrice,
+    pizzaDescription,
+    pizzaTitle,
+    pizzaImage,
+    pizzaId,
+    weight,
+  } = pizza;
 
   const dispatch = useAppDispatch();
 
   const resetPizzaOptions = () => {
-    dispatch(setPizzaSize("middle"));
+    dispatch(setPizzaSize(30));
     dispatch(setDoughSize("traditional"));
   };
 
-  const changedPizzaPriceBySize = () => {
-    const result = pizzaPrice * 0.25;
-
-    const pizzaLargePrice = pizzaPrice + result,
-      pizzaSmallPrice = pizzaPrice - result;
+  const returnChangedPizzaPriceBySize = () => {
+    const sizeResult = pizzaPrice * 0.3;
 
     switch (pizzaSizeOption) {
-      case "large":
-        return pizzaLargePrice;
-      case "small":
-        return pizzaSmallPrice;
+      case 35:
+        return pizzaPrice + sizeResult;
+      case 24:
+        return pizzaPrice - sizeResult;
       default:
         return pizzaPrice;
     }
   };
 
-  const onAddToCart = () => {
-    function returnPizzaCondition(elem: IPizzaCartItem) {
-      const condition =
-        elem.pizzaId === pizzaId &&
-        elem.pizzaSize === pizzaSizeOption &&
-        elem.doughSize === doughSizeOption;
+  const returnChangedPizzaWeightBySize = () => {
+    const weightResult = weight * 0.3;
 
-      return condition;
+    switch (pizzaSizeOption) {
+      case 35:
+        return weight + weightResult;
+      case 24:
+        return weight - weightResult;
+      default:
+        return weight;
     }
+  };
 
+  function returnPizzaCondition(elem: IPizzaCartItem) {
+    const condition =
+      elem.pizzaId === pizzaId &&
+      elem.pizzaSize === pizzaSizeOption &&
+      elem.doughSize === doughSizeOption;
+
+    return condition;
+  }
+
+  const onAddToCart = () => {
     const currentPizza = cart.find((elem) => returnPizzaCondition(elem));
 
     const newPizza: IPizzaCartItem = {
       pizzaImage,
-      pizzaPrice,
+      pizzaPrice: +returnChangedPizzaPriceBySize().toFixed(),
+      totalPrice: pizzaPrice,
       pizzaTitle,
       count: 1,
       id: cart.length + 1,
       pizzaId,
       pizzaSize: pizzaSizeOption,
       doughSize: doughSizeOption,
+      weight: +returnChangedPizzaWeightBySize().toFixed(),
     };
 
     if (currentPizza && currentPizza.count < 10) {
       dispatch(changePizzaCounter({ actionCounter: "+", id: currentPizza.id }))
-        .then(() => resetPizzaOptions())
+        .then(() => {
+          resetPizzaOptions();
+          showToastMessage("success", "Item added to cart!");
+        })
         .catch((e) => console.log(e));
-    } else {
-      if (pizzaSizeOption && doughSizeOption) {
-        dispatch(addToCart(newPizza))
-          .then(() => {
-            dispatch(changeModalCartStatus(true));
-            resetPizzaOptions();
-          })
-          .catch((e) => console.log(e));
-      }
+    }
+
+    if (currentPizza && currentPizza.count >= 10) {
+      showToastMessage("warning", "You can't add more then 10 pizzas!");
+    }
+
+    if (!currentPizza) {
+      dispatch(addToCart(newPizza))
+        .then(() => {
+          dispatch(changeModalCartStatus(true));
+          resetPizzaOptions();
+        })
+        .catch((e) => console.log(e));
     }
 
     resetPizzaOptions();
@@ -104,12 +132,19 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
 
   return (
     <section className={styles.singlePagePizzaInformation}>
-      <p data-price>{changedPizzaPriceBySize().toFixed()} $</p>
+      <p
+        data-price
+      >{`${returnChangedPizzaPriceBySize().toFixed()} $ and ${returnChangedPizzaWeightBySize().toFixed()}g`}</p>
+
       <p data-description>{pizzaDescription}</p>
+
       <ToggleButtonComponent />
+
       <button data-order onClick={onAddToCart}>
         add to cart
       </button>
+
+      <ToastContainer />
     </section>
   );
 };

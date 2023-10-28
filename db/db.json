@@ -24,65 +24,145 @@
       "pizzaImage": "/pizza-1.webp",
       "pizzaTitle": "Pepperoni Fresh",
       "pizzaDescription": "Spicy pepperoni, increased portion of mozzarella, tomatoes, signature tomato sauce.",
-      "pizzaPrice": 10,
+      "pizzaPrice": 5,
       "pizzaId": 1,
+      "weight": 590,
       "id": 1
     },
     {
       "pizzaImage": "/pizza-2.webp",
       "pizzaTitle": "Double chick",
       "pizzaDescription": "Chicken, mozzarella, special alfredo sauce.",
-      "pizzaPrice": 13,
+      "pizzaPrice": 6,
       "pizzaId": 2,
+      "weight": 520,
       "id": 2
     },
     {
       "pizzaImage": "/pizza-3.webp",
       "pizzaTitle": "Chorizo ​​fresh",
       "pizzaDescription": "Signature tomato sauce, mozzarella, spicy chorizo, sweet pepper.",
-      "pizzaPrice": 11,
+      "pizzaPrice": 5,
       "pizzaId": 3,
+      "weight": 470,
       "id": 3
     },
     {
       "pizzaImage": "/pizza-4.webp",
-      "pizzaTitle": "Ham and Cheese pizza",
+      "pizzaTitle": "Ham and Cheese",
       "pizzaDescription": "Pizza with ham and too much cheese. For those people who loves a lot of cheese.",
-      "pizzaPrice": 12,
+      "pizzaPrice": 6,
       "pizzaId": 4,
+      "weight": 480,
       "id": 4
     },
     {
       "pizzaImage": "/pizza-5.webp",
-      "pizzaTitle": "Full Vegan Pizza",
-      "pizzaDescription": "Full vegan pizza without any meat and pepperoni. There are only vegetables, cheese and fruits.",
-      "pizzaPrice": 15,
+      "pizzaTitle": "Cheese Chicken",
+      "pizzaDescription": "Chicken, mozzarella, cheddar and parmesan cheeses, cheese sauce, tomatoes, signature alfredo sauce, garlic.",
+      "pizzaPrice": 7,
       "pizzaId": 5,
+      "weight": 620,
       "id": 5
     },
     {
       "pizzaImage": "/pizza-6.webp",
       "pizzaTitle": "Vegetables and Mashrooms",
       "pizzaDescription": "Champignons, tomatoes, sweet peppers, red onions, cheese cubes, mozzarella, signature tomato sauce, Italian herbs.",
-      "pizzaPrice": 13,
+      "pizzaPrice": 7,
       "pizzaId": 6,
+      "weight": 610,
       "id": 6
     },
     {
       "pizzaImage": "/pizza-7.webp",
       "pizzaTitle": "Margharita",
       "pizzaDescription": "Increased portion of mozzarella, tomatoes, Italian herbs, signature tomato sauce.",
-      "pizzaPrice": 14,
+      "pizzaPrice": 7,
       "pizzaId": 7,
+      "weight": 590,
       "id": 7
     },
     {
       "pizzaImage": "/pizza-8.webp",
       "pizzaTitle": "Ham and Mashrooms",
       "pizzaDescription": "Ham, champignons, increased portion of mozzarella, special tomato sauce.",
-      "pizzaPrice": 13,
+      "pizzaPrice": 7,
       "pizzaId": 8,
+      "weight": 580,
       "id": 8
+    },
+    {
+      "pizzaImage": "/pizza-9.webp",
+      "pizzaTitle": "Chicken ranch",
+      "pizzaDescription": "Chicken, ham, ranch sauce, mozzarella, tomatoes, garlic.",
+      "pizzaPrice": 10,
+      "pizzaId": 9,
+      "weight": 610,
+      "id": 9
+    },
+    {
+      "pizzaImage": "/pizza-10.webp",
+      "pizzaTitle": "Four cheeses",
+      "pizzaDescription": "Blue cheese, a mixture of cheddar and parmesan cheeses, mozzarella, signature alfredo sauce.",
+      "pizzaPrice": 7,
+      "pizzaId": 10,
+      "weight": 510,
+      "id": 10
+    },
+    {
+      "pizzaImage": "/pizza-11.webp",
+      "pizzaTitle": "Diablo",
+      "pizzaDescription": "Spicy chorizo, hot jalapenos, BBQ sauce, meatballs, tomatoes, bell peppers, red onion, mozzarella, signature tomato sauce.",
+      "pizzaPrice": 8,
+      "pizzaId": 11,
+      "weight": 680,
+      "id": 11
+    },
+    {
+      "pizzaImage": "/pizza-12.webp",
+      "pizzaTitle": "BBQ sausages",
+      "pizzaDescription": "Spicy chorizo, BBQ sauce, tomatoes, red onion, mozzarella, signature tomato sauce.",
+      "pizzaPrice": 7,
+      "pizzaId": 12,
+      "weight": 570,
+      "id": 12
+    },
+    {
+      "pizzaImage": "/pizza-13.webp",
+      "pizzaTitle": "Pizza Julien",
+      "pizzaDescription": "Chicken, champignons, creamy mushroom sauce, red onion, garlic, mozzarella, cheddar and parmesan cheese mixture, signature alfredo sauce.",
+      "pizzaPrice": 7,
+      "pizzaId": 13,
+      "weight": 630,
+      "id": 13
+    },
+    {
+      "pizzaImage": "/pizza-14.webp",
+      "pizzaTitle": "Meat Pizza",
+      "pizzaDescription": "Chicken, ham, spicy pepperoni, spicy chorizo, mozzarella, signature tomato sauce.",
+      "pizzaPrice": 7,
+      "pizzaId": 14,
+      "weight": 590,
+      "id": 14
+    },
+    {
+      "pizzaImage": "/pizza-15.webp",
+      "pizzaTitle": "Four seasons",
+      "pizzaDescription": "An increased portion of mozzarella, ham, spicy pepperoni, cheese cubes, tomatoes, champignons, Italian herbs, signature tomato sauce.",
+      "pizzaPrice": 7,
+      "pizzaId": 15,
+      "weight": 610,
+      "id": 15
+    },
+    {
+      "pizzaImage": "/pizza-16.webp",
+      "pizzaTitle": "Hawaiian",
+      "pizzaDescription": "Signature alfredo sauce, chicken, mozzarella, pineapples.",
+      "pizzaPrice": 7,
+      "pizzaId": 16,
+      "weight": 590,
+      "id": 16
     }
   ],
   "cart": []

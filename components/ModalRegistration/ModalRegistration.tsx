@@ -1,7 +1,7 @@
 "use client";
 
 //GLobal
-import { FC, useState, FormEvent } from "react";
+import { FC, useState, FormEvent, ChangeEvent, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 //Icons
@@ -16,27 +16,33 @@ import { changeModalRegistrationStatus } from "@/GlobalRedux/reducers/modalsSlic
 //Styles
 import styles from "../../styles/styles.module.css";
 
-const ModalRegistration: FC = () => {
-  const [email, setEmail] = useState<string>("");
+//Types
+import { IValueState } from "@/types/types";
 
+const ModalRegistration: FC = () => {
+  const [value, setValue] = useState<IValueState>({
+    email: "",
+    name: "",
+    phone: "",
+  });
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
   const { modalRegistration } = useTyppedSelector((state) => state.modals);
 
   const dispatch = useDispatch();
 
-  const onChangeModalRegistrationStatus = (status: boolean) => {
-    dispatch(changeModalRegistrationStatus(status));
-    setEmail("");
-  };
-
-  const validateForm = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    console.log(email);
+  const changeValueInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue({
+      ...value,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
     <div
-      onClick={() => onChangeModalRegistrationStatus(false)}
+      onClick={() => dispatch(changeModalRegistrationStatus(false))}
       className={
         modalRegistration
           ? `${styles.modalRegistrationWrapper} ${styles.modalRegistrationWrapperActive}`
@@ -44,7 +50,6 @@ const ModalRegistration: FC = () => {
       }
     >
       <form
-        onSubmit={(e) => validateForm(e)}
         onClick={(e) => e.stopPropagation()}
         className={
           modalRegistration
@@ -54,25 +59,40 @@ const ModalRegistration: FC = () => {
       >
         <div className={styles.closeRegistration}>
           <AiFillCloseCircle
-            onClick={() => onChangeModalRegistrationStatus(false)}
+            onClick={() => dispatch(changeModalRegistrationStatus(false))}
           />
         </div>
 
         <h1>Registration!</h1>
 
-        <p>
-          {`We'll`} send you a letter, to confirm you registration on our site!
-        </p>
-
         <input
           type="email"
+          name="email"
           required
           placeholder="Enter your email..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={value.email}
+          onChange={changeValueInput}
         />
 
-        <button type="submit">Send email</button>
+        <input
+          type="text"
+          name="name"
+          required
+          placeholder="Enter your name..."
+          value={value.name}
+          onChange={changeValueInput}
+        />
+
+        <input
+          type="tel"
+          name="phone"
+          required
+          placeholder="Enter your phone..."
+          value={value.phone}
+          onChange={changeValueInput}
+        />
+
+        <button type="submit">Send data</button>
       </form>
     </div>
   );

@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IPizzaOptionsState } from "@/types/types";
 
 const initialState: IPizzaOptionsState = {
-  pizzaSizeOption: "middle",
+  pizzaSizeOption: 30,
   doughSizeOption: "traditional",
 };
 

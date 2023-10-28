@@ -3,12 +3,16 @@
 //Global
 import Image from "next/image";
 import { FC, useEffect } from "react";
+import { showToastMessage } from "@/app/layout";
 
 //Icons
 import { AiFillCloseCircle } from "react-icons/ai";
 
 //Hooks
 import { useAppDispatch } from "@/hooks/useTyppedSelector";
+
+//Types
+import { IPizzaCartItem } from "@/types/types";
 
 //Actions
 import {
@@ -19,45 +23,48 @@ import {
 
 //Styles
 import styles from "../../styles/styles.module.css";
-import { IPizzaCartItem } from "@/types/types";
+import "react-toastify/dist/ReactToastify.css";
 
 const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
   const {
     count,
     doughSize,
     pizzaImage,
-    pizzaPrice,
     pizzaSize,
     pizzaTitle,
     id,
+    totalPrice,
+    weight,
   } = pizza;
 
   const dispatch = useAppDispatch();
 
-  const onDeletePizzaFromCart = () => {
-    dispatch(deletePizzaFromCart(id));
-  };
-
   useEffect(() => {
-    if (count < 1) {
-      onDeletePizzaFromCart();
-    }
-
-    dispatch(changePizzaPrice(pizza));
+    count < 1 ? onDeletePizzaFromCart() : null;
+    onChangePizzaPrice();
 
     //eslint-disable-next-line
   }, [count, dispatch]);
 
+  const onDeletePizzaFromCart = () => {
+    dispatch(deletePizzaFromCart(id));
+    showToastMessage("success", "Item deleted from cart!");
+  };
+
+  const onChangePizzaPrice = () => {
+    dispatch(changePizzaPrice(pizza));
+  };
+
+  const onChangePizzaCounter = (action: "+" | "-", funcId: number) => {
+    dispatch(changePizzaCounter({ actionCounter: action, id: funcId }));
+  };
+
   const onIncPizzaCounter = () => {
-    if (count < 10) {
-      dispatch(changePizzaCounter({ actionCounter: "+", id }));
-    }
+    count < 10 ? onChangePizzaCounter("+", id) : null;
   };
 
   const onDecPizzaCounter = () => {
-    if (count > 0) {
-      dispatch(changePizzaCounter({ actionCounter: "-", id }));
-    }
+    count > 0 ? onChangePizzaCounter("-", id) : null;
   };
 
   return (
@@ -72,12 +79,12 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
         <h3 className={styles.cartProductContentTitle}>{pizzaTitle}</h3>
 
         <p className={styles.cartProductContentDescription}>
-          Size: {pizzaSize}
+          {`${pizzaSize}сm, ${doughSize} dough`}
         </p>
 
-        <p className={styles.cartProductContentDescription}>
-          Dough: {doughSize}
-        </p>
+        <p
+          className={styles.cartProductContentDescription}
+        >{`Weight: ${weight}g`}</p>
 
         <div className={styles.blockCounterAndPrice}>
           <section className={styles.blockCounter}>
@@ -86,7 +93,7 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
             <button onClick={onIncPizzaCounter}>+</button>
           </section>
 
-          <p>{pizzaPrice} $</p>
+          <p>{`${totalPrice} $`}</p>
         </div>
       </div>
     </div>

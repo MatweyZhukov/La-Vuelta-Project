@@ -1,5 +1,6 @@
 //Global
 import type { Metadata } from "next";
+import { toast } from "react-toastify";
 
 //Styles
 import "../styles/globals.css";
@@ -22,6 +23,23 @@ import { ModalRegistration } from "@/components/ModalRegistration/ModalRegistrat
 export const metadata: Metadata = {
   title: "La Vuelta | Main page",
   description: "Created by Zhukov Matvey",
+};
+
+export const showToastMessage = (
+  toastStatus: "success" | "error" | "warning",
+  text: string
+) => {
+  toast[toastStatus](text, {
+    position: "top-left",
+    style: {
+      color: "black",
+      background: "#fff6e7",
+      userSelect: "none",
+      textAlign: "center",
+      boxShadow:
+        "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+    },
+  });
 };
 
 export const linksMedia: ILinksMedia[] = [

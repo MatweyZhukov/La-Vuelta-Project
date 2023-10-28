@@ -2,14 +2,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 //Services
-import { getDataFromApi, requestToApiCart } from "@/services/services";
+import { requestToApiCart } from "@/services/services";
 
 //Types
-import {
-  IPizzaCartItem,
-  ChangePizzaCounterType,
-  IPizzaTileItem,
-} from "@/types/types";
+import { IPizzaCartItem, ChangePizzaCounterType } from "@/types/types";
 
 const initialState: { cart: IPizzaCartItem[] } = {
   cart: [],
@@ -91,38 +87,29 @@ export const changePizzaCounter = createAsyncThunk<
 );
 
 export const changePizzaPrice = createAsyncThunk<
-  { cartItem: IPizzaCartItem; tileItem: IPizzaTileItem },
+  IPizzaCartItem,
   IPizzaCartItem,
   { rejectValue: string; state: { cart: typeof initialState } }
 >(
   "cart/changePizzaPrice",
   //@ts-ignore
   async function (pizza, { rejectWithValue, getState }) {
-    const response = await getDataFromApi<IPizzaTileItem>(
-      `http://localhost:4000/cards/${pizza.pizzaId}`
-    );
-
     const pizzaItem = getState().cart.cart.find((elem) => elem.id === pizza.id);
 
     try {
       if (pizzaItem) {
-        await requestToApiCart(
+        return await requestToApiCart<IPizzaCartItem>(
           `http://localhost:4000/cart/${pizzaItem.id}`,
           "put",
           {
             ...pizzaItem,
-            pizzaPrice: response.pizzaPrice * pizzaItem.count,
+            totalPrice: pizzaItem.pizzaPrice * pizzaItem.count,
           }
         );
       }
     } catch (e) {
       return rejectWithValue("Something went wrong! Server Error.");
     }
-
-    return {
-      cartItem: pizzaItem,
-      tileItem: response,
-    };
   }
 );
 
@@ -154,14 +141,12 @@ const cartSlice = createSlice({
       })
       .addCase(changePizzaPrice.fulfilled, (state, action) => {
         const currentPizza = state.cart.find(
-          (elem) => elem.id === action.payload.cartItem.id
+          (elem) => elem.id === action.payload.id
         );
 
-        console.log(currentPizza);
-
         if (currentPizza) {
-          currentPizza.pizzaPrice =
-            action.payload.tileItem.pizzaPrice * currentPizza.count;
+          currentPizza.totalPrice =
+            currentPizza.pizzaPrice * currentPizza.count;
         }
       });
   },

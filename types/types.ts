@@ -8,8 +8,14 @@ export interface ChangePizzaCounterType {
 
 type PizzaCartType = Pick<
   IPizzaTileItem,
-  "pizzaId" | "id" | "pizzaImage" | "pizzaPrice" | "pizzaTitle"
+  "pizzaId" | "id" | "pizzaImage" | "pizzaPrice" | "pizzaTitle" | "weight"
 >;
+
+export interface IValueState {
+  email: string;
+  name: string;
+  phone: string;
+}
 
 export interface ILinksMedia {
   href: string;
@@ -27,8 +33,9 @@ export interface ITabsItem {
 export interface IPizzaCartItem extends PizzaCartType {
   count: number;
   id: number;
-  pizzaSize: string;
+  pizzaSize: number;
   doughSize: string;
+  totalPrice: number;
 }
 
 export interface IPizzaTileItem {
@@ -38,6 +45,7 @@ export interface IPizzaTileItem {
   pizzaId: number;
   pizzaTitle: string;
   pizzaPrice: number;
+  weight: number;
 }
 
 export interface IModalsState {
@@ -51,6 +59,6 @@ export interface ErrorComponentProps {
 }
 
 export interface IPizzaOptionsState {
-  pizzaSizeOption: string;
+  pizzaSizeOption: number;
   doughSizeOption: string;
 }
