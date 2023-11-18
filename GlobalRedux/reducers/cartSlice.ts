@@ -2,10 +2,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 //Services
-import { requestToApiCart } from "@/services/services";
+import { getDataFromApi, requestToApiCart } from "@/services/services";
 
 //Types
-import { IPizzaCartItem, IChangePizzaCounterType } from "@/types/types";
+import {
+  IPizzaCartItem,
+  IChangePizzaCounterType,
+  IPizzaTileItem,
+} from "@/types/types";
 
 const initialState: { cart: IPizzaCartItem[] } = {
   cart: [],
@@ -45,6 +49,7 @@ export const deletePizzaFromCart = createAsyncThunk<
   string,
   string,
   { rejectValue: string }
+  //@ts-ignore
 >("cart/deletePizzaFromCart", async function (id, { rejectWithValue }) {
   try {
     await requestToApiCart<IPizzaCartItem>(
@@ -64,40 +69,53 @@ export const changePizzaCounter = createAsyncThunk<
   { rejectValue: string; state: { cart: typeof initialState } }
 >(
   "cart/changePizzaCounter",
-  async function (data, { rejectWithValue, getState }) {
+  async function (params, { rejectWithValue, getState }) {
     try {
-      const { pizza, actionCounter } = data;
+      const { id, actionCounter } = params;
 
-      await requestToApiCart(`http://localhost:4000/cart/${pizza.id}`, "put", {
-        ...pizza,
-        count: actionCounter === "+" ? pizza.count + 1 : pizza.count - 1,
-      });
+      const pizzaItem = getState().cart.cart.find((pizza) => pizza.id === id);
+
+      if (pizzaItem) {
+        await requestToApiCart(`http://localhost:4000/cart/${id}`, "put", {
+          ...pizzaItem,
+          count:
+            actionCounter === "+" ? pizzaItem.count + 1 : pizzaItem.count - 1,
+        });
+      }
     } catch (e) {
       return rejectWithValue("Something went wrong! Server Error.");
     }
 
-    return data;
+    return params;
   }
 );
 
 export const changePizzaPrice = createAsyncThunk<
   IPizzaCartItem,
   IPizzaCartItem,
-  { rejectValue: string }
->("cart/changePizzaPrice", async function (pizza, { rejectWithValue }) {
-  try {
-    return await requestToApiCart<IPizzaCartItem>(
-      `http://localhost:4000/cart/${pizza.id}`,
-      "put",
-      {
-        ...pizza,
-        totalPrice: pizza.pizzaPrice * pizza.count,
+  { rejectValue: string; state: { cart: typeof initialState } }
+>(
+  "cart/changePizzaPrice",
+  //@ts-ignore
+  async function (pizza, { rejectWithValue, getState }) {
+    const pizzaItem = getState().cart.cart.find((elem) => elem.id === pizza.id);
+
+    try {
+      if (pizzaItem) {
+        return await requestToApiCart(
+          `http://localhost:4000/cart/${pizzaItem.id}`,
+          "put",
+          {
+            ...pizzaItem,
+            totalPrice: pizzaItem.pizzaPrice * pizzaItem.count,
+          }
+        );
       }
-    );
-  } catch (e) {
-    return rejectWithValue("Something went wrong! Server Error.");
+    } catch (e) {
+      return rejectWithValue("Something went wrong! Server Error.");
+    }
   }
-});
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -114,14 +132,26 @@ const cartSlice = createSlice({
       .addCase(deletePizzaFromCart.fulfilled, (state, action) => {
         state.cart = state.cart.filter((elem) => elem.id !== action.payload);
       })
-      .addCase(changePizzaCounter.fulfilled, (_, action) => {
-        action.payload.actionCounter === "+"
-          ? (action.payload.pizza.count += 1)
-          : (action.payload.pizza.count -= 1);
+      .addCase(changePizzaCounter.fulfilled, (state, action) => {
+        const currentPizza = state.cart.find(
+          (elem) => elem.id === action.payload.id
+        );
+
+        if (currentPizza) {
+          action.payload.actionCounter === "+"
+            ? (currentPizza.count += 1)
+            : (currentPizza.count -= 1);
+        }
       })
-      .addCase(changePizzaPrice.fulfilled, (_, action) => {
-        action.payload.totalPrice =
-          action.payload.pizzaPrice * action.payload.count;
+      .addCase(changePizzaPrice.fulfilled, (state, action) => {
+        const currentPizza = state.cart.find(
+          (elem) => elem.id === action.payload.id
+        );
+
+        if (currentPizza) {
+          currentPizza.totalPrice =
+            currentPizza.pizzaPrice * currentPizza.count;
+        }
       });
   },
 });

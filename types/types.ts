@@ -34,7 +34,7 @@ export interface IInputsForm {
 
 export interface IChangePizzaCounterType {
   actionCounter: "+" | "-";
-  pizza: IPizzaCartItem;
+  id: string;
 }
 
 export interface IFormProps {
@@ -55,7 +55,6 @@ export interface IUser {
   email: string | null;
   token: string | null;
   id: string | null;
-  userCart: IPizzaCartItem[];
 }
 
 export interface IUserState {

@@ -12,7 +12,6 @@ const initialState: IUserState = {
     email: null,
     token: null,
     id: null,
-    userCart: [],
   },
 };
 

@@ -24,8 +24,13 @@ import {
 //Styles
 import styles from "../../styles/styles.module.css";
 import "react-toastify/dist/ReactToastify.css";
+import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 
 const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
+  const { cart } = useTyppedSelector((state) => state.cart);
+
+  const dispatch = useAppDispatch();
+
   const {
     count,
     doughSize,
@@ -36,8 +41,6 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
     totalPrice,
     weight,
   } = pizza;
-
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     count < 1 ? onDeletePizzaFromCart() : null;
@@ -55,14 +58,12 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
     dispatch(changePizzaPrice(pizza));
   };
 
-  const onChangePizzaCounter = (action: "+" | "-") => {
-    if (action === "-") {
-      count > 0 &&
-        dispatch(changePizzaCounter({ actionCounter: action, pizza }));
-    } else {
-      count < 10 &&
-        dispatch(changePizzaCounter({ actionCounter: action, pizza }));
-    }
+  const onIncCounter = () => {
+    count > 0 && dispatch(changePizzaCounter({ actionCounter: "+", id }));
+  };
+
+  const onDecCounter = () => {
+    count > 0 && dispatch(changePizzaCounter({ actionCounter: "-", id }));
   };
 
   return (
@@ -86,9 +87,9 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
 
         <div className={styles.blockCounterAndPrice}>
           <section className={styles.blockCounter}>
-            <button onClick={() => onChangePizzaCounter("-")}>-</button>
+            <button onClick={() => onDecCounter()}>-</button>
             <p>{count}</p>
-            <button onClick={() => onChangePizzaCounter("+")}>+</button>
+            <button onClick={() => onIncCounter()}>+</button>
           </section>
 
           <p>{`${totalPrice} $`}</p>
