@@ -5,14 +5,16 @@ import { FC, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 
 //Hooks
 import { useTyppedSelector } from "@/hooks/useTyppedSelector";
+import { useAuth } from "@/hooks/useAuth";
 
 //Actions
 import {
   changeModalCartStatus,
-  changeModalRegistrationStatus,
+  changeModalSignUpStatus,
 } from "@/GlobalRedux/reducers/modalsSlice";
 
 //Icons
@@ -23,23 +25,27 @@ import { FaCartArrowDown } from "react-icons/fa";
 import styles from "../../styles/styles.module.css";
 
 export const Header: FC = () => {
-  const dispatch = useDispatch();
-
-  const { modalCart, modalRegistration } = useTyppedSelector(
+  const { modalCart, modalSignUp, modalLogIn } = useTyppedSelector(
     (state) => state.modals
   );
+
+  const { push } = useRouter();
+
+  const { isAuth } = useAuth();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let scroll = window.innerWidth - document.body.offsetWidth;
 
-    if (modalCart || modalRegistration) {
+    if (modalSignUp || modalCart || modalLogIn) {
       document.body.style.overflow = `hidden`;
       document.body.style.paddingRight = `${scroll}px`;
     } else {
       document.body.style.overflow = `auto`;
       document.body.style.paddingRight = `0px`;
     }
-  }, [modalCart, modalRegistration]);
+  }, [modalSignUp, modalCart, modalLogIn]);
 
   return (
     <header className={styles.header}>
@@ -50,17 +56,26 @@ export const Header: FC = () => {
         <p className={styles.tagline}>Pizza la Vuelta, Quickly and Tasty!</p>
         <section className={styles.headerButtons}>
           <button
-            onClick={() => dispatch(changeModalRegistrationStatus(true))}
+            onClick={() => {
+              if (!isAuth) {
+                dispatch(changeModalSignUpStatus(true));
+              } else {
+                push("/profile");
+              }
+            }}
             className={styles.headerButton}
           >
-            <MdAccountCircle className={styles.headerSvg} />
+            {isAuth ? "Profile" : "Sign Up"}
           </button>
-          <button
-            onClick={() => dispatch(changeModalCartStatus(true))}
-            className={styles.headerButton}
-          >
-            <FaCartArrowDown className={styles.headerSvg} />
-          </button>
+
+          {isAuth && (
+            <button
+              onClick={() => dispatch(changeModalCartStatus(true))}
+              className={styles.headerButton}
+            >
+              Cart
+            </button>
+          )}
         </section>
       </nav>
     </header>

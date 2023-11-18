@@ -2,8 +2,8 @@
 
 //Global
 import { FC } from "react";
-import { ToastContainer } from "react-toastify";
 import { showToastMessage } from "@/app/layout";
+import { v4 as uuid } from "uuid";
 
 //Types
 import { IPizzaTileItem, IPizzaCartItem } from "@/types/types";
@@ -23,7 +23,8 @@ import {
 import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
 
 //Hooks
-import { useAppDispatch } from "@/hooks/useTyppedSelector";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { useAuth } from "@/hooks/useAuth";
 
 //Components
 import { ToggleButtonComponent } from "@/components/ToggleButtonComponent/ToggleButtonComponent";
@@ -38,6 +39,15 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
       (state) => state.pizzaOptions
     );
 
+  const { isAuth } = useAuth();
+
+  const dispatch = useAppDispatch();
+
+  const resetPizzaOptions = () => {
+    dispatch(setPizzaSize(30));
+    dispatch(setDoughSize("traditional"));
+  };
+
   const {
     pizzaPrice,
     pizzaDescription,
@@ -47,62 +57,48 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
     weight,
   } = pizza;
 
-  const dispatch = useAppDispatch();
-
-  const resetPizzaOptions = () => {
-    dispatch(setPizzaSize(30));
-    dispatch(setDoughSize("traditional"));
-  };
-
-  const returnChangedPizzaPriceBySize = () => {
-    const sizeResult = pizzaPrice * 0.3;
+  const changePizzaOptionBySize = (option: number) => {
+    const result = option * 0.3;
 
     switch (pizzaSizeOption) {
       case 35:
-        return pizzaPrice + sizeResult;
+        return option + result;
       case 24:
-        return pizzaPrice - sizeResult;
+        return option - result;
       default:
-        return pizzaPrice;
+        return option;
     }
   };
 
-  const returnChangedPizzaWeightBySize = () => {
-    const weightResult = weight * 0.3;
-
-    switch (pizzaSizeOption) {
-      case 35:
-        return weight + weightResult;
-      case 24:
-        return weight - weightResult;
-      default:
-        return weight;
+  const returnChangedPizzaOption = (option: number, allowance: number) => {
+    if (doughSizeOption === "thin") {
+      return +changePizzaOptionBySize(option).toFixed() - allowance;
+    } else {
+      return +changePizzaOptionBySize(option).toFixed();
     }
   };
-
-  function returnPizzaCondition(elem: IPizzaCartItem) {
-    const condition =
-      elem.pizzaId === pizzaId &&
-      elem.pizzaSize === pizzaSizeOption &&
-      elem.doughSize === doughSizeOption;
-
-    return condition;
-  }
 
   const onAddToCart = () => {
-    const currentPizza = cart.find((elem) => returnPizzaCondition(elem));
+    const currentPizza = cart.find(
+      (elem) =>
+        elem.pizzaId === pizzaId &&
+        elem.pizzaSize === pizzaSizeOption &&
+        elem.doughSize === doughSizeOption
+    );
+
+    const newId = uuid();
 
     const newPizza: IPizzaCartItem = {
       pizzaImage,
-      pizzaPrice: +returnChangedPizzaPriceBySize().toFixed(),
+      pizzaPrice: returnChangedPizzaOption(pizzaPrice, 1),
       totalPrice: pizzaPrice,
       pizzaTitle,
       count: 1,
-      id: cart.length + 1,
+      id: newId,
       pizzaId,
       pizzaSize: pizzaSizeOption,
       doughSize: doughSizeOption,
-      weight: +returnChangedPizzaWeightBySize().toFixed(),
+      weight: returnChangedPizzaOption(weight, 50),
     };
 
     if (currentPizza && currentPizza.count < 10) {
@@ -132,19 +128,25 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
 
   return (
     <section className={styles.singlePagePizzaInformation}>
-      <p
-        data-price
-      >{`${returnChangedPizzaPriceBySize().toFixed()} $ and ${returnChangedPizzaWeightBySize().toFixed()}g`}</p>
+      <p data-price>{`${returnChangedPizzaOption(
+        pizzaPrice,
+        1
+      )} $, ${returnChangedPizzaOption(weight, 50)}g`}</p>
 
       <p data-description>{pizzaDescription}</p>
 
       <ToggleButtonComponent />
 
-      <button data-order onClick={onAddToCart}>
+      <button
+        data-order
+        onClick={() => {
+          if (isAuth) {
+            onAddToCart();
+          }
+        }}
+      >
         add to cart
       </button>
-
-      <ToastContainer />
     </section>
   );
 };

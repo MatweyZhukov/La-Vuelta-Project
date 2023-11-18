@@ -6,7 +6,8 @@ import { IModalsState } from "@/types/types";
 
 const initialState: IModalsState = {
   modalCart: false,
-  modalRegistration: false,
+  modalSignUp: false,
+  modalLogIn: false,
 };
 
 const modalsSlice = createSlice({
@@ -16,13 +17,19 @@ const modalsSlice = createSlice({
     changeModalCartStatus(state, action) {
       state.modalCart = action.payload;
     },
-    changeModalRegistrationStatus(state, action) {
-      state.modalRegistration = action.payload;
+    changeModalSignUpStatus(state, action) {
+      state.modalSignUp = action.payload;
+    },
+    changeModalLogInStatus(state, action) {
+      state.modalLogIn = action.payload;
     },
   },
 });
 
-export const { changeModalCartStatus, changeModalRegistrationStatus } =
-  modalsSlice.actions;
+export const {
+  changeModalCartStatus,
+  changeModalSignUpStatus,
+  changeModalLogInStatus,
+} = modalsSlice.actions;
 
 export default modalsSlice.reducer;

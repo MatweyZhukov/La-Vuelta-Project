@@ -17,4 +17,4 @@ const ModalCartList: FC<{ cart: IPizzaCartItem[] }> = ({ cart }) => {
   );
 };
 
-export default ModalCartList;
+export { ModalCartList };

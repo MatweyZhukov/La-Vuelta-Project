@@ -165,5 +165,19 @@
       "id": 16
     }
   ],
-  "cart": []
+  "cart": [],
+  "currentUser": {
+    "name": "Matvey",
+    "email": "test@mail.ru",
+    "id": "3TsBz4qBf3Vot0oxK2HvWdULsun2",
+    "token": "AMf-vByVcgj1sy-4XMPXE9FAewGUmK4Mg5jGFxYsLp9Laub9c-8JmHjo0oa8MRJNGSrwSQwinQHOrmJzargDt0MFehk3p77Od7l27xz7q4-L_x-52BE2oXLKiZT1NGalu3fXsNRyJB5E3MHz-Dqb5KM2_i02iSrZvP0dnR7zlVJR_JREbLDTqnAGD9BvUOubaBVrBQ4P79q3o1D7zCnH94QgbtG9sKlaRg"
+  },
+  "users": [
+    {
+      "name": "Matvey",
+      "email": "test@mail.ru",
+      "id": "3TsBz4qBf3Vot0oxK2HvWdULsun2",
+      "token": "AMf-vByVcgj1sy-4XMPXE9FAewGUmK4Mg5jGFxYsLp9Laub9c-8JmHjo0oa8MRJNGSrwSQwinQHOrmJzargDt0MFehk3p77Od7l27xz7q4-L_x-52BE2oXLKiZT1NGalu3fXsNRyJB5E3MHz-Dqb5KM2_i02iSrZvP0dnR7zlVJR_JREbLDTqnAGD9BvUOubaBVrBQ4P79q3o1D7zCnH94QgbtG9sKlaRg"
+    }
+  ]
 }

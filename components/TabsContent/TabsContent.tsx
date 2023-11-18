@@ -10,7 +10,7 @@ import { ITabsItem } from "@/types/types";
 //Styles
 import styles from "../../styles/styles.module.css";
 
-const TabContent: FC<ITabsItem> = ({
+const TabsContent: FC<ITabsItem> = ({
   tabDescription,
   tabImg,
   tabName,
@@ -36,4 +36,4 @@ const TabContent: FC<ITabsItem> = ({
   );
 };
 
-export default TabContent;
+export { TabsContent };

@@ -7,7 +7,7 @@ import { FC, useState, useRef, MutableRefObject } from "react";
 import styles from "../../styles/styles.module.css";
 
 //Components
-import TabContent from "../TabsContent/TabsContent";
+import { TabsContent } from "../TabsContent/TabsContent";
 import { ITabsItem } from "@/types/types";
 
 const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
@@ -53,7 +53,7 @@ const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
       </ul>
 
       {tabsItem[activeTab] && (
-        <TabContent
+        <TabsContent
           {...tabsItem[activeTab]}
           refImg={refImg}
           refDescr={refDescr}

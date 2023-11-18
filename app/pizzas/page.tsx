@@ -1,6 +1,5 @@
 //Global
 import { FC } from "react";
-import axios from "axios";
 
 //Types
 import { IPizzaTileItem } from "@/types/types";

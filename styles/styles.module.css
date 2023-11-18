@@ -81,27 +81,28 @@
 }
 
 .headerButtons {
-    width: 150px;
-    height: 100%;
+    gap: 0 30px;
     display: flex;
     justify-content: space-between;
 }
 
 .headerButton {
-    background: transparent;
+    border-radius: 5px 20px 5px 20px;
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #ffa500;
+    color: white;
     border: none;
     cursor: pointer;
     transition: .3s all;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset
 }
 
 .headerButton:hover {
-    opacity: .7;
-    transform: scale(.9);
-}
-
-.headerSvg {
-    width: 60px;
-    height: 60px;
+    transform: translateY(-3px);
 }
 
 .tagline {
@@ -515,21 +516,31 @@
     border: 1px solid rgb(0, 0, 0, .3);
 }
 
-.modalCartButtonOrder {
+.modalCartButton,
+.modalCartButton {
     cursor: pointer;
     width: 100%;
     border: none;
     padding: 10px 0;
     background: #ffa500;
-    border-radius: 5px 20px 5px 20px;
     font-size: 25px;
     color: white;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-/* Modal Registration */
-.modalRegistrationWrapper {
+.modalCartButton[data-order] {
+    border-radius: 5px 20px 5px 20px;
+}
+
+.modalCartButton[data-clear] {
+    margin-top: 30px;
+    border-radius: 30px
+}
+
+/* Modals */
+.modalSignUpWrapper,
+.modalLogInWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -546,14 +557,16 @@
     transition: .3s all;
 }
 
-.modalRegistrationWrapperActive {
+.modalSignUpWrapperActive,
+.modalLogInWrapperActive {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
 }
 
-.modalRegistrationContent {
-    gap: 30px 0;
+.modalSignUpContent,
+.modalLogInContent {
+    gap: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -561,12 +574,12 @@
     padding: 30px;
     transition: .3s all;
     transform: translateY(-55px);
-    width: 450px;
     border-radius: 30px;
     background: #fff6e7;
 }
 
-.closeRegistration {
+.closeSignUp,
+.closeLogIn {
     transition: .3s all;
     border: 1px solid rgb(0, 0, 0, .3);
     display: flex;
@@ -579,48 +592,51 @@
     right: -10px;
 }
 
-.closeRegistration svg,
+.closeSignUp svg,
+.closeLogIn svg,
 .deleteItem svg {
     width: 35px;
     height: 35px;
     cursor: pointer;
 }
 
-.closeRegistration:hover,
+.closeSignUp:hover,
+.closeLogIn:hover,
 .deleteItem:hover {
     transform: scale(.9);
 }
 
-.modalRegistrationContent h1 {
-    font-size: 35px;
-    border-radius: 30px;
-    text-align: center;
+.modalSignUpContent label,
+.modalLogInContent label {
+    color: gray;
+    margin-top: 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-.modalRegistrationContent p {
+.modalSignUpContent p,
+.modalLogInContent p {
     font-size: 20px;
     text-align: center;
 }
 
-.modalRegistrationContent input {
-    font-size: 25px;
+.modalSignUpContent input,
+.modalLogInContent input {
+    font-size: 20px;
     border-radius: 10px;
     padding: 10px 15px;
     background: transparent;
     border: 1px solid rgb(0, 0, 0, .3)
 }
 
-.modalRegistrationContent button {
+.modalSignUpContent button,
+.modalLogInContent button {
+    border: none;
+    font-size: 20px;
     transition: .3s all;
-    border-radius: 5px 20px 5px 20px;
-    font-size: 25px;
     cursor: pointer;
-    padding: 5px 25px;
-    background: transparent;
-    border: 1px solid rgb(0, 0, 0, .3);
-}
-
-.modalRegistrationContent button:hover {
+    padding: 10px 20px;
     color: white;
     background: #ffa500;
     border-radius: 20px 5px 20px 5px;
@@ -628,7 +644,17 @@
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-.modalRegistrationContentActive {
+.modalSignUpContent>section,
+.modalLogInContent>section {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalSignUpContentActive,
+.modalLogInContentActive {
     transform: translateY(0);
 }
 
@@ -704,7 +730,7 @@
 }
 
 .pizzaTile img:hover {
-    transform: translateY(5px);
+    transform: translateY(-3px);
 }
 
 .pizzaTileName {
@@ -743,7 +769,7 @@
 }
 
 .pizzaTileBlock a:hover {
-    transform: translateY(3px);
+    transform: translateY(-3px);
 }
 
 .pizzaTileBlock p {

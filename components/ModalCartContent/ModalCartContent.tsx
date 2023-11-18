@@ -1,21 +1,24 @@
 //Global
 import { FC } from "react";
+import { showToastMessage } from "@/app/layout";
 
 //Icons
 import { GrClose } from "react-icons/gr";
 
 //Components
 import { ModalCartContentEmpty } from "../ModalCartContentEmpty/ModalCartContentEmpty";
+import { ModalCartList } from "../ModalCartList/ModalCartList";
 
 //Hooks
-import { useTyppedSelector, useAppDispatch } from "@/hooks/useTyppedSelector";
+import { useTyppedSelector } from "@/hooks/useTyppedSelector";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Actions
 import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
+import { deletePizzaFromCart } from "@/GlobalRedux/reducers/cartSlice";
 
 //Styles
 import styles from "../../styles/styles.module.css";
-import ModalCartList from "../ModalCartList/ModalCartList";
 
 const ModalCartContent: FC = () => {
   const { cart } = useTyppedSelector((state) => state.cart),
@@ -28,6 +31,14 @@ const ModalCartContent: FC = () => {
       0
     ),
     totalQuantity = cart.reduce((sum, currItem) => sum + currItem.count, 0);
+
+  const onClearCart = () => {
+    cart.forEach((item) => {
+      dispatch(deletePizzaFromCart(item.id));
+    });
+
+    showToastMessage("success", "Your cart has been emptied!");
+  };
 
   return (
     <>
@@ -51,6 +62,17 @@ const ModalCartContent: FC = () => {
         }
       >
         <h1 className={styles.modalCartTitle}>Your Cart!</h1>
+
+        {cart.length > 1 ? (
+          <button
+            data-clear
+            onClick={onClearCart}
+            className={styles.modalCartButton}
+          >
+            Clear your cart
+          </button>
+        ) : null}
+
         {totalPrice && totalQuantity ? (
           <>
             <p className={styles.modalCartInfo}>
@@ -59,11 +81,13 @@ const ModalCartContent: FC = () => {
             <p className={styles.modalCartInfo}>Total Price: {totalPrice} $</p>
           </>
         ) : null}
+
         <div className={styles.cardsWrapper}>
           {cart.length ? (
             <>
               <ModalCartList cart={cart} />
-              <button className={styles.modalCartButtonOrder}>
+
+              <button data-order className={styles.modalCartButton}>
                 Make an order
               </button>
             </>

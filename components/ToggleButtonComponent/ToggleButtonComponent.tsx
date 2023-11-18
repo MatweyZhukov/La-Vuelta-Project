@@ -5,7 +5,8 @@ import { FC } from "react";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 //Hooks
-import { useAppDispatch, useTyppedSelector } from "@/hooks/useTyppedSelector";
+import { useTyppedSelector } from "@/hooks/useTyppedSelector";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Actions
 import {

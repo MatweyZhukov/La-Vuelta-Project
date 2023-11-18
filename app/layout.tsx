@@ -1,6 +1,7 @@
 //Global
 import type { Metadata } from "next";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "../firebase";
 
 //Styles
 import "../styles/globals.css";
@@ -18,7 +19,8 @@ import { ProviderComponent } from "@/GlobalRedux/provider";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
 import { ModalCart } from "@/components/ModalCart/ModalCart";
-import { ModalRegistration } from "@/components/ModalRegistration/ModalRegistration";
+import { ModalSignUp } from "@/components/ModalSignUp/ModalSignUp";
+import { ModalLogIn } from "@/components/ModalLogIn/ModalLogIn";
 
 export const metadata: Metadata = {
   title: "La Vuelta | Main page",
@@ -72,7 +74,9 @@ export default function RootLayout({
             <Footer />
           </main>
           <ModalCart />
-          <ModalRegistration />
+          <ModalSignUp />
+          <ModalLogIn />
+          <ToastContainer />
         </ProviderComponent>
       </body>
     </html>

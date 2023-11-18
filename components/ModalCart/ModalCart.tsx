@@ -11,14 +11,14 @@ import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
 import { fetchCart } from "@/GlobalRedux/reducers/cartSlice";
 
 //Hooks
-import { useTyppedSelector, useAppDispatch } from "@/hooks/useTyppedSelector";
+import { useTyppedSelector } from "@/hooks/useTyppedSelector";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Styles
 import styles from "../../styles/styles.module.css";
 
 const ModalCart: FC = () => {
-  const { modalCart } = useTyppedSelector((state) => state.modals),
-    { cart } = useTyppedSelector((state) => state.cart);
+  const { modalCart } = useTyppedSelector((state) => state.modals);
 
   const dispatch = useAppDispatch();
 

@@ -1,20 +1,72 @@
 //Global
 import { LegacyRef, Ref } from "react";
-
-export interface ChangePizzaCounterType {
-  actionCounter: "+" | "-";
-  id: number;
-}
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
 type PizzaCartType = Pick<
   IPizzaTileItem,
-  "pizzaId" | "id" | "pizzaImage" | "pizzaPrice" | "pizzaTitle" | "weight"
+  "pizzaId" | "pizzaImage" | "pizzaPrice" | "pizzaTitle" | "weight"
 >;
 
+type ChangeModalStatusType =
+  | ActionCreatorWithPayload<boolean, "modals/changeModalSignUpStatus">
+  | ActionCreatorWithPayload<boolean, "modals/changeModalLogInStatus">;
+
+type TypeHandleFunction = (
+  email: IValueState["email"],
+  password: IValueState["password"],
+  name: IValueState["name"]
+) => void;
+
+export interface IChangePizzaData {
+  pizza: IPizzaCartItem;
+  pizzaCounter: IChangePizzaCounterType;
+}
+
+export interface IInputsForm {
+  name: "name" | "email" | "password";
+  minLength: number;
+  minLengthText: string;
+  maxLength?: number;
+  maxLengthText?: string;
+  inputType: "text" | "password" | "email";
+  inputPlaceholder: string;
+}
+
+export interface IChangePizzaCounterType {
+  actionCounter: "+" | "-";
+  pizza: IPizzaCartItem;
+}
+
+export interface IFormProps {
+  inputsForm: IInputsForm[];
+  closeModalClassName: string;
+  title: string;
+  titleButton: string;
+  modalStatus: boolean;
+  changeModalStatus: ChangeModalStatusType;
+  changeModalStatusSecond: ChangeModalStatusType;
+  contentClassName: string;
+  contentActiveClassName: string;
+  handleFunction: TypeHandleFunction;
+}
+
+export interface IUser {
+  name: string | null;
+  email: string | null;
+  token: string | null;
+  id: string | null;
+  userCart: IPizzaCartItem[];
+}
+
+export interface IUserState {
+  currentUser: IUser;
+  users: IUser[];
+}
+
 export interface IValueState {
-  email: string;
   name: string;
-  phone: string;
+  password: string;
+  email: string;
 }
 
 export interface ILinksMedia {
@@ -32,7 +84,7 @@ export interface ITabsItem {
 
 export interface IPizzaCartItem extends PizzaCartType {
   count: number;
-  id: number;
+  id: string;
   pizzaSize: number;
   doughSize: string;
   totalPrice: number;
@@ -50,7 +102,8 @@ export interface IPizzaTileItem {
 
 export interface IModalsState {
   modalCart: boolean;
-  modalRegistration: boolean;
+  modalSignUp: boolean;
+  modalLogIn: boolean;
 }
 
 export interface ErrorComponentProps {

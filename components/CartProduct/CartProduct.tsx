@@ -9,7 +9,7 @@ import { showToastMessage } from "@/app/layout";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 //Hooks
-import { useAppDispatch } from "@/hooks/useTyppedSelector";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Types
 import { IPizzaCartItem } from "@/types/types";
@@ -43,7 +43,7 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
     count < 1 ? onDeletePizzaFromCart() : null;
     onChangePizzaPrice();
 
-    //eslint-disable-next-line
+    // eslint-disable-next-line
   }, [count, dispatch]);
 
   const onDeletePizzaFromCart = () => {
@@ -55,16 +55,14 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
     dispatch(changePizzaPrice(pizza));
   };
 
-  const onChangePizzaCounter = (action: "+" | "-", funcId: number) => {
-    dispatch(changePizzaCounter({ actionCounter: action, id: funcId }));
-  };
-
-  const onIncPizzaCounter = () => {
-    count < 10 ? onChangePizzaCounter("+", id) : null;
-  };
-
-  const onDecPizzaCounter = () => {
-    count > 0 ? onChangePizzaCounter("-", id) : null;
+  const onChangePizzaCounter = (action: "+" | "-") => {
+    if (action === "-") {
+      count > 0 &&
+        dispatch(changePizzaCounter({ actionCounter: action, pizza }));
+    } else {
+      count < 10 &&
+        dispatch(changePizzaCounter({ actionCounter: action, pizza }));
+    }
   };
 
   return (
@@ -88,9 +86,9 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
 
         <div className={styles.blockCounterAndPrice}>
           <section className={styles.blockCounter}>
-            <button onClick={onDecPizzaCounter}>-</button>
+            <button onClick={() => onChangePizzaCounter("-")}>-</button>
             <p>{count}</p>
-            <button onClick={onIncPizzaCounter}>+</button>
+            <button onClick={() => onChangePizzaCounter("+")}>+</button>
           </section>
 
           <p>{`${totalPrice} $`}</p>
