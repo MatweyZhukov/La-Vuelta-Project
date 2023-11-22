@@ -9,7 +9,7 @@ import { showToastMessage } from "@/app/layout";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Actions
-import { getAllUsers, resetUser } from "@/GlobalRedux/reducers/userSlice";
+import { resetUser } from "@/GlobalRedux/reducers/userSlice";
 
 //Components
 import { Spinner } from "../Spinner/Spinner";
@@ -25,18 +25,12 @@ const ProfilePageComponent: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!isAuth) {
-      push("/");
-    } else {
+    if (isAuth) {
       push("/profile");
     }
 
     //eslint-disable-next-line
   }, [isAuth]);
-
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, [dispatch]);
 
   return (
     <>

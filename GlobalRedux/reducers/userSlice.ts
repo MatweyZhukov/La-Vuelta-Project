@@ -2,8 +2,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+//Services
+import { getDataFromApi, requestToApiCart } from "@/services/services";
+
 //Types
-import { IUser, IUserState } from "@/types/types";
+import {
+  IUser,
+  IUserState,
+  IPizzaCartItem,
+  IChangePizzaCounterType,
+} from "@/types/types";
 
 const initialState: IUserState = {
   users: [],
@@ -12,20 +20,175 @@ const initialState: IUserState = {
     email: null,
     token: null,
     id: null,
+    userCart: [],
   },
 };
 
-export const getAllUsers = createAsyncThunk<
-  IUserState["users"],
+export const fetchCart = createAsyncThunk<
+  IUser["userCart"],
   undefined,
   { rejectValue: string }
->("userSlice/getAllUsers", async function (_, { rejectWithValue }) {
+>("userSlice/fetchCart", async function (_, { rejectWithValue }) {
   try {
-    const response = await axios.get<IUserState["users"]>(
-      "http://localhost:4000/users"
+    const response = await requestToApiCart<IUser>(
+      "http://localhost:4000/currentUser",
+      "get"
     );
 
-    return response.data;
+    return response.userCart;
+  } catch (e) {
+    return rejectWithValue("Can't fetch your cart. Server error.");
+  }
+});
+
+export const addToCart = createAsyncThunk<
+  IPizzaCartItem,
+  IPizzaCartItem,
+  { rejectValue: string; state: { user: typeof initialState } }
+>(
+  "userSlice/addToCart",
+  async function (newPizza, { rejectWithValue, getState }) {
+    try {
+      const user = getState().user.currentUser,
+        { userCart } = user;
+
+      await requestToApiCart<IUser>(
+        "http://localhost:4000/currentUser",
+        "put",
+        {
+          ...user,
+          userCart: [...userCart, newPizza],
+        }
+      );
+
+      return newPizza;
+    } catch (e) {
+      return rejectWithValue("Can't add pizza to cart. Server error.");
+    }
+  }
+);
+
+export const deletePizzaFromCart = createAsyncThunk<
+  string,
+  string,
+  { rejectValue: string; state: { user: typeof initialState } }
+>(
+  "userSlice/deletePizzaFromCart",
+  async function (id, { rejectWithValue, getState }) {
+    try {
+      const user = getState().user.currentUser,
+        { userCart } = user;
+
+      await requestToApiCart<IUser>(
+        `http://localhost:4000/currentUser`,
+        "put",
+        {
+          ...user,
+          userCart: userCart.filter((item) => item.id !== id),
+        }
+      );
+
+      return id;
+    } catch (e) {
+      return rejectWithValue("Something went wrong! Server Error.");
+    }
+  }
+);
+
+export const changePizzaCounter = createAsyncThunk<
+  IChangePizzaCounterType,
+  IChangePizzaCounterType,
+  { rejectValue: string; state: { user: typeof initialState } }
+>(
+  "cart/changePizzaCounter",
+  async function (params, { rejectWithValue, getState }) {
+    try {
+      const { id, actionCounter } = params;
+
+      const user = getState().user.currentUser,
+        { userCart } = user;
+
+      const pizzaItem = userCart.find((pizza) => pizza.id === id);
+
+      if (pizzaItem) {
+        await requestToApiCart(`http://localhost:4000/currentUser`, "put", {
+          ...user,
+          userCart: userCart.map((item) => {
+            if (item.id === pizzaItem.id) {
+              return {
+                ...item,
+                count: actionCounter === "+" ? item.count + 1 : item.count - 1,
+              };
+            } else {
+              return item;
+            }
+          }),
+        });
+      }
+    } catch (e) {
+      return rejectWithValue("Something went wrong! Server Error.");
+    }
+
+    return params;
+  }
+);
+
+export const changePizzaPrice = createAsyncThunk<
+  IPizzaCartItem,
+  IPizzaCartItem,
+  { rejectValue: string; state: { user: typeof initialState } }
+>(
+  "userSlice/changePizzaPrice",
+  async function (pizza, { rejectWithValue, getState }) {
+    const user = getState().user.currentUser,
+      { userCart } = user;
+
+    const pizzaItem = userCart.find((elem) => elem.id === pizza.id);
+
+    try {
+      if (pizzaItem) {
+        await requestToApiCart(`http://localhost:4000/currentUser`, "put", {
+          ...user,
+          userCart: userCart.map((item) => {
+            if (item.id === pizzaItem.id) {
+              return {
+                ...item,
+                totalPrice: item.count * item.pizzaPrice,
+              };
+            } else {
+              return item;
+            }
+          }),
+        });
+      }
+
+      return pizza;
+    } catch (e) {
+      return rejectWithValue("Something went wrong! Server Error.");
+    }
+  }
+);
+
+export const setUsers = createAsyncThunk<
+  IUserState["users"],
+  undefined,
+  { rejectValue: string; state: { user: IUserState } }
+>("userSlice/setUsers", async function (_, { rejectWithValue, getState }) {
+  try {
+    const user = getState().user.currentUser;
+
+    const { userCart, id } = user;
+
+    if (id) {
+      await axios.put<IUser>(`http://localhost:4000/users/${id}`, {
+        ...user,
+        userCart: userCart,
+      });
+    }
+
+    return await getDataFromApi<
+      IUserState["users"]
+    >("http://localhost:4000/users");
   } catch (e) {
     return rejectWithValue("Something went wrong!");
   }
@@ -70,6 +233,7 @@ export const resetUser = createAsyncThunk<
         email: null,
         id: null,
         token: null,
+        userCart: [],
       }
     );
 
@@ -85,6 +249,38 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchCart.fulfilled, (state, action) => {
+        state.currentUser.userCart = action.payload;
+      })
+      .addCase(addToCart.fulfilled, (state, action) => {
+        state.currentUser.userCart.push(action.payload);
+      })
+      .addCase(deletePizzaFromCart.fulfilled, (state, action) => {
+        state.currentUser.userCart = state.currentUser.userCart.filter(
+          (item) => item.id !== action.payload
+        );
+      })
+      .addCase(changePizzaCounter.fulfilled, (state, action) => {
+        const pizzaItem = state.currentUser.userCart.find(
+          (item) => item.id === action.payload.id
+        );
+
+        if (pizzaItem) {
+          pizzaItem.count =
+            action.payload.actionCounter === "+"
+              ? pizzaItem.count + 1
+              : pizzaItem.count - 1;
+        }
+      })
+      .addCase(changePizzaPrice.fulfilled, (state, action) => {
+        const pizzaItem = state.currentUser.userCart.find(
+          (item) => item.id === action.payload.id
+        );
+
+        if (pizzaItem) {
+          pizzaItem.totalPrice = pizzaItem.count * pizzaItem.pizzaPrice;
+        }
+      })
       .addCase(setUser.fulfilled, (state, action) => {
         state.currentUser.name = action.payload.name;
         state.currentUser.email = action.payload.email;
@@ -96,9 +292,6 @@ const userSlice = createSlice({
         state.currentUser.email = null;
         state.currentUser.id = null;
         state.currentUser.token = null;
-      })
-      .addCase(getAllUsers.fulfilled, (state, action) => {
-        state.users = [...action.payload];
       })
       .addCase(addUser.fulfilled, (state, action) => {
         state.users.push(action.payload);

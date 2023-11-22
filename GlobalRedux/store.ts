@@ -5,14 +5,12 @@ import { configureStore } from "@reduxjs/toolkit";
 
 //Reducers
 import modalsSlice from "./reducers/modalsSlice";
-import cartSlice from "./reducers/cartSlice";
 import pizzaOptionsSlice from "./reducers/pizzaOptionsSlice";
 import userSlice from "./reducers/userSlice";
 
 export const store = configureStore({
   reducer: {
     modals: modalsSlice,
-    cart: cartSlice,
     pizzaOptions: pizzaOptionsSlice,
     user: userSlice,
   },

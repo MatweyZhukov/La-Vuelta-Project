@@ -6,6 +6,7 @@ import "../firebase";
 //Styles
 import "../styles/globals.css";
 import styles from "../styles/styles.module.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //Icons
 import { BsTelegram, BsWhatsapp } from "react-icons/bs";

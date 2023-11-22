@@ -24,13 +24,14 @@ import {
   changeModalLogInStatus,
   changeModalSignUpStatus,
 } from "@/GlobalRedux/reducers/modalsSlice";
-import { addUser, setUser } from "@/GlobalRedux/reducers/userSlice";
+import { addUser, setUser, setUsers } from "@/GlobalRedux/reducers/userSlice";
 
 //Styles
 import styles from "../../styles/styles.module.css";
 
 const ModalSignUp: FC = () => {
-  const { modalSignUp } = useTyppedSelector((state) => state.modals);
+  const { modalSignUp } = useTyppedSelector((state) => state.modals),
+    { currentUser } = useTyppedSelector((state) => state.user);
 
   const { push } = useRouter();
 
@@ -41,6 +42,10 @@ const ModalSignUp: FC = () => {
       dispatch(setUser(res))
     );
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(setUsers());
+  }, [dispatch, currentUser]);
 
   const functionSignUpUser = (
     email: IValueState["email"],
@@ -57,6 +62,7 @@ const ModalSignUp: FC = () => {
             email: user.email,
             id: user.uid,
             token: user.refreshToken,
+            userCart: [],
           })
         );
 
@@ -66,12 +72,13 @@ const ModalSignUp: FC = () => {
             email: user.email,
             id: user.uid,
             token: user.refreshToken,
+            userCart: [],
           })
         );
       })
       .then(() => {
-        showToastMessage("success", "You've successfully created the account!");
         push("/profile");
+        showToastMessage("success", "You've successfully created the account!");
         dispatch(changeModalSignUpStatus(false));
       })
       .catch(() =>

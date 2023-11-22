@@ -42,20 +42,18 @@ const ModalLogIn: FC = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        const currrentUser = users.find(
+        const currentUser = users.find(
           (arrUser) => arrUser.email === email && arrUser.id === user.uid
         );
 
-        if (currrentUser) {
-          dispatch(setUser(currrentUser));
-        } else {
-          showToastMessage("error", "Uncorrect password or email, try again!");
+        if (currentUser) {
+          dispatch(setUser({ ...currentUser }));
         }
       })
       .then(() => {
+        push("/profile");
         showToastMessage("success", "You've successfully logged in!");
         dispatch(changeModalLogInStatus(false));
-        push("/profile");
       })
       .catch(() =>
         showToastMessage("error", "Uncorrect password or email, try again!")

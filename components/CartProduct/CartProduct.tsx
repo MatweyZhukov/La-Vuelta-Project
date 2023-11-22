@@ -16,19 +16,15 @@ import { IPizzaCartItem } from "@/types/types";
 
 //Actions
 import {
-  changePizzaCounter,
   deletePizzaFromCart,
+  changePizzaCounter,
   changePizzaPrice,
-} from "@/GlobalRedux/reducers/cartSlice";
+} from "@/GlobalRedux/reducers/userSlice";
 
 //Styles
 import styles from "../../styles/styles.module.css";
-import "react-toastify/dist/ReactToastify.css";
-import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 
 const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
-  const { cart } = useTyppedSelector((state) => state.cart);
-
   const dispatch = useAppDispatch();
 
   const {
@@ -43,11 +39,18 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
   } = pizza;
 
   useEffect(() => {
-    count < 1 ? onDeletePizzaFromCart() : null;
     onChangePizzaPrice();
 
     // eslint-disable-next-line
-  }, [count, dispatch]);
+  }, [dispatch, count]);
+
+  useEffect(() => {
+    if (count <= 0) {
+      onDeletePizzaFromCart();
+    }
+
+    //eslint-disable-next-line
+  }, [count]);
 
   const onDeletePizzaFromCart = () => {
     dispatch(deletePizzaFromCart(id));
@@ -58,12 +61,12 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
     dispatch(changePizzaPrice(pizza));
   };
 
-  const onIncCounter = () => {
-    count > 0 && dispatch(changePizzaCounter({ actionCounter: "+", id }));
-  };
-
-  const onDecCounter = () => {
-    count > 0 && dispatch(changePizzaCounter({ actionCounter: "-", id }));
+  const onChangePizzaCounter = (action: "+" | "-") => {
+    if (action === "+") {
+      count < 10 && dispatch(changePizzaCounter({ actionCounter: "+", id }));
+    } else {
+      count > 0 && dispatch(changePizzaCounter({ actionCounter: "-", id }));
+    }
   };
 
   return (
@@ -87,9 +90,9 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
 
         <div className={styles.blockCounterAndPrice}>
           <section className={styles.blockCounter}>
-            <button onClick={() => onDecCounter()}>-</button>
+            <button onClick={() => onChangePizzaCounter("-")}>-</button>
             <p>{count}</p>
-            <button onClick={() => onIncCounter()}>+</button>
+            <button onClick={() => onChangePizzaCounter("+")}>+</button>
           </section>
 
           <p>{`${totalPrice} $`}</p>

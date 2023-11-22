@@ -15,7 +15,7 @@ import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 import {
   addToCart,
   changePizzaCounter,
-} from "@/GlobalRedux/reducers/cartSlice";
+} from "@/GlobalRedux/reducers/userSlice";
 import {
   setDoughSize,
   setPizzaSize,
@@ -34,10 +34,10 @@ import styles from "../../styles/styles.module.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
-  const { cart } = useTyppedSelector((state) => state.cart),
-    { doughSizeOption, pizzaSizeOption } = useTyppedSelector(
+  const { doughSizeOption, pizzaSizeOption } = useTyppedSelector(
       (state) => state.pizzaOptions
-    );
+    ),
+    { currentUser } = useTyppedSelector((state) => state.user);
 
   const { isAuth } = useAuth();
 
@@ -79,7 +79,7 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
   };
 
   const onAddToCart = () => {
-    const currentPizza = cart.find(
+    const currentPizza = currentUser.userCart.find(
       (elem) =>
         elem.pizzaId === pizzaId &&
         elem.pizzaSize === pizzaSizeOption &&
