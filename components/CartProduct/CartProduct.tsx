@@ -22,7 +22,8 @@ import {
 } from "@/GlobalRedux/reducers/userSlice";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/cart.module.css";
+import modalStyles from "../../styles/modals.module.css";
 
 const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
   const dispatch = useAppDispatch();
@@ -64,6 +65,10 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
   const onChangePizzaCounter = (action: "+" | "-") => {
     if (action === "+") {
       count < 10 && dispatch(changePizzaCounter({ actionCounter: "+", id }));
+
+      if (count === 10) {
+        showToastMessage("warning", "You can't add more than 10 pizzas!");
+      }
     } else {
       count > 0 && dispatch(changePizzaCounter({ actionCounter: "-", id }));
     }

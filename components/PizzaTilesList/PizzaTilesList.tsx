@@ -8,7 +8,7 @@ import { IPizzaTileItem } from "@/types/types";
 import { PizzaTile } from "../PizzaTile/PizzaTile";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/pizzasPage.module.css";
 
 const PizzaTilesList: FC<{ tiles: IPizzaTileItem[] }> = ({ tiles }) => {
   return (

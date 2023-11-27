@@ -14,9 +14,10 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Actions
 import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
+import { setUsers } from "@/GlobalRedux/reducers/userSlice";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/cart.module.css";
 
 const ModalCartContent: FC = () => {
   const { currentUser } = useTyppedSelector((state) => state.user),
@@ -32,6 +33,10 @@ const ModalCartContent: FC = () => {
       (sum, currItem) => sum + currItem.count,
       0
     );
+
+  useEffect(() => {
+    dispatch(setUsers());
+  }, [dispatch, currentUser.userCart]);
 
   return (
     <>
@@ -59,7 +64,10 @@ const ModalCartContent: FC = () => {
         {totalPrice && totalQuantity ? (
           <>
             <p className={styles.modalCartInfo}>
-              Total Quantity: {totalQuantity}
+              Total Quantity:{" "}
+              {totalQuantity > 1
+                ? `${totalQuantity} things`
+                : `${totalQuantity} thing`}
             </p>
             <p className={styles.modalCartInfo}>Total Price: {totalPrice} $</p>
           </>

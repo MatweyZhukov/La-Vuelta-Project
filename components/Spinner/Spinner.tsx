@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/spinner.module.css";
 
 const Spinner: FC = () => {
   return (

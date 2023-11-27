@@ -3,7 +3,7 @@ import { FC } from "react";
 import Image from "next/image";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/cart.module.css";
 
 const ModalCartContentEmpty: FC = () => {
   return (

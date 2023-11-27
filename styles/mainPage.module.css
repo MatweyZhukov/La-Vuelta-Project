@@ -1,0 +1,173 @@
+.mainPageContent {
+    padding: 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.navSlider {
+    margin: 50px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navTabs {
+    margin: 50px 0;
+    width: auto;
+    background: #ffe9ce;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 5px 20px 5px 20px;
+}
+
+.tabImg {
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.tabOptions {
+    padding: 0 50px;
+    height: 350px;
+    width: 380px;
+    border-right: 1px solid rgb(0, 0, 0, .2);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+}
+
+.tabOption {
+    background: none;
+    user-select: none;
+    width: 100%;
+    border-radius: 20px 5px 20px 5px;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid rgb(255, 166, 0, .5);
+    font-size: 32px;
+    cursor: pointer;
+    transition: .3s all;
+}
+
+.tabOptionActive {
+    border-radius: 5px 20px 5px 20px;
+    color: white;
+    background: orange;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: .3s;
+}
+
+@keyframes fade {
+    from {
+        transform: scale(.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.active {
+    font-size: 23px;
+    text-decoration: underline;
+}
+
+.tabDescription {
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    width: 600px;
+    height: 350px;
+    border-left: 1px solid rgb(0, 0, 0, .2);
+}
+
+.tabDescriptionText {
+    line-height: 70px;
+    font-size: 30px;
+    text-align: justify;
+}
+
+.offer {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px 20px 5px 20px;
+    width: 850px;
+    height: 100%;
+    background-color: rgba(255, 201, 150, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.offerTitle {
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.offerDescription {
+    font-size: 20px;
+    text-align: justify;
+    line-height: 30px;
+}
+
+.offerOptions {
+    list-style: none;
+    font-size: 20px;
+    text-align: justify;
+    line-height: 25px;
+}
+
+.offerOption {
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.mainPageTitle {
+    font-weight: 300;
+    font-size: 50px;
+}
+
+.mainPageTitle:last-of-type {
+    margin-top: 0;
+}
+
+.offerToPizzas {
+    margin-bottom: 40px;
+    gap: 50px 0;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.offerToPizzasText {
+    text-align: center;
+    font-size: 40px;
+}
+
+.offerToPizzasLink {
+    transition: .3s all;
+    padding: 15px;
+    background: #ffa500;
+    border-radius: 5px 20px 5px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}

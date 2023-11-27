@@ -1,0 +1,103 @@
+.modalWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, .5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .3s all;
+}
+
+.modalWrapperActive {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.modalContent {
+    gap: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    transition: .3s all;
+    transform: translateY(-55px);
+    border-radius: 30px;
+    background: #fff6e7;
+}
+
+.closeModal {
+    transition: .3s all;
+    border: 1px solid rgb(0, 0, 0, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: #fff6e7;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+.closeModal svg,
+.deleteItem svg {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.modalContent label {
+    color: gray;
+    margin-top: 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalContent p {
+    font-size: 20px;
+    text-align: center;
+}
+
+.modalContent input {
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    background: transparent;
+    border: 1px solid rgb(0, 0, 0, .3)
+}
+
+.modalContent button {
+    font-weight: 600;
+    border: none;
+    font-size: 20px;
+    transition: .3s all;
+    cursor: pointer;
+    padding: 10px 20px;
+    color: white;
+    background: #ffa500;
+    border-radius: 20px 5px 20px 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.modalContent>section {
+    gap: 0 20px;
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContentActive {
+    transform: translateY(0);
+}

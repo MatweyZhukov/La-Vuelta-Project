@@ -16,7 +16,7 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useAuth } from "@/hooks/useAuth";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/cart.module.css";
 
 const ModalCart: FC = () => {
   const { modalCart } = useTyppedSelector((state) => state.modals);

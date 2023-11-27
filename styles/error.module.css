@@ -1,0 +1,20 @@
+.notFoundWrapper {
+    height: 65vh;
+    padding: 0 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.notFoundText {
+    width: 1200px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.notFoundText a {
+    text-transform: uppercase;
+    transition: .3s all;
+    color: black;
+}

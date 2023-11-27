@@ -13,7 +13,7 @@ import { ITabsItem } from "@/types/types";
 import { getDataFromApi } from "@/services/services";
 
 //Styles
-import styles from "../styles/styles.module.css";
+import styles from "../styles/mainPage.module.css";
 
 export default async function Home() {
   const tabs = await getDataFromApi<ITabsItem[]>("http://localhost:4000/tabs");

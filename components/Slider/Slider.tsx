@@ -21,7 +21,7 @@ const Slider: FC = () => {
         slideShadows: false,
       }}
       autoplay={{
-        delay: 5000,
+        delay: 3000,
         disableOnInteraction: false,
       }}
       modules={[Navigation, Pagination, Autoplay, EffectFlip]}
@@ -30,13 +30,13 @@ const Slider: FC = () => {
       pagination={{ clickable: true }}
     >
       <SwiperSlide>
-        <Image src={"/pizza-6.webp"} width={400} height={400} alt="pizza" />
+        <Image src={"/pizza-16.webp"} width={400} height={400} alt="pizza" />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={"/pizza-4.webp"} width={400} height={400} alt="pizza" />
+        <Image src={"/pizza-10.webp"} width={400} height={400} alt="pizza" />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={"/pizza-7.webp"} width={400} height={400} alt="pizza" />
+        <Image src={"/pizza-12.webp"} width={400} height={400} alt="pizza" />
       </SwiperSlide>
     </Swiper>
   );

@@ -3,15 +3,16 @@
 //Global
 import { FC, useState, useRef, MutableRefObject } from "react";
 
-//Styles
-import styles from "../../styles/styles.module.css";
-
 //Components
 import { TabsContent } from "../TabsContent/TabsContent";
 import { ITabsItem } from "@/types/types";
 
+//Styles
+import styles from "../../styles/mainPage.module.css";
+
 const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
-  const [activeTab, setActiveTab] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<number>(0),
+    [disabled, setDisabled] = useState<boolean>(false);
 
   let refImg: MutableRefObject<HTMLImageElement | null> = useRef(null);
   let refDescr: MutableRefObject<HTMLDivElement | null> = useRef(null);
@@ -20,20 +21,27 @@ const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
     const img = refImg.current,
       descr = refDescr.current;
 
-    img?.classList.add(`${styles.fade}`);
-    descr?.classList.add(`${styles.fade}`);
+    if (img && descr) {
+      setDisabled(true);
 
-    setTimeout(() => {
-      img?.classList.remove(`${styles.fade}`);
-      descr?.classList.remove(`${styles.fade}`);
-    }, 300);
+      img.classList.add(`${styles.fade}`);
+      descr.classList.add(`${styles.fade}`);
+
+      setTimeout(() => {
+        setDisabled(false);
+
+        img.classList.remove(`${styles.fade}`);
+        descr.classList.remove(`${styles.fade}`);
+      }, 300);
+    }
   };
 
   return (
     <>
       <ul className={styles.tabOptions}>
         {tabsItem.map(({ tabName }, index) => (
-          <li
+          <button
+            disabled={disabled}
             id={`${index}`}
             onClick={(e) => {
               // @ts-ignore
@@ -48,7 +56,7 @@ const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
             }
           >
             {tabName}
-          </li>
+          </button>
         ))}
       </ul>
 

@@ -30,7 +30,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { ToggleButtonComponent } from "@/components/ToggleButtonComponent/ToggleButtonComponent";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/pizzaSinglePage.module.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
@@ -111,7 +111,7 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
     }
 
     if (currentPizza && currentPizza.count >= 10) {
-      showToastMessage("warning", "You can't add more then 10 pizzas!");
+      showToastMessage("warning", "You can't add more than 10 pizzas!");
     }
 
     if (!currentPizza) {
@@ -142,6 +142,8 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
         onClick={() => {
           if (isAuth) {
             onAddToCart();
+          } else {
+            showToastMessage("warning", "Sign up to add product to cart!");
           }
         }}
       >

@@ -12,7 +12,7 @@ import { getDataFromApi } from "@/services/services";
 import { IPizzaTileItem } from "@/types/types";
 
 //Styles
-import styles from "../../../styles/styles.module.css";
+import styles from "../../../styles/pizzaSinglePage.module.css";
 
 const SinglePizza = async ({ params }: { params: { id: number } }) => {
   const pizza = await getDataFromApi<IPizzaTileItem>(

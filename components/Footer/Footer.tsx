@@ -4,7 +4,7 @@ import Link from "next/link";
 import { linksMedia } from "@/app/layout";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/footer.module.css";
 
 export const Footer: FC = () => {
   return (

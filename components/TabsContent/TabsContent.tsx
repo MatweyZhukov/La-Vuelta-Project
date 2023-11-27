@@ -8,7 +8,7 @@ import Image from "next/image";
 import { ITabsItem } from "@/types/types";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/mainPage.module.css";
 
 const TabsContent: FC<ITabsItem> = ({
   tabDescription,

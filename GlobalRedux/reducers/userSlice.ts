@@ -22,6 +22,7 @@ const initialState: IUserState = {
     id: null,
     userCart: [],
   },
+  status: "pending",
 };
 
 export const fetchCart = createAsyncThunk<
@@ -281,7 +282,15 @@ const userSlice = createSlice({
           pizzaItem.totalPrice = pizzaItem.count * pizzaItem.pizzaPrice;
         }
       })
+      .addCase(setUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+      })
+      .addCase(setUser.pending, (state) => {
+        state.status = "pending";
+      })
       .addCase(setUser.fulfilled, (state, action) => {
+        state.status = "fuifiled";
+
         state.currentUser.name = action.payload.name;
         state.currentUser.email = action.payload.email;
         state.currentUser.id = action.payload.id;

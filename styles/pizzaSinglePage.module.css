@@ -1,0 +1,100 @@
+.singlePagePizzaWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.singlePagePizzaWrapper h1 {
+    margin-top: 30px;
+    width: 1320px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300;
+    border-bottom: 1px solid #ffe1ac;
+}
+
+.singlePagePizzaWrapper img {
+    margin: 15px 0 0 15px;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.singlePagePizzaContent {
+    display: flex;
+    width: 1320px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.singlePagePizzaInformation {
+    gap: 30px 0;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.singlePagePizzaInformation p[data-price] {
+    user-select: none;
+    padding: 7px 20px;
+    color: white;
+    background: #ffa500;
+    border-radius: 30px;
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 800;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.singlePagePizzaInformation p[data-description] {
+    font-size: 30px;
+    text-align: center;
+    color: gray;
+}
+
+
+.singlePagePizzaInformation p[data-text-size],
+.singlePagePizzaInformation p[data-text-dough] {
+    text-align: center;
+    color: gray;
+    background: transparent;
+    font-size: 30px;
+}
+
+.singlePagePizzaInformation div[data-toggle] {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.singlePagePizzaInformation div[data-toggle-single] {
+    display: flex;
+    flex-direction: column;
+}
+
+.toggleButtonGroup {
+    margin-top: 30px;
+    user-select: none;
+    justify-content: center;
+}
+
+.toggleButton {
+    color: gray;
+    transition: .3s all;
+    width: auto;
+}
+
+.singlePagePizzaInformation button[data-order] {
+    transition: .3s all;
+    cursor: pointer;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    background: #ffa500;
+    border: none;
+    border-radius: 5px 20px 5px 20px;
+    font-weight: 600;
+    font-size: 30px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}

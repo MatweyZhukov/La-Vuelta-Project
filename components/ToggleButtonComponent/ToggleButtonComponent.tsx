@@ -15,7 +15,7 @@ import {
 } from "@/GlobalRedux/reducers/pizzaOptionsSlice";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/pizzaSinglePage.module.css";
 
 const ToggleButtonComponent: FC = () => {
   const { doughSizeOption, pizzaSizeOption } = useTyppedSelector(

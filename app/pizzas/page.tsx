@@ -14,7 +14,7 @@ import { PizzaTilesList } from "@/components/PizzaTilesList/PizzaTilesList";
 import { getDataFromApi } from "@/services/services";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/pizzasPage.module.css";
 
 const SinglePizza: FC = async () => {
   const tiles = await getDataFromApi<IPizzaTileItem[]>(

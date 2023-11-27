@@ -1,6 +1,7 @@
 //Global
 import { LegacyRef, Ref } from "react";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
+import { UseFormReset } from "react-hook-form";
 
 type PizzaCartType = Pick<
   IPizzaTileItem,
@@ -14,7 +15,8 @@ type ChangeModalStatusType =
 type TypeHandleFunction = (
   email: IValueState["email"],
   password: IValueState["password"],
-  name: IValueState["name"]
+  name: IValueState["name"],
+  reset: UseFormReset<IValueState>
 ) => void;
 
 export interface IChangePizzaData {
@@ -39,15 +41,13 @@ export interface IChangePizzaCounterType {
 
 export interface IFormProps {
   inputsForm: IInputsForm[];
-  closeModalClassName: string;
   title: string;
   titleButton: string;
   modalStatus: boolean;
   changeModalStatus: ChangeModalStatusType;
   changeModalStatusSecond: ChangeModalStatusType;
-  contentClassName: string;
-  contentActiveClassName: string;
   handleFunction: TypeHandleFunction;
+  disabled: boolean;
 }
 
 export interface IUser {
@@ -55,11 +55,13 @@ export interface IUser {
   email: string | null;
   token: string | null;
   id: string | null;
+  userCart: IPizzaCartItem[];
 }
 
 export interface IUserState {
   currentUser: IUser;
   users: IUser[];
+  status: "fuifiled" | "pending" | null;
 }
 
 export interface IValueState {
@@ -77,7 +79,7 @@ export interface ITabsItem {
   tabName: string;
   tabImg: string;
   tabDescription: string;
-  refImg: Ref<HTMLImageElement | null>;
+  refImg: Ref<HTMLImageElement>;
   refDescr: LegacyRef<HTMLDivElement>;
 }
 

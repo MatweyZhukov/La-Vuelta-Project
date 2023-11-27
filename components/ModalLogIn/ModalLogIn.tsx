@@ -1,10 +1,10 @@
 "use client";
 
 //GLobal
-import { FC } from "react";
+import { FC, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { showToastMessage } from "@/app/layout";
-import { useRouter } from "next/navigation";
+import { UseFormReset } from "react-hook-form";
 
 //Components
 import { Form } from "../Form/Form";
@@ -23,22 +23,23 @@ import {
 } from "@/GlobalRedux/reducers/modalsSlice";
 import { setUser } from "@/GlobalRedux/reducers/userSlice";
 
-//Styles
-import styles from "../../styles/styles.module.css";
-
 const ModalLogIn: FC = () => {
+  const [disabled, setDisabled] = useState<boolean>(false);
+
   const { modalLogIn } = useTyppedSelector((state) => state.modals),
     { users } = useTyppedSelector((state) => state.user);
-
-  const { push } = useRouter();
 
   const dispatch = useAppDispatch();
 
   const functionLogInUser = (
     email: IValueState["email"],
-    password: IValueState["password"]
+    password: IValueState["password"],
+    _: IValueState["name"],
+    reset: UseFormReset<IValueState>
   ) => {
     const auth = getAuth();
+
+    setDisabled(true);
 
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
@@ -47,13 +48,15 @@ const ModalLogIn: FC = () => {
         );
 
         if (currentUser) {
-          dispatch(setUser({ ...currentUser }));
+          dispatch(setUser(currentUser));
         }
+
+        setDisabled(false);
       })
       .then(() => {
-        push("/profile");
         showToastMessage("success", "You've successfully logged in!");
         dispatch(changeModalLogInStatus(false));
+        reset();
       })
       .catch(() =>
         showToastMessage("error", "Uncorrect password or email, try again!")
@@ -80,27 +83,16 @@ const ModalLogIn: FC = () => {
   ];
 
   return (
-    <div
-      onClick={() => dispatch(changeModalLogInStatus(false))}
-      className={
-        modalLogIn
-          ? `${styles.modalLogInWrapper} ${styles.modalLogInWrapperActive}`
-          : styles.modalSignUpWrapper
-      }
-    >
-      <Form
-        inputsForm={logInArrayInputs}
-        title="Log In"
-        titleButton="Sign Up"
-        changeModalStatus={changeModalLogInStatus}
-        changeModalStatusSecond={changeModalSignUpStatus}
-        contentClassName={styles.modalLogInContent}
-        contentActiveClassName={styles.modalLogInContentActive}
-        closeModalClassName={styles.closeLogIn}
-        modalStatus={modalLogIn}
-        handleFunction={functionLogInUser}
-      />
-    </div>
+    <Form
+      inputsForm={logInArrayInputs}
+      title="Log In"
+      titleButton="Sign Up"
+      changeModalStatus={changeModalLogInStatus}
+      changeModalStatusSecond={changeModalSignUpStatus}
+      modalStatus={modalLogIn}
+      handleFunction={functionLogInUser}
+      disabled={disabled}
+    />
   );
 };
 
