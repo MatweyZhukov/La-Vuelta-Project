@@ -1,3 +1,62 @@
+@media (max-width: 8000px) {
+    .navTabs {
+        width: auto;
+    }
+
+    .tabOptions {
+        padding: 0 50px;
+        height: 350px;
+        width: 380px;
+    }
+
+    .tabOption {
+        font-size: 32px;
+        padding: 15px;
+    }
+
+    .tabDescription {
+        width: 600px;
+        height: 350px;
+        padding: 0 50px;
+    }
+
+    .tabDescriptionText {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1380px) {
+    .navTabs {
+        width: 980px;
+    }
+
+    .tabOptions {
+        padding: 0 25px;
+        height: 280px;
+        width: 380px;
+    }
+
+    .tabOption {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .tabImg {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .tabDescription {
+        width: 600px;
+        height: 280px;
+        padding: 0 25px;
+    }
+
+    .tabDescriptionText {
+        font-size: 17px;
+    }
+}
+
 .mainPageContent {
     padding: 0 100px;
     display: flex;
@@ -16,7 +75,6 @@
 
 .navTabs {
     margin: 50px 0;
-    width: auto;
     background: #ffe9ce;
     display: flex;
     justify-content: space-evenly;
@@ -32,9 +90,6 @@
 }
 
 .tabOptions {
-    padding: 0 50px;
-    height: 350px;
-    width: 380px;
     border-right: 1px solid rgb(0, 0, 0, .2);
     display: flex;
     justify-content: space-evenly;
@@ -49,9 +104,7 @@
     width: 100%;
     border-radius: 20px 5px 20px 5px;
     text-align: center;
-    padding: 15px;
     border: 1px solid rgb(255, 166, 0, .5);
-    font-size: 32px;
     cursor: pointer;
     transition: .3s all;
 }
@@ -89,15 +142,11 @@
 .tabDescription {
     display: flex;
     align-items: center;
-    padding: 0 50px;
-    width: 600px;
-    height: 350px;
     border-left: 1px solid rgb(0, 0, 0, .2);
 }
 
 .tabDescriptionText {
     line-height: 70px;
-    font-size: 30px;
     text-align: justify;
 }
 
