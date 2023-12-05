@@ -1,6 +1,5 @@
 .notFoundWrapper {
     height: 65vh;
-    padding: 0 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

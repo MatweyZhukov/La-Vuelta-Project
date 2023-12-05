@@ -1,10 +1,19 @@
 @media (max-width: 8000px) {
+    .header {
+        padding-bottom: 30px;
+    }
+
     .headerContent {
         width: 1380px;
     }
 
+    .headerButtons {
+        gap: 0 30px;
+    }
+
     .headerButton {
         font-size: 20px;
+        padding: 10px 20px;
     }
 
     .tagline {
@@ -31,13 +40,93 @@
     }
 }
 
+@media (max-width: 980px) {
+    .headerContent {
+        width: 850px;
+    }
+
+    .headerContent img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .headerButton {
+        font-size: 15px;
+    }
+
+    .tagline {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 860px) {
+    .headerContent {
+        width: 650px;
+    }
+
+    .headerContent img {
+        height: 70px;
+        width: 70px;
+    }
+
+    .headerButton {
+        padding: 10px 15px;
+    }
+
+    .tagline {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 660px) {
+    .headerContent {
+        width: 350px;
+    }
+
+    .headerContent img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .headerButtons {
+        gap: 0;
+    }
+
+    .headerButton {
+        font-size: 8px;
+        padding: 5px;
+    }
+
+    .tagline {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 350px) {
+    .headerContent {
+        width: 250px;
+    }
+
+    .headerButtons {
+        gap: 0 5px;
+    }
+
+    .headerButton {
+        font-size: 5px;
+        padding: 3px 8px;
+    }
+
+    .tagline {
+        font-size: 5px;
+    }
+}
+
 .header {
     width: 100%;
     display: flex;
-    height: auto;
     align-items: flex-start;
     justify-content: center;
-    background: linear-gradient(to bottom, rgb(255, 225, 172), rgb(255, 225, 172), rgb(255, 225, 172), #fff6e7);
+    background: linear-gradient(to bottom, rgb(255, 225, 172), rgb(255, 225, 172), #fff6e7);
 }
 
 .headerContent {
@@ -47,14 +136,11 @@
 }
 
 .headerButtons {
-    gap: 0 30px;
     display: flex;
-    justify-content: space-between;
 }
 
 .headerButton {
     border-radius: 5px 20px 5px 20px;
-    padding: 10px 20px;
     font-weight: 600;
     background: #ffa500;
     color: white;

@@ -1,4 +1,175 @@
-/* Pizzas page */
+@media (max-width: 8000px) {
+    .pizzasPageTitle {
+        width: 1380px;
+        font-size: 50px;
+    }
+
+    .pizzaTilesWrapper {
+        margin: 50px 0;
+        gap: 30px;
+        width: 1380px;
+        grid-template-columns: repeat(4, auto);
+    }
+
+    .pizzaTile {
+        height: 530px;
+        width: 300px;
+    }
+
+    .pizzaTile img {
+        margin-top: 8px;
+        margin-left: 8px;
+    }
+
+    .pizzaTileName {
+        font-size: 25px;
+    }
+
+    .pizzaTileDescription {
+        font-size: 15px;
+    }
+
+    .pizzaTileBlock a {
+        font-size: 15px;
+        padding: 10px 25px;
+    }
+
+    .pizzaTileBlock p {
+        padding: 7px 20px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1380px) {
+    .pizzasPageTitle {
+        width: 980px;
+        font-size: 45px;
+    }
+
+    .pizzaTilesWrapper {
+        width: 980px;
+        grid-template-columns: repeat(3, auto);
+    }
+}
+
+@media (max-width: 980px) {
+    .pizzasPageTitle {
+        width: 850px;
+        font-size: 40px;
+    }
+
+    .pizzaTilesWrapper {
+        width: 630px;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .pizzaTile {
+        height: 450px;
+    }
+
+    .pizzaTile img {
+        margin-top: 30px;
+        margin-left: 30px;
+        width: 250px !important;
+        height: 250px !important;
+    }
+}
+
+@media (max-width: 860px) {
+    .pizzasPageTitle {
+        width: 650px;
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 660px) {
+    .pizzasPageTitle {
+        width: 350px;
+        font-size: 15px;
+    }
+
+    .pizzaTilesWrapper {
+        margin-top: 30px;
+        gap: 30px 0;
+        width: 350px;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .pizzaTile {
+        height: 250px;
+        width: 175px;
+    }
+
+    .pizzaTile img {
+        margin-top: 0;
+        margin-left: 17px;
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .pizzaTileName {
+        font-size: 15px;
+    }
+
+    .pizzaTileDescription {
+        font-size: 10px;
+    }
+
+    .pizzaTileBlock a {
+        font-size: 10px;
+        padding: 5px 15px;
+    }
+
+    .pizzaTileBlock p {
+        padding: 3px 13px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 350px) {
+    .pizzasPageTitle {
+        width: 250px;
+        font-size: 15px;
+    }
+
+    .pizzaTilesWrapper {
+        margin-top: 30px;
+        gap: 30px 0;
+        width: 250px;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .pizzaTile {
+        height: 125px;
+        width: 125px;
+    }
+
+    .pizzaTile img {
+        margin-top: 0;
+        margin-left: 27px;
+        width: 75px !important;
+        height: 75px !important;
+    }
+
+    .pizzaTileName {
+        font-size: 10px;
+    }
+
+    .pizzaTileDescription {
+        font-size: 5px;
+    }
+
+    .pizzaTileBlock a {
+        font-size: 5px;
+        padding: 3px 8px;
+    }
+
+    .pizzaTileBlock p {
+        padding: 3px 8px;
+        font-size: 5px;
+    }
+}
+
 .pizzasPageContent {
     display: flex;
     flex-direction: column;
@@ -7,39 +178,23 @@
 }
 
 .pizzasPageTitle {
-    width: 1320px;
-    font-size: 50px;
     text-align: center;
     font-weight: 300;
     border-bottom: 1px solid #ffe1ac;
 }
 
 .pizzaTilesWrapper {
-    margin: 50px 0;
-    width: 1320px;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    gap: 30px;
 }
 
 .pizzaTile {
-    transition: .3s all;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    height: 530px;
-    width: 300px;
-}
-
-.pizzaTile img {
-    transition: .3s all;
-    margin-top: 8px;
-    margin-left: 8px;
 }
 
 .pizzaTileName {
-    font-size: 25px;
     text-align: center;
     font-style: italic;
 }
@@ -48,7 +203,6 @@
     font-style: italic;
     text-align: center;
     color: gray;
-    font-size: 15px;
 }
 
 .pizzaTileBlock {
@@ -58,7 +212,6 @@
 }
 
 .pizzaTileBlock a {
-    font-size: 15px;
     text-decoration: none;
     font-style: italic;
     font-weight: 800;
@@ -71,17 +224,14 @@
     border-radius: 20px 5px 20px 5px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    padding: 10px 25px;
 }
 
 .pizzaTileBlock p {
     user-select: none;
-    padding: 7px 20px;
     color: white;
     background: #ffa500;
     border-radius: 30px;
     font-style: italic;
-    font-size: 20px;
     font-weight: 800;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;

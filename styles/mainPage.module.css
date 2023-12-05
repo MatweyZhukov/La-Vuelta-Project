@@ -1,20 +1,49 @@
 @media (max-width: 8000px) {
+    .mainPageTitle {
+        font-size: 50px;
+    }
+
+    .navSlider {
+        width: 1380px;
+        margin: 50px 0;
+    }
+
+    .offer {
+        width: 850px;
+        padding: 30px;
+    }
+
+    .offerTitle {
+        font-size: 30px;
+    }
+
+
+    .offerDescription,
+    .offerOption {
+        line-height: 40px;
+        font-size: 20px;
+        margin-top: 15px;
+    }
+
     .navTabs {
-        width: auto;
+        width: 1380px;
     }
 
     .tabOptions {
-        padding: 0 50px;
+        flex-direction: column;
+        border-right: 1px solid rgb(0, 0, 0, .2);
         height: 350px;
         width: 380px;
     }
 
     .tabOption {
+        width: 80%;
         font-size: 32px;
         padding: 15px;
     }
 
     .tabDescription {
+        border-left: 1px solid rgb(0, 0, 0, .2);
         width: 600px;
         height: 350px;
         padding: 0 50px;
@@ -22,17 +51,56 @@
 
     .tabDescriptionText {
         font-size: 30px;
+        line-height: 70px;
+    }
+
+    .offerToPizzasText {
+        font-size: 40px;
+        line-height: 90px;
+    }
+
+    .offerToPizzasLink {
+        padding: 15px;
+        font-size: 40px;
     }
 }
 
 @media (max-width: 1380px) {
+    .mainPageTitle {
+        font-size: 35px;
+    }
+
+    .navSlider img {
+        height: 300px !important;
+        width: 300px !important;
+    }
+
+    .offer {
+        width: 550px;
+        padding: 20px;
+    }
+
+    .navSlider {
+        width: 980px;
+    }
+
+    .offerTitle {
+        font-size: 25px;
+    }
+
+    .offerDescription,
+    .offerOption {
+        line-height: 20px;
+        font-size: 15px;
+        margin-top: 15px;
+    }
+
     .navTabs {
         width: 980px;
     }
 
     .tabOptions {
-        padding: 0 25px;
-        height: 280px;
+        height: 200px;
         width: 380px;
     }
 
@@ -42,23 +110,322 @@
     }
 
     .tabImg {
-        width: 300px !important;
-        height: 300px !important;
+        width: 250px !important;
+        height: 250px !important;
     }
 
     .tabDescription {
-        width: 600px;
-        height: 280px;
+        height: 200px;
         padding: 0 25px;
     }
 
     .tabDescriptionText {
-        font-size: 17px;
+        font-size: 20px;
+        line-height: 50px;
+    }
+
+    .offerToPizzasText {
+        font-size: 20px;
+        line-height: 50px;
+    }
+
+    .offerToPizzasLink {
+        padding: 5px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 980px) {
+    .mainPageTitle {
+        font-size: 30px;
+    }
+
+    .navSlider {
+        width: 850px;
+    }
+
+    .navSlider img {
+        height: 200px !important;
+        width: 200px !important;
+    }
+
+    .offer {
+        width: 500px;
+        padding: 15px;
+    }
+
+    .offerTitle {
+        font-size: 15px;
+    }
+
+    .offerDescription,
+    .offerOption {
+        line-height: 20px;
+        margin-top: 10px;
+        font-size: 10px;
+    }
+
+    .navTabs {
+        width: 850px;
+    }
+
+    .tabOptions {
+        height: 150px;
+        width: 380px;
+    }
+
+    .tabOption {
+        padding: 5px;
+    }
+
+    .tabImg {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .tabDescription {
+        width: 600px;
+        height: 150px;
+        padding: 0 20px;
+    }
+
+    .tabDescriptionText {
+        font-size: 18px;
+        line-height: 40px;
+    }
+
+    .offerToPizzasText {
+        font-size: 20px;
+        line-height: 50px;
+    }
+
+    .offerToPizzasLink {
+        padding: 10px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 860px) {
+    .mainPageTitle {
+        font-size: 25px;
+    }
+
+    .navSlider img {
+        height: 200px !important;
+        width: 200px !important;
+    }
+
+    .offer {
+        width: 350px;
+        padding: 15px;
+    }
+
+    .navSlider {
+        width: auto;
+    }
+
+    .offerTitle {
+        font-size: 15px;
+    }
+
+    .offerDescription,
+    .offerOption {
+        margin-top: 15px;
+        line-height: 20px;
+        font-size: 10px;
+    }
+
+    .navTabs {
+        width: 650px;
+    }
+
+    .tabOptions {
+        height: 120px;
+        width: 380px;
+    }
+
+    .tabOption {
+        font-size: 15px;
+    }
+
+    .tabImg {
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .tabDescription {
+        width: 600px;
+        height: 120px;
+        padding: 0 20px;
+    }
+
+    .tabDescriptionText {
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    .offerToPizzasText {
+        font-size: 15px;
+        line-height: 40px;
+    }
+
+    .offerToPizzasLink {
+        padding: 8px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 660px) {
+    .mainPageTitle {
+        font-size: 20px;
+    }
+
+    .navSlider img {
+        height: 200px !important;
+        width: 200px !important;
+    }
+
+    .navSlider {
+        margin: 0;
+        margin-bottom: 50px;
+        flex-direction: column;
+        width: auto;
+    }
+
+    .offer {
+        margin-top: 50px;
+    }
+
+    .offerTitle {
+        font-size: 15px;
+    }
+
+    .offerDescription,
+    .offerOption {
+        line-height: 30px;
+        font-size: 10px;
+    }
+
+    .navTabs {
+        width: 350px;
+        flex-direction: column;
+    }
+
+    .tabOptions {
+        border-right: none;
+        flex-direction: row;
+        padding: 10px 20px;
+        width: 350px;
+        height: auto;
+    }
+
+    .tabOption {
+        width: 80px;
+        font-size: 15px;
+    }
+
+    .tabImg {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .tabDescription {
+        border-left: none;
+        width: 350px;
+        height: auto;
+        padding: 10px 20px;
+    }
+
+    .tabDescriptionText {
+        font-size: 15px;
+    }
+
+    .offerToPizzasText {
+        font-size: 15px;
+        line-height: 40px;
+    }
+
+    .offerToPizzasLink {
+        padding: 8px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 350px) {
+    .mainPageTitle {
+        font-size: 15px;
+    }
+
+    .navSlider img {
+        height: 150px !important;
+        width: 150px !important;
+    }
+
+    .offer {
+        width: 250px;
+        padding: 15px;
+    }
+
+    .navSlider {
+        margin: 0;
+        margin-bottom: 50px;
+        flex-direction: column;
+        width: auto;
+    }
+
+    .offerTitle {
+        font-size: 10px;
+    }
+
+    .offerDescription,
+    .offerOption {
+        margin-top: 10px;
+        line-height: 10px;
+        font-size: 5px;
+    }
+
+    .navTabs {
+        width: 250px;
+        flex-direction: column;
+    }
+
+    .tabOptions {
+        padding: 10px 15px;
+        width: 250px;
+    }
+
+    .tabOption {
+        width: 50px;
+        font-size: 8px;
+    }
+
+    .tabImg {
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .tabDescription {
+        width: 250px;
+        padding: 0 25px;
+    }
+
+    .tabDescriptionText {
+        font-size: 10px;
+        line-height: 30px;
+    }
+
+    .offerToPizzasText {
+        font-size: 10px;
+        line-height: 40px;
+    }
+
+    .offerToPizzasLink {
+        padding: 5px;
+        font-size: 10px;
     }
 }
 
 .mainPageContent {
-    padding: 0 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,10 +433,8 @@
 }
 
 .navSlider {
-    margin: 50px 0;
-    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -90,18 +455,15 @@
 }
 
 .tabOptions {
-    border-right: 1px solid rgb(0, 0, 0, .2);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
     list-style: none;
 }
 
 .tabOption {
     background: none;
     user-select: none;
-    width: 100%;
     border-radius: 20px 5px 20px 5px;
     text-align: center;
     border: 1px solid rgb(255, 166, 0, .5);
@@ -134,61 +496,39 @@
     }
 }
 
-.active {
-    font-size: 23px;
-    text-decoration: underline;
-}
-
 .tabDescription {
     display: flex;
     align-items: center;
-    border-left: 1px solid rgb(0, 0, 0, .2);
 }
 
 .tabDescriptionText {
-    line-height: 70px;
     text-align: justify;
 }
 
 .offer {
-    padding: 30px;
     display: flex;
     flex-direction: column;
     border-radius: 5px 20px 5px 20px;
-    width: 850px;
-    height: 100%;
     background-color: rgba(255, 201, 150, 0.3);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .offerTitle {
-    margin-bottom: 25px;
     text-align: center;
-    font-size: 30px;
 }
 
 .offerDescription {
-    font-size: 20px;
     text-align: justify;
-    line-height: 30px;
 }
 
 .offerOptions {
     list-style: none;
-    font-size: 20px;
     text-align: justify;
-    line-height: 25px;
-}
-
-.offerOption {
-    font-size: 20px;
-    margin-top: 25px;
 }
 
 .mainPageTitle {
     font-weight: 300;
-    font-size: 50px;
 }
 
 .mainPageTitle:last-of-type {
@@ -197,8 +537,6 @@
 
 .offerToPizzas {
     margin-bottom: 40px;
-    gap: 50px 0;
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -206,17 +544,14 @@
 
 .offerToPizzasText {
     text-align: center;
-    font-size: 40px;
 }
 
 .offerToPizzasLink {
     transition: .3s all;
-    padding: 15px;
     background: #ffa500;
     border-radius: 5px 20px 5px 20px;
     color: white;
     text-decoration: none;
-    font-size: 40px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
