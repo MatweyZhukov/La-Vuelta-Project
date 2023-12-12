@@ -143,7 +143,10 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
           if (isAuth) {
             onAddToCart();
           } else {
-            showToastMessage("warning", "Sign up to add product to cart!");
+            showToastMessage(
+              "warning",
+              "SignUp or LogIn to add product to cart!"
+            );
           }
         }}
       >

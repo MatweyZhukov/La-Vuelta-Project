@@ -1,12 +1,15 @@
 "use client";
 
 //Global
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { changeModalClasses } from "@/app/layout";
+
+//Components
+import { InputsFormList } from "../InputsFormList/InputsFormList";
 
 //Hooks
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 
 //Icons
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -14,6 +17,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 //Types
 import { IFormProps, IValueState } from "@/types/types";
 
+//Styles
 import styles from "../../styles/modals.module.css";
 
 const Form: FC<IFormProps> = ({
@@ -26,8 +30,6 @@ const Form: FC<IFormProps> = ({
   handleFunction,
   disabled,
 }) => {
-  const { status } = useTyppedSelector((state) => state.user);
-
   const dispatch = useAppDispatch();
 
   const {
@@ -63,95 +65,52 @@ const Form: FC<IFormProps> = ({
   return (
     <div
       onClick={() => dispatch(changeModalStatus(false))}
-      className={
-        modalStatus
-          ? `${styles.modalWrapper} ${styles.modalWrapperActive}`
-          : styles.modalWrapper
-      }
+      className={changeModalClasses({
+        modalStatus,
+        modalClass: styles.modalWrapper,
+        modalActiveClass: styles.modalWrapperActive,
+      })}
     >
       <form
         onSubmit={handleSubmit(submitForm)}
         onClick={(e) => e.stopPropagation()}
-        className={
-          modalStatus
-            ? `${styles.modalContent} ${styles.modalContentActive}`
-            : styles.modalContent
-        }
+        className={changeModalClasses({
+          modalStatus,
+          modalClass: styles.modalContent,
+          modalActiveClass: styles.modalContentActive,
+        })}
       >
         <div className={styles.closeModal}>
           <AiFillCloseCircle
             onClick={() => dispatch(changeModalStatus(false))}
           />
         </div>
-
         <h1>{title}!</h1>
 
-        {inputsForm.map(
-          (
-            {
-              inputType,
-              name,
-              maxLength,
-              minLength,
-              inputPlaceholder,
-              minLengthText,
-              maxLengthText,
-            },
-            index
-          ) => (
-            <label key={index}>
-              {name.toUpperCase()}:
-              <input
-                {...register(name, {
-                  required: "This field is required!",
-                  minLength: {
-                    value: minLength,
-                    message: minLengthText,
-                  },
-                  maxLength: {
-                    value: maxLength ? maxLength : 300,
-                    message: maxLengthText ? maxLengthText : "",
-                  },
-                })}
-                required
-                type={inputType}
-                placeholder={inputPlaceholder}
-              />
-              {errors[name] && (
-                <p
-                  style={{ textAlign: "left", color: "red", marginTop: "15px" }}
-                >
-                  {errors[name]?.message?.toString()}
-                </p>
-              )}
-            </label>
-          )
-        )}
+        <InputsFormList
+          inputsForm={inputsForm}
+          register={register}
+          errors={errors}
+        />
 
         <section data-id="buttons">
-          {status === "pending" ? (
-            <h1>Wait a second please...</h1>
-          ) : (
-            <>
-              <button
-                type="submit"
-                disabled={!isValid && disabled}
-                onClick={onHandleFunction}
-              >
-                {title}
-              </button>
+          <button
+            type="submit"
+            disabled={!isValid && disabled}
+            onClick={onHandleFunction}
+          >
+            {title}
+          </button>
 
-              <p>or</p>
+          <p>or</p>
 
-              <button
-                disabled={disabled}
-                onClick={onChangeModalsStatus}
-                type="button"
-              >
-                {titleButton}
-              </button>
-            </>
-          )}
+          <button
+            disabled={disabled}
+            onClick={onChangeModalsStatus}
+            type="button"
+          >
+            {titleButton}
+          </button>
         </section>
       </form>
     </div>

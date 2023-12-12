@@ -1,7 +1,7 @@
 //Global
 import { LegacyRef, Ref } from "react";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
-import { UseFormReset } from "react-hook-form";
+import { FieldErrors, UseFormRegister, UseFormReset } from "react-hook-form";
 
 type PizzaCartType = Pick<
   IPizzaTileItem,
@@ -18,6 +18,24 @@ type TypeHandleFunction = (
   name: IValueState["name"],
   reset: UseFormReset<IValueState>
 ) => void;
+
+export interface IChangeModalClassesFunc {
+  modalStatus: boolean;
+  modalClass: string;
+  modalActiveClass: string;
+}
+
+export interface IInputsFormListProps {
+  inputsForm: IFormProps["inputsForm"];
+  register: UseFormRegister<IValueState>;
+  errors: FieldErrors<IValueState>;
+}
+
+export interface IInputFormSingleProps extends IInputsForm {
+  index: number;
+  register: IInputsFormListProps["register"];
+  errors: IInputsFormListProps["errors"];
+}
 
 export interface IChangePizzaData {
   pizza: IPizzaCartItem;

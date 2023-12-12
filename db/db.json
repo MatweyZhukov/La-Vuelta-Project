@@ -2,7 +2,7 @@
   "tabs": [
     {
       "tabName": "Kids pizza",
-      "tabDescription": "Kids pizza - pizza without any fats. It's more usefull than meat or vegan pizza. That's rather good for children under 12 y.o.",
+      "tabDescription": "Kids pizza - pizza without any fats. It's more healthier than meat or vegan pizza. Good for children.",
       "tabImg": "/pizza-2.webp",
       "id": 1
     },
@@ -59,7 +59,7 @@
     {
       "pizzaImage": "/pizza-5.webp",
       "pizzaTitle": "Cheese Chicken",
-      "pizzaDescription": "Chicken, mozzarella, cheddar and parmesan cheeses, cheese sauce, tomatoes, signature alfredo sauce, garlic.",
+      "pizzaDescription": "Chicken, mozzarella, cheddar and parmesan cheese, cheese sauce, tomatoes, signature alfredo sauce, garlic.",
       "pizzaPrice": 7,
       "pizzaId": 5,
       "weight": 620,
@@ -104,7 +104,7 @@
     {
       "pizzaImage": "/pizza-10.webp",
       "pizzaTitle": "Four cheeses",
-      "pizzaDescription": "Blue cheese, a mixture of cheddar and parmesan cheeses, mozzarella, signature alfredo sauce.",
+      "pizzaDescription": "Blue cheese, a mixture of cheddar and parmesan cheese, mozzarella, signature alfredo sauce.",
       "pizzaPrice": 7,
       "pizzaId": 10,
       "weight": 510,
@@ -166,109 +166,26 @@
     }
   ],
   "currentUser": {
-    "name": "Sergey",
-    "email": "ser@mail.ru",
-    "token": "AMf-vByv8TSJ0HtdfRgzc2zHMptlKqqo12p5enETSjiy0bceFYMEniC96kZKAv3B7il2E9EbvRBjgnrPjRttOK_-pF0bJQBN8ammPyjHSTooLorVxl5EcIScbkPkpzZEbClrYP4LNOQ2x6KA8z_QDnAASJP1vkcFQ28bZ-jPha-sMA6tRXF9dcghlUj3xYk65rvAz6s_f2PktmMV0P8pydCdw1u6gdM6-A",
-    "id": "qI5X84Qu3MOpOpcJPGKZcWViovt2",
-    "userCart": [
-      {
-        "pizzaImage": "/pizza-2.webp",
-        "pizzaPrice": 6,
-        "totalPrice": 6,
-        "pizzaTitle": "Double chick",
-        "count": 1,
-        "id": "f10ea001-f0c5-4156-87e5-fba410a53678",
-        "pizzaId": 2,
-        "pizzaSize": 30,
-        "doughSize": "traditional",
-        "weight": 520
-      }
-    ]
+    "name": "Matvey",
+    "email": "mat@gmail.com",
+    "token": "AMf-vBwVWc_XKgcVXH7Yn7n1bCxHz-V1m62tFB5wh_6jecCE8lrArB11C-DohNKnhK8lijUsGtHyH6ca5-TJU642ZFDspjDww04ZtkzfGsWbKq25grQPaahTMtV8H37A3rjiGL0kMHBScpzXYghwvh6YMS0wnvV3-pBdFjQ-9r0NCB2WYnUl3hnf7ClYCpUybiDJa15wvf16qdKpnWOflofr8WgeSwD1XA",
+    "id": "uk95CoYIdGQV6Nwa5MIIC9Kb6RG2",
+    "userCart": []
   },
   "users": [
     {
       "name": "Matvey",
-      "email": "mat@mail.ru",
-      "token": "AMf-vBxOj01heQd-sSqlAaen5tFBoAlaNolA-mXzRCJHPdK1PjLRxCIdy853qcb6qh8PprRImd2U6c7YSGj_SRHwjvc3huo2vqR8_k9sNI7WJbjDYCW7o3BOCkhSBXKjFJJCHpK_nUo_tM8vpNrHYQ0YKpkTM6kkCOezSFNASoQgRfCB9tZpfgg3-UaujtCtA6P4yFzBt-0c5RZrt0UIuYh0e_zXFobxAQ",
-      "id": "hyg1hYA23bfpPtK4CCetzIjM37N2",
-      "userCart": [
-        {
-          "pizzaImage": "/pizza-1.webp",
-          "pizzaPrice": 6,
-          "totalPrice": 18,
-          "pizzaTitle": "Pepperoni Fresh",
-          "count": 3,
-          "id": "00165fb7-171b-4c63-8420-255f1a2bde3f",
-          "pizzaId": 1,
-          "pizzaSize": 35,
-          "doughSize": "thin",
-          "weight": 717
-        },
-        {
-          "pizzaImage": "/pizza-3.webp",
-          "pizzaPrice": 5,
-          "totalPrice": 10,
-          "pizzaTitle": "Chorizo ​​fresh",
-          "count": 2,
-          "id": "ca56c858-0295-44c5-88da-f8e6eb7df0a0",
-          "pizzaId": 3,
-          "pizzaSize": 30,
-          "doughSize": "traditional",
-          "weight": 470
-        }
-      ]
+      "email": "mat@gmail.com",
+      "token": "AMf-vBwVWc_XKgcVXH7Yn7n1bCxHz-V1m62tFB5wh_6jecCE8lrArB11C-DohNKnhK8lijUsGtHyH6ca5-TJU642ZFDspjDww04ZtkzfGsWbKq25grQPaahTMtV8H37A3rjiGL0kMHBScpzXYghwvh6YMS0wnvV3-pBdFjQ-9r0NCB2WYnUl3hnf7ClYCpUybiDJa15wvf16qdKpnWOflofr8WgeSwD1XA",
+      "id": "uk95CoYIdGQV6Nwa5MIIC9Kb6RG2",
+      "userCart": []
     },
     {
-      "name": "Masha",
-      "email": "masha@mail.ru",
-      "token": "AMf-vBwziNkb3NsCGrJZWogcWCRy4hZxkKCluPzAghDxGoHhl7Hq_0yPXoQXNVk78q-nZh67lFAhkdSNCfnu_QUpc-MMxi57K4OKjj-4eGcrI9jaLo5bvv7RiscCJq38OuCAuGQslwkPi9GG6s3BjdZGSmGVA06n_eWiRDxM3oMZZk43vWyU0KANSJ-aLPga5Z8gYB4AT4ds8SrgeH5eH9y12ahRJ7Vabw",
-      "id": "tyTs7oy5jzShFgCQXpZzlxHP2Lj2",
-      "userCart": [
-        {
-          "pizzaImage": "/pizza-7.webp",
-          "pizzaPrice": 9,
-          "totalPrice": 45,
-          "pizzaTitle": "Margharita",
-          "count": 5,
-          "id": "05193fc1-7139-4bbb-b937-6e72b29a850b",
-          "pizzaId": 7,
-          "pizzaSize": 35,
-          "doughSize": "traditional",
-          "weight": 767
-        },
-        {
-          "pizzaImage": "/pizza-4.webp",
-          "pizzaPrice": 8,
-          "totalPrice": 8,
-          "pizzaTitle": "Ham and Cheese",
-          "count": 1,
-          "id": "a8fa3e8b-7aaf-464b-b6d1-fc1376c7a54d",
-          "pizzaId": 4,
-          "pizzaSize": 35,
-          "doughSize": "traditional",
-          "weight": 624
-        }
-      ]
-    },
-    {
-      "name": "Sergey",
-      "email": "ser@mail.ru",
-      "token": "AMf-vByv8TSJ0HtdfRgzc2zHMptlKqqo12p5enETSjiy0bceFYMEniC96kZKAv3B7il2E9EbvRBjgnrPjRttOK_-pF0bJQBN8ammPyjHSTooLorVxl5EcIScbkPkpzZEbClrYP4LNOQ2x6KA8z_QDnAASJP1vkcFQ28bZ-jPha-sMA6tRXF9dcghlUj3xYk65rvAz6s_f2PktmMV0P8pydCdw1u6gdM6-A",
-      "id": "qI5X84Qu3MOpOpcJPGKZcWViovt2",
-      "userCart": [
-        {
-          "pizzaImage": "/pizza-2.webp",
-          "pizzaPrice": 6,
-          "totalPrice": 6,
-          "pizzaTitle": "Double chick",
-          "count": 1,
-          "id": "f10ea001-f0c5-4156-87e5-fba410a53678",
-          "pizzaId": 2,
-          "pizzaSize": 30,
-          "doughSize": "traditional",
-          "weight": 520
-        }
-      ]
+      "name": "Victoria",
+      "email": "vic@yandex.ru",
+      "token": "AMf-vBxNM23mlGtryz1NQRBKfx1y2mQ5JbOqcu3h2Fl39mp0aTic8UDqIHjKsqE5OhVeSBPpjgFny26ljXeMCG31-ejT0yKWHMgpmTueWHsrf9on_5bNvggT7_dKFKao7BIVCt3Zg2tnkDBi2kWXfico4AeIOXXZTcu5NEB1trVyL-TPBGSqCBPR4MZX-W0lHjgBENnmdEJiedE4ucwt3roz4kEH7Z36qw",
+      "id": "Cx6EsXMS5ffYlNZWCOaJMWj1JHn1",
+      "userCart": []
     }
   ]
 }

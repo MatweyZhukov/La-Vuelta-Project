@@ -28,8 +28,7 @@ const ProfilePageComponent: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!isAuth) push("/");
-    else push("/profile");
+    !isAuth ? push("/") : push("/profile");
 
     //eslint-disable-next-line
   }, [isAuth]);

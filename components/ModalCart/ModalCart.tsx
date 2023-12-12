@@ -2,9 +2,13 @@
 
 //Global
 import { FC, useEffect } from "react";
+import { changeModalClasses } from "@/app/layout";
 
 //Components
 import { ModalCartContent } from "../ModalCartContent/ModalCartContent";
+
+//Icons
+import { GrClose } from "react-icons/gr";
 
 //Actions
 import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
@@ -26,22 +30,28 @@ const ModalCart: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (isAuth) {
-      dispatch(fetchCart());
-    }
-
-    //eslint-disable-next-line
+    isAuth && dispatch(fetchCart());
   }, [dispatch, isAuth]);
 
   return (
     <main
       onClick={() => dispatch(changeModalCartStatus(false))}
-      className={
-        modalCart
-          ? `${styles.modalCartWrapper} ${styles.modalCartWrapperActive}`
-          : styles.modalCartWrapper
-      }
+      className={changeModalClasses({
+        modalStatus: modalCart,
+        modalClass: styles.modalCartWrapper,
+        modalActiveClass: styles.modalCartWrapperActive,
+      })}
     >
+      <section
+        onClick={(e) => e.stopPropagation()}
+        className={changeModalClasses({
+          modalStatus: modalCart,
+          modalClass: styles.closeBlock,
+          modalActiveClass: styles.closeBlockActive,
+        })}
+      >
+        <GrClose onClick={() => dispatch(changeModalCartStatus(false))} />
+      </section>
       <ModalCartContent />
     </main>
   );

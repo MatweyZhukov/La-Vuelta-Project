@@ -31,7 +31,7 @@ const ButtonsHeader: FC = () => {
   return (
     <>
       {status === "pending" ? (
-        <h1>Loading account...</h1>
+        <p className={styles.tagline}>Wait please...</p>
       ) : (
         <>
           <button
@@ -44,7 +44,7 @@ const ButtonsHeader: FC = () => {
             }}
             className={styles.headerButton}
           >
-            {isAuth ? "Profile" : "Sign Up"}
+            {isAuth ? "Profile" : "SignUp"}
           </button>
 
           <button
@@ -57,7 +57,7 @@ const ButtonsHeader: FC = () => {
             }}
             className={styles.headerButton}
           >
-            {isAuth ? "Cart" : "Log In"}
+            {isAuth ? "Cart" : "LogIn"}
           </button>
         </>
       )}

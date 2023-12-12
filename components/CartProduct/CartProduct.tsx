@@ -23,7 +23,6 @@ import {
 
 //Styles
 import styles from "../../styles/cart.module.css";
-import modalStyles from "../../styles/modals.module.css";
 
 const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
   const dispatch = useAppDispatch();
@@ -46,11 +45,9 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
   }, [dispatch, count]);
 
   useEffect(() => {
-    if (count <= 0) {
-      onDeletePizzaFromCart();
-    }
+    count <= 0 && onDeletePizzaFromCart();
 
-    //eslint-disable-next-line
+    // eslint-disable-next-line
   }, [count]);
 
   const onDeletePizzaFromCart = () => {

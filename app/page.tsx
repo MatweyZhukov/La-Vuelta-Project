@@ -20,7 +20,8 @@ export default async function Home() {
 
   return (
     <main className={styles.mainPageContent}>
-      <h1 className={styles.mainPageTitle}>La Vuelta</h1>
+      <h1 className={styles.mainPageTitle}>Welcome to our website!</h1>
+
       <nav className={styles.navSlider}>
         <Slider />
         <div className={styles.offer}>
@@ -54,11 +55,11 @@ export default async function Home() {
 
       <section className={styles.offerToPizzas}>
         <p className={styles.offerToPizzasText}>
-          Wanna order our pizzas? <br /> Check this out here:
+          Wanna order our pizzas? <br /> Check this out here:{" "}
+          <Link className={styles.offerToPizzasLink} href="/pizzas">
+            Our Pizzas!
+          </Link>
         </p>
-        <Link className={styles.offerToPizzasLink} href="/pizzas">
-          Our Pizzas!
-        </Link>
       </section>
     </main>
   );

@@ -27,9 +27,6 @@ import {
 } from "@/GlobalRedux/reducers/modalsSlice";
 import { addUser, setUser } from "@/GlobalRedux/reducers/userSlice";
 
-//Styles
-import styles from "../../styles/styles.module.css";
-
 const ModalSignUp: FC = () => {
   const [disabled, setDisabled] = useState<boolean>(false);
 

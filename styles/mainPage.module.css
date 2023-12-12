@@ -1,11 +1,11 @@
 @media (max-width: 8000px) {
     .mainPageTitle {
         font-size: 50px;
+        margin: 50px 0;
     }
 
     .navSlider {
         width: 1380px;
-        margin: 50px 0;
     }
 
     .offer {
@@ -16,7 +16,6 @@
     .offerTitle {
         font-size: 30px;
     }
-
 
     .offerDescription,
     .offerOption {
@@ -46,7 +45,7 @@
         border-left: 1px solid rgb(0, 0, 0, .2);
         width: 600px;
         height: 350px;
-        padding: 0 50px;
+        padding: 0 40px;
     }
 
     .tabDescriptionText {
@@ -116,7 +115,7 @@
 
     .tabDescription {
         height: 200px;
-        padding: 0 25px;
+        padding: 0 30px;
     }
 
     .tabDescriptionText {
@@ -186,7 +185,6 @@
     .tabDescription {
         width: 600px;
         height: 150px;
-        padding: 0 20px;
     }
 
     .tabDescriptionText {
@@ -208,6 +206,7 @@
 @media (max-width: 860px) {
     .mainPageTitle {
         font-size: 25px;
+        margin: 30px 0;
     }
 
     .navSlider img {
@@ -254,7 +253,6 @@
     }
 
     .tabDescription {
-        width: 600px;
         height: 120px;
         padding: 0 20px;
     }
@@ -275,9 +273,10 @@
     }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 650px) {
     .mainPageTitle {
         font-size: 20px;
+        margin: 30px 0;
     }
 
     .navSlider img {
@@ -286,14 +285,8 @@
     }
 
     .navSlider {
-        margin: 0;
-        margin-bottom: 50px;
         flex-direction: column;
         width: auto;
-    }
-
-    .offer {
-        margin-top: 50px;
     }
 
     .offerTitle {
@@ -302,7 +295,7 @@
 
     .offerDescription,
     .offerOption {
-        line-height: 30px;
+        line-height: 20px;
         font-size: 10px;
     }
 
@@ -312,9 +305,9 @@
     }
 
     .tabOptions {
+        padding: 10px 15px;
         border-right: none;
         flex-direction: row;
-        padding: 10px 20px;
         width: 350px;
         height: auto;
     }
@@ -330,10 +323,10 @@
     }
 
     .tabDescription {
+        padding: 0 15px 10px 15px;
         border-left: none;
         width: 350px;
         height: auto;
-        padding: 10px 20px;
     }
 
     .tabDescriptionText {
@@ -354,6 +347,7 @@
 @media (max-width: 350px) {
     .mainPageTitle {
         font-size: 15px;
+        margin: 20px 0;
     }
 
     .navSlider img {
@@ -363,12 +357,10 @@
 
     .offer {
         width: 250px;
-        padding: 15px;
+        padding: 10px;
     }
 
     .navSlider {
-        margin: 0;
-        margin-bottom: 50px;
         flex-direction: column;
         width: auto;
     }
@@ -390,12 +382,11 @@
     }
 
     .tabOptions {
-        padding: 10px 15px;
         width: 250px;
     }
 
     .tabOption {
-        width: 50px;
+        width: 70px;
         font-size: 8px;
     }
 
@@ -406,22 +397,21 @@
 
     .tabDescription {
         width: 250px;
-        padding: 0 25px;
     }
 
     .tabDescriptionText {
         font-size: 10px;
-        line-height: 30px;
+        line-height: 20px;
     }
 
     .offerToPizzasText {
         font-size: 10px;
-        line-height: 40px;
+        line-height: 20px;
     }
 
     .offerToPizzasLink {
-        padding: 5px;
-        font-size: 10px;
+        padding: 3px 5px;
+        font-size: 8px;
     }
 }
 
@@ -439,13 +429,11 @@
 }
 
 .navTabs {
-    margin: 50px 0;
     background: #ffe9ce;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     border-radius: 5px 20px 5px 20px;
 }
 
@@ -475,8 +463,7 @@
     border-radius: 5px 20px 5px 20px;
     color: white;
     background: orange;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .fade {
@@ -510,8 +497,7 @@
     flex-direction: column;
     border-radius: 5px 20px 5px 20px;
     background-color: rgba(255, 201, 150, 0.3);
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .offerTitle {
@@ -531,18 +517,14 @@
     font-weight: 300;
 }
 
-.mainPageTitle:last-of-type {
-    margin-top: 0;
-}
-
 .offerToPizzas {
-    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .offerToPizzasText {
+    margin-bottom: 15px;
     text-align: center;
 }
 
@@ -552,6 +534,5 @@
     border-radius: 5px 20px 5px 20px;
     color: white;
     text-decoration: none;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }

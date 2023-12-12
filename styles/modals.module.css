@@ -1,3 +1,143 @@
+@media (max-width: 8000px) {
+    .modalContent {
+        padding: 30px;
+        gap: 10px 0;
+    }
+
+    .modalContent h1 {
+        font-size: 30px;
+    }
+
+    .closeModal svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    .modalContent input {
+        font-size: 20px;
+        padding: 10px 15px;
+    }
+
+    .modalContent p {
+        font-size: 20px;
+    }
+
+    .modalContent button {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+
+    .modalContent label {
+        font-size: 20px;
+    }
+
+    .modalContent>section {
+        gap: 0 20px;
+    }
+}
+
+@media (max-width: 1380px) {
+    .modalContent {
+        padding: 20px;
+    }
+
+    .modalContent h1 {
+        font-size: 25px;
+    }
+
+    .modalContent input {
+        font-size: 15px;
+    }
+
+    .modalContent p {
+        font-size: 15px;
+    }
+
+    .modalContent button {
+        font-size: 15px;
+        padding: 8px 18px;
+    }
+
+    .modalContent label {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 980px) {
+    .modalContent {
+        padding: 15px;
+        gap: 5px 0;
+    }
+
+    .modalContent h1 {
+        font-size: 22px;
+    }
+
+    .closeModal svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .modalContent input {
+        font-size: 12px;
+        padding: 7px 12px;
+    }
+
+    .modalContent p {
+        font-size: 10px;
+    }
+
+    .modalContent button {
+        font-size: 12px;
+        padding: 5px 15px;
+    }
+
+    .modalContent label {
+        font-size: 12px;
+    }
+
+    .modalContent>section {
+        gap: 0 10px;
+    }
+}
+
+@media (max-width: 350px) {
+    .modalContent {
+        padding: 10px;
+    }
+
+    .modalContent h1 {
+        font-size: 20px;
+    }
+
+    .closeModal svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .modalContent input {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .modalContent p {
+        font-size: 10px;
+    }
+
+    .modalContent button {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .modalContent label {
+        font-size: 10px;
+    }
+
+    .modalContent>section {
+        gap: 0 10px;
+    }
+}
+
 .modalWrapper {
     display: flex;
     justify-content: center;
@@ -22,12 +162,10 @@
 }
 
 .modalContent {
-    gap: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 30px;
     transition: .3s all;
     transform: translateY(-55px);
     border-radius: 30px;
@@ -49,28 +187,22 @@
 
 .closeModal svg,
 .deleteItem svg {
-    width: 35px;
-    height: 35px;
     cursor: pointer;
 }
 
 .modalContent label {
     color: gray;
     margin-top: 10px;
-    font-size: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .modalContent p {
-    font-size: 20px;
     text-align: center;
 }
 
 .modalContent input {
-    font-size: 20px;
     border-radius: 10px;
-    padding: 10px 15px;
     background: transparent;
     border: 1px solid rgb(0, 0, 0, .3)
 }
@@ -78,10 +210,8 @@
 .modalContent button {
     font-weight: 600;
     border: none;
-    font-size: 20px;
     transition: .3s all;
     cursor: pointer;
-    padding: 10px 20px;
     color: white;
     background: #ffa500;
     border-radius: 20px 5px 20px 5px;
@@ -90,7 +220,6 @@
 }
 
 .modalContent>section {
-    gap: 0 20px;
     width: 100%;
     margin-top: 15px;
     display: flex;
