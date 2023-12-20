@@ -2,7 +2,7 @@
   "tabs": [
     {
       "tabName": "Kids pizza",
-      "tabDescription": "Kids pizza - pizza without any fats. It's more usefull than meat or vegan pizza. That's rather good for children under 12 y.o.",
+      "tabDescription": "Kids pizza - pizza without any fats. It's more healthier than meat or vegan pizza. Good for children.",
       "tabImg": "/pizza-2.webp",
       "id": 1
     },
@@ -26,6 +26,7 @@
       "pizzaDescription": "Spicy pepperoni, increased portion of mozzarella, tomatoes, signature tomato sauce.",
       "pizzaPrice": 5,
       "pizzaId": 1,
+      "pizzaType": "meat",
       "weight": 590,
       "id": 1
     },
@@ -35,6 +36,7 @@
       "pizzaDescription": "Chicken, mozzarella, special alfredo sauce.",
       "pizzaPrice": 6,
       "pizzaId": 2,
+      "pizzaType": "kids",
       "weight": 520,
       "id": 2
     },
@@ -44,6 +46,7 @@
       "pizzaDescription": "Signature tomato sauce, mozzarella, spicy chorizo, sweet pepper.",
       "pizzaPrice": 5,
       "pizzaId": 3,
+      "pizzaType": "vegan",
       "weight": 470,
       "id": 3
     },
@@ -53,15 +56,17 @@
       "pizzaDescription": "Pizza with ham and too much cheese. For those people who loves a lot of cheese.",
       "pizzaPrice": 6,
       "pizzaId": 4,
+      "pizzaType": "kids",
       "weight": 480,
       "id": 4
     },
     {
       "pizzaImage": "/pizza-5.webp",
       "pizzaTitle": "Cheese Chicken",
-      "pizzaDescription": "Chicken, mozzarella, cheddar and parmesan cheeses, cheese sauce, tomatoes, signature alfredo sauce, garlic.",
+      "pizzaDescription": "Chicken, mozzarella, cheddar and parmesan cheese, cheese sauce, tomatoes, signature alfredo sauce, garlic.",
       "pizzaPrice": 7,
       "pizzaId": 5,
+      "pizzaType": "meat",
       "weight": 620,
       "id": 5
     },
@@ -71,6 +76,7 @@
       "pizzaDescription": "Champignons, tomatoes, sweet peppers, red onions, cheese cubes, mozzarella, signature tomato sauce, Italian herbs.",
       "pizzaPrice": 7,
       "pizzaId": 6,
+      "pizzaType": "vegan",
       "weight": 610,
       "id": 6
     },
@@ -80,6 +86,7 @@
       "pizzaDescription": "Increased portion of mozzarella, tomatoes, Italian herbs, signature tomato sauce.",
       "pizzaPrice": 7,
       "pizzaId": 7,
+      "pizzaType": "vegan",
       "weight": 590,
       "id": 7
     },
@@ -89,6 +96,7 @@
       "pizzaDescription": "Ham, champignons, increased portion of mozzarella, special tomato sauce.",
       "pizzaPrice": 7,
       "pizzaId": 8,
+      "pizzaType": "kids",
       "weight": 580,
       "id": 8
     },
@@ -98,15 +106,17 @@
       "pizzaDescription": "Chicken, ham, ranch sauce, mozzarella, tomatoes, garlic.",
       "pizzaPrice": 10,
       "pizzaId": 9,
+      "pizzaType": "meat",
       "weight": 610,
       "id": 9
     },
     {
       "pizzaImage": "/pizza-10.webp",
       "pizzaTitle": "Four cheeses",
-      "pizzaDescription": "Blue cheese, a mixture of cheddar and parmesan cheeses, mozzarella, signature alfredo sauce.",
+      "pizzaDescription": "Blue cheese, a mixture of cheddar and parmesan cheese, mozzarella, signature alfredo sauce.",
       "pizzaPrice": 7,
       "pizzaId": 10,
+      "pizzaType": "vegan",
       "weight": 510,
       "id": 10
     },
@@ -116,6 +126,7 @@
       "pizzaDescription": "Spicy chorizo, hot jalapenos, BBQ sauce, meatballs, tomatoes, bell peppers, red onion, mozzarella, signature tomato sauce.",
       "pizzaPrice": 8,
       "pizzaId": 11,
+      "pizzaType": "meat",
       "weight": 680,
       "id": 11
     },
@@ -125,6 +136,7 @@
       "pizzaDescription": "Spicy chorizo, BBQ sauce, tomatoes, red onion, mozzarella, signature tomato sauce.",
       "pizzaPrice": 7,
       "pizzaId": 12,
+      "pizzaType": "meat",
       "weight": 570,
       "id": 12
     },
@@ -134,6 +146,7 @@
       "pizzaDescription": "Chicken, champignons, creamy mushroom sauce, red onion, garlic, mozzarella, cheddar and parmesan cheese mixture, signature alfredo sauce.",
       "pizzaPrice": 7,
       "pizzaId": 13,
+      "pizzaType": "kids",
       "weight": 630,
       "id": 13
     },
@@ -143,6 +156,7 @@
       "pizzaDescription": "Chicken, ham, spicy pepperoni, spicy chorizo, mozzarella, signature tomato sauce.",
       "pizzaPrice": 7,
       "pizzaId": 14,
+      "pizzaType": "meat",
       "weight": 590,
       "id": 14
     },
@@ -152,6 +166,7 @@
       "pizzaDescription": "An increased portion of mozzarella, ham, spicy pepperoni, cheese cubes, tomatoes, champignons, Italian herbs, signature tomato sauce.",
       "pizzaPrice": 7,
       "pizzaId": 15,
+      "pizzaType": "meat",
       "weight": 610,
       "id": 15
     },
@@ -161,36 +176,79 @@
       "pizzaDescription": "Signature alfredo sauce, chicken, mozzarella, pineapples.",
       "pizzaPrice": 7,
       "pizzaId": 16,
+      "pizzaType": "meat",
       "weight": 590,
       "id": 16
-    }
-  ],
-  "cart": [
+    },
     {
-      "pizzaImage": "/pizza-3.webp",
-      "pizzaPrice": 4,
-      "totalPrice": 4,
-      "pizzaTitle": "Chorizo ​​fresh",
-      "count": 1,
-      "id": "77f0ed35-b126-4636-9dea-17a0598abb1f",
-      "pizzaId": 3,
-      "pizzaSize": 30,
-      "doughSize": "thin",
-      "weight": 420
+      "pizzaImage": "/pizza-17.webp",
+      "pizzaTitle": "Double Pepperoni",
+      "pizzaDescription": "Double portion of spicy pepperoni, increased portion of mozzarella, signature tomato sauce.",
+      "pizzaPrice": 6,
+      "pizzaId": 17,
+      "pizzaType": "meat",
+      "weight": 620,
+      "id": 17
+    },
+    {
+      "pizzaImage": "/pizza-18.webp",
+      "pizzaTitle": "BBQ chicken",
+      "pizzaDescription": "Chicken, bacon, barbecue sauce, red onion, mozzarella, signature tomato sauce.",
+      "pizzaPrice": 6,
+      "pizzaId": 18,
+      "pizzaType": "meat",
+      "weight": 640,
+      "id": 18
+    },
+    {
+      "pizzaImage": "/pizza-19.webp",
+      "pizzaTitle": "Pepperoni",
+      "pizzaDescription": "Spicy pepperoni, increased portion of mozzarella, signature tomato sauce.",
+      "pizzaPrice": 5,
+      "pizzaId": 19,
+      "pizzaType": "kids",
+      "weight": 550,
+      "id": 19
+    },
+    {
+      "pizzaImage": "/pizza-20.webp",
+      "pizzaTitle": "Burger pizza",
+      "pizzaDescription": "Ham, pickled cucumbers, tomatoes, red onion, garlic, burger sauce, mozzarella, special tomato sauce.",
+      "pizzaPrice": 5,
+      "pizzaId": 20,
+      "pizzaType": "meat",
+      "weight": 630,
+      "id": 20
     }
   ],
   "currentUser": {
-    "name": null,
-    "email": null,
-    "id": null,
-    "token": null
+    "name": "Matvey",
+    "email": "mat@gmail.com",
+    "id": "JaAw2FKvTJg1yADk7hrGQEopr8K2",
+    "token": "AMf-vByxPiSY5s9Yi-GhkHjCTMIKGu_YZ714GSmrCssrMqwSB_EtSJXPjDPFfMv4ZeqMryqQYYa-qR7MqnKiDkE60u9E1oYT7rtZ4nPaEUQNYZeom4K1Qabw6pH7q2DJPfZqOi6v01sYTl2Kyz8F7_eqi5znNlnxNWvjQxb4WdH0626cmAkyk7wba7MGjt3iqp62QEw4wuPO9fGfG90Xo7FDe3XNgxigug",
+    "userCart": []
   },
   "users": [
     {
       "name": "Matvey",
-      "email": "test@mail.ru",
-      "id": "3TsBz4qBf3Vot0oxK2HvWdULsun2",
-      "token": "AMf-vByVcgj1sy-4XMPXE9FAewGUmK4Mg5jGFxYsLp9Laub9c-8JmHjo0oa8MRJNGSrwSQwinQHOrmJzargDt0MFehk3p77Od7l27xz7q4-L_x-52BE2oXLKiZT1NGalu3fXsNRyJB5E3MHz-Dqb5KM2_i02iSrZvP0dnR7zlVJR_JREbLDTqnAGD9BvUOubaBVrBQ4P79q3o1D7zCnH94QgbtG9sKlaRg"
+      "email": "mat@gmail.com",
+      "id": "JaAw2FKvTJg1yADk7hrGQEopr8K2",
+      "token": "AMf-vByxPiSY5s9Yi-GhkHjCTMIKGu_YZ714GSmrCssrMqwSB_EtSJXPjDPFfMv4ZeqMryqQYYa-qR7MqnKiDkE60u9E1oYT7rtZ4nPaEUQNYZeom4K1Qabw6pH7q2DJPfZqOi6v01sYTl2Kyz8F7_eqi5znNlnxNWvjQxb4WdH0626cmAkyk7wba7MGjt3iqp62QEw4wuPO9fGfG90Xo7FDe3XNgxigug",
+      "userCart": []
+    },
+    {
+      "name": "Denis",
+      "email": "den@yandex.ru",
+      "id": "Aaj5WMjNngcHHLXLxbMS4erWDa02",
+      "token": "AMf-vBxo5VN2fCc-_BulxNtJ3tE4NvkQ62vGrrqqwvdRncp9xDwB8gq0v1OgCQVKc4npnDHUH3z5oErLX-n-aCLg59B9iNOQ5XtRoyGisWDbVWGh1xfWJQgMeDhadmPDs9QXwS8loLMnXQGU2FGfXbU_taUyKy0u5zwrdb0vBXDtgm9zdLlKOqZF0_spL5R2jckO9gFOxsqRjJlB3m8kMzOsDN2C03yB5A",
+      "userCart": []
+    },
+    {
+      "name": "Masha",
+      "email": "mas@mail.ru",
+      "id": "RyohcaSCPicliw5Zv7dtq01gCnt1",
+      "token": "AMf-vBxIDXaoHusklqTCClJfUY5NdoG0oWTWeRW9yU8FttpkXYgsxuZPHbw5GmzIywX-0ZNqS_tgfCF856ze7iLKKB0iYFslXGomwrrtE-Xo4DabRliHJXv-JaB6aOypRL57bHvhDgcNaxWR6gX2dMmDdU5PTbfHyZwN0gGJeLfUd1QEiiSgUoRjEoIfAuip_KFyv6Y7znLDrVfl__NbjrnfOEgKRO0t8w",
+      "userCart": []
     }
   ]
 }

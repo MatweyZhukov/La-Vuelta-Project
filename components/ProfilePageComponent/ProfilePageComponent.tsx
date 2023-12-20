@@ -9,13 +9,16 @@ import { showToastMessage } from "@/app/layout";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Actions
-import { getAllUsers, resetUser } from "@/GlobalRedux/reducers/userSlice";
+import { resetUser } from "@/GlobalRedux/reducers/userSlice";
 
 //Components
 import { Spinner } from "../Spinner/Spinner";
 
 //Hooks
 import { useAuth } from "@/hooks/useAuth";
+
+//Styles
+import styles from "../../styles/profile.module.css";
 
 const ProfilePageComponent: FC = () => {
   const { email, isAuth, name } = useAuth();
@@ -25,43 +28,40 @@ const ProfilePageComponent: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!isAuth) {
-      push("/");
-    } else {
-      push("/profile");
-    }
+    !isAuth ? push("/") : push("/profile");
 
     //eslint-disable-next-line
   }, [isAuth]);
 
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, [dispatch]);
+  const logOut = () => {
+    dispatch(resetUser())
+      .then(() => {
+        showToastMessage("success", "You've successfully logged out!");
+        push("/");
+      })
+      .catch((e) => console.log(e));
+  };
 
   return (
-    <>
+    <nav className={styles.profileContent}>
       {!isAuth ? (
         <Spinner />
       ) : (
         <>
-          <h1>Welcome!</h1>
+          <h1>This is your profile page, {name}!</h1>
 
-          <p>Your email: {email}</p>
+          <p>
+            Your email: <span>{email}</span>
+          </p>
 
-          <p>Your name: {name}</p>
+          <p>
+            Your name: <span>{name}</span>
+          </p>
 
-          <button
-            onClick={() => {
-              dispatch(resetUser());
-              showToastMessage("success", "You've successfully logged out!");
-              push("/");
-            }}
-          >
-            log out
-          </button>
+          <button onClick={logOut}>Log Out</button>
         </>
       )}
-    </>
+    </nav>
   );
 };
 

@@ -7,7 +7,7 @@ import Link from "next/dist/client/link";
 import { ErrorComponentProps } from "@/types/types";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/error.module.css";
 
 export const ErrorComponent: FC<ErrorComponentProps> = ({
   errorText,

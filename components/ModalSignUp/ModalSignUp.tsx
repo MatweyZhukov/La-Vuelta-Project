@@ -1,10 +1,11 @@
 "use client";
 
 //GLobal
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { showToastMessage } from "@/app/layout";
+import { UseFormReset } from "react-hook-form";
 
 //Components
 import { Form } from "../Form/Form";
@@ -17,7 +18,7 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { IInputsForm, IUser, IValueState } from "@/types/types";
 
 //Services
-import { getDataFromApi } from "@/services/services";
+import { requestToAPI } from "@/services";
 
 //Actions
 import {
@@ -26,10 +27,9 @@ import {
 } from "@/GlobalRedux/reducers/modalsSlice";
 import { addUser, setUser } from "@/GlobalRedux/reducers/userSlice";
 
-//Styles
-import styles from "../../styles/styles.module.css";
-
 const ModalSignUp: FC = () => {
+  const [disabled, setDisabled] = useState<boolean>(false);
+
   const { modalSignUp } = useTyppedSelector((state) => state.modals);
 
   const { push } = useRouter();
@@ -37,17 +37,20 @@ const ModalSignUp: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getDataFromApi<IUser>("http://localhost:4000/currentUser").then((res) =>
-      dispatch(setUser(res))
-    );
+    requestToAPI<IUser>("/currentUser", "get")
+      .then((res) => dispatch(setUser(res)))
+      .catch((e) => console.log(e));
   }, [dispatch]);
 
   const functionSignUpUser = (
     email: IValueState["email"],
     password: IValueState["password"],
-    name: IValueState["name"]
+    name: IValueState["name"],
+    reset: UseFormReset<IValueState>
   ) => {
     const auth = getAuth();
+
+    setDisabled(true);
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
@@ -57,6 +60,7 @@ const ModalSignUp: FC = () => {
             email: user.email,
             id: user.uid,
             token: user.refreshToken,
+            userCart: [],
           })
         );
 
@@ -66,13 +70,17 @@ const ModalSignUp: FC = () => {
             email: user.email,
             id: user.uid,
             token: user.refreshToken,
+            userCart: [],
           })
         );
+
+        setDisabled(false);
       })
       .then(() => {
-        showToastMessage("success", "You've successfully created the account!");
         push("/profile");
+        showToastMessage("success", "You've successfully created the account!");
         dispatch(changeModalSignUpStatus(false));
+        reset();
       })
       .catch(() =>
         showToastMessage("error", "Something went wrong, try again!")
@@ -106,27 +114,16 @@ const ModalSignUp: FC = () => {
   ];
 
   return (
-    <div
-      onClick={() => dispatch(changeModalSignUpStatus(false))}
-      className={
-        modalSignUp
-          ? `${styles.modalSignUpWrapper} ${styles.modalSignUpWrapperActive}`
-          : styles.modalSignUpWrapper
-      }
-    >
-      <Form
-        inputsForm={signUpArrayInputs}
-        title="Sign Up"
-        titleButton="Log In"
-        changeModalStatus={changeModalSignUpStatus}
-        changeModalStatusSecond={changeModalLogInStatus}
-        contentClassName={styles.modalSignUpContent}
-        contentActiveClassName={styles.modalSignUpContentActive}
-        modalStatus={modalSignUp}
-        closeModalClassName={styles.closeSignUp}
-        handleFunction={functionSignUpUser}
-      />
-    </div>
+    <Form
+      inputsForm={signUpArrayInputs}
+      title="Sign Up"
+      titleButton="Log In"
+      changeModalStatus={changeModalSignUpStatus}
+      changeModalStatusSecond={changeModalLogInStatus}
+      modalStatus={modalSignUp}
+      handleFunction={functionSignUpUser}
+      disabled={disabled}
+    />
   );
 };
 

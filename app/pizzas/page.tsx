@@ -11,15 +11,13 @@ import { Spinner } from "@/components/Spinner/Spinner";
 import { PizzaTilesList } from "@/components/PizzaTilesList/PizzaTilesList";
 
 //Services
-import { getDataFromApi } from "@/services/services";
+import { requestToAPI } from "@/services";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/pizzasPage.module.css";
 
 const SinglePizza: FC = async () => {
-  const tiles = await getDataFromApi<IPizzaTileItem[]>(
-    "http://localhost:4000/cards"
-  );
+  const tiles = await requestToAPI<IPizzaTileItem[]>("/cards", "get");
 
   return (
     <nav className={styles.pizzasPageContent}>

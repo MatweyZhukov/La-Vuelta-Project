@@ -3,6 +3,10 @@
 //Global
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { changeModalClasses } from "@/app/layout";
+
+//Components
+import { InputsFormList } from "../InputsFormList/InputsFormList";
 
 //Hooks
 import { useAppDispatch } from "@/hooks/useAppDispatch";
@@ -13,17 +17,18 @@ import { AiFillCloseCircle } from "react-icons/ai";
 //Types
 import { IFormProps, IValueState } from "@/types/types";
 
+//Styles
+import styles from "../../styles/modals.module.css";
+
 const Form: FC<IFormProps> = ({
   title,
   titleButton,
   modalStatus,
   changeModalStatus,
   changeModalStatusSecond,
-  contentClassName,
-  contentActiveClassName,
-  closeModalClassName,
   inputsForm,
   handleFunction,
+  disabled,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -48,151 +53,67 @@ const Form: FC<IFormProps> = ({
     }, 300);
   };
 
+  const onHandleFunction = () => {
+    handleFunction(
+      getValues().email,
+      getValues().password,
+      getValues().name,
+      reset
+    );
+  };
+
   return (
-    <form
-      onSubmit={handleSubmit(submitForm)}
-      onClick={(e) => e.stopPropagation()}
-      className={
-        modalStatus
-          ? `${contentClassName} ${contentActiveClassName}`
-          : contentClassName
-      }
+    <div
+      onClick={() => dispatch(changeModalStatus(false))}
+      className={changeModalClasses({
+        modalStatus,
+        modalClass: styles.modalWrapper,
+        modalActiveClass: styles.modalWrapperActive,
+      })}
     >
-      <div className={closeModalClassName}>
-        <AiFillCloseCircle onClick={() => dispatch(changeModalStatus(false))} />
-      </div>
+      <form
+        onSubmit={handleSubmit(submitForm)}
+        onClick={(e) => e.stopPropagation()}
+        className={changeModalClasses({
+          modalStatus,
+          modalClass: styles.modalContent,
+          modalActiveClass: styles.modalContentActive,
+        })}
+      >
+        <div className={styles.closeModal}>
+          <AiFillCloseCircle
+            onClick={() => dispatch(changeModalStatus(false))}
+          />
+        </div>
+        <h1>{title}!</h1>
 
-      <h1>{title}!</h1>
-
-      {inputsForm.map(
-        (
-          {
-            inputType,
-            name,
-            maxLength,
-            minLength,
-            inputPlaceholder,
-            minLengthText,
-            maxLengthText,
-          },
-          index
-        ) => (
-          <label key={index}>
-            {name.toUpperCase()}:
-            <input
-              {...register(name, {
-                required: "This field is required!",
-                minLength: {
-                  value: minLength,
-                  message: minLengthText,
-                },
-                maxLength: {
-                  value: maxLength ? maxLength : 300,
-                  message: maxLengthText ? maxLengthText : "",
-                },
-              })}
-              required
-              type={inputType}
-              placeholder={inputPlaceholder}
-            />
-            {errors[name] && (
-              <p style={{ textAlign: "left", color: "red", marginTop: "15px" }}>
-                {errors[name]?.message?.toString()}
-              </p>
-            )}
-          </label>
-        )
-      )}
-
-      {/* <label>
-        Name:
-        <input
-          {...register("name", {
-            required: "This field is required!",
-            minLength: {
-              value: 2,
-              message: "It's a too short name!",
-            },
-          })}
-          required
-          type="text"
-          placeholder="Enter your name..."
+        <InputsFormList
+          inputsForm={inputsForm}
+          register={register}
+          errors={errors}
         />
-        {errors.name && (
-          <p style={{ textAlign: "left", color: "red", marginTop: "15px" }}>
-            {errors.name.message?.toString()}
-          </p>
-        )}
-      </label>
 
-      <label>
-        Email:
-        <input
-          {...register("email", {
-            required: "This field is required!",
-            minLength: {
-              value: 8,
-              message: "It's a too short email!",
-            },
-          })}
-          required
-          type="email"
-          placeholder="Enter your email..."
-        />
-        {errors.email && (
-          <p style={{ textAlign: "left", color: "red", marginTop: "15px" }}>
-            {errors.email.message?.toString()}
-          </p>
-        )}
-      </label>
+        <section data-id="buttons">
+          <button
+            type="submit"
+            disabled={!isValid && disabled}
+            onClick={onHandleFunction}
+          >
+            {title}
+          </button>
 
-      <label>
-        Password:
-        <input
-          {...register("password", {
-            required: "This field is required!",
-            minLength: {
-              value: 6,
-              message: "No less then 6 symbols!",
-            },
-            maxLength: {
-              value: 30,
-              message: "No more then 30 symbols!",
-            },
-          })}
-          type="password"
-          placeholder="Enter your password..."
-        />
-        {errors.password && (
-          <p style={{ textAlign: "left", color: "red", marginTop: "15px" }}>
-            {errors.password.message?.toString()}
-          </p>
-        )}
-      </label> */}
+          <p>or</p>
 
-      <section data-id="buttons">
-        <button
-          type="submit"
-          disabled={!isValid}
-          onClick={() => {
-            handleFunction(
-              getValues().email,
-              getValues().password,
-              getValues().name
-            );
-            reset();
-          }}
-        >
-          {title}
-        </button>
-
-        <p>or</p>
-
-        <button onClick={onChangeModalsStatus} type="button">
-          {titleButton}
-        </button>
-      </section>
-    </form>
+          <button
+            disabled={disabled}
+            onClick={onChangeModalsStatus}
+            type="button"
+          >
+            {titleButton}
+          </button>
+        </section>
+      </form>
+    </div>
   );
 };
 

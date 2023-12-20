@@ -1,22 +1,24 @@
 //Global
 import Image from "next/image";
+import { FC } from "react";
 
 //Components
 import { Spinner } from "@/components/Spinner/Spinner";
 import { SinglePagePizzaContent } from "@/components/SinglePagePizzaContent/SinglePagePizzaContent";
 
 //Services
-import { getDataFromApi } from "@/services/services";
+import { requestToAPI } from "@/services";
 
 //Types
 import { IPizzaTileItem } from "@/types/types";
 
 //Styles
-import styles from "../../../styles/styles.module.css";
+import styles from "../../../styles/pizzaSinglePage.module.css";
 
-const SinglePizza = async ({ params }: { params: { id: number } }) => {
-  const pizza = await getDataFromApi<IPizzaTileItem>(
-    `http://localhost:4000/cards/${params.id}`
+const SinglePizza: FC<{ params: { id: number } }> = async ({ params }) => {
+  const pizza = await requestToAPI<IPizzaTileItem>(
+    `/cards/${params.id}`,
+    "get"
   );
 
   return (

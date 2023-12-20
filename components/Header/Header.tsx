@@ -4,36 +4,20 @@
 import { FC, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
+
+//Components
+import { ButtonsHeader } from "../ButtonsHeader/ButtonsHeader";
 
 //Hooks
 import { useTyppedSelector } from "@/hooks/useTyppedSelector";
-import { useAuth } from "@/hooks/useAuth";
-
-//Actions
-import {
-  changeModalCartStatus,
-  changeModalSignUpStatus,
-} from "@/GlobalRedux/reducers/modalsSlice";
-
-//Icons
-import { MdAccountCircle } from "react-icons/md";
-import { FaCartArrowDown } from "react-icons/fa";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/header.module.css";
 
 export const Header: FC = () => {
   const { modalCart, modalSignUp, modalLogIn } = useTyppedSelector(
     (state) => state.modals
   );
-
-  const { push } = useRouter();
-
-  const { isAuth } = useAuth();
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     let scroll = window.innerWidth - document.body.offsetWidth;
@@ -55,27 +39,7 @@ export const Header: FC = () => {
         </Link>
         <p className={styles.tagline}>Pizza la Vuelta, Quickly and Tasty!</p>
         <section className={styles.headerButtons}>
-          <button
-            onClick={() => {
-              if (!isAuth) {
-                dispatch(changeModalSignUpStatus(true));
-              } else {
-                push("/profile");
-              }
-            }}
-            className={styles.headerButton}
-          >
-            {isAuth ? "Profile" : "Sign Up"}
-          </button>
-
-          {isAuth && (
-            <button
-              onClick={() => dispatch(changeModalCartStatus(true))}
-              className={styles.headerButton}
-            >
-              Cart
-            </button>
-          )}
+          <ButtonsHeader />
         </section>
       </nav>
     </header>

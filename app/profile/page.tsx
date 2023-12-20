@@ -5,11 +5,7 @@ import { FC } from "react";
 import { ProfilePageComponent } from "@/components/ProfilePageComponent/ProfilePageComponent";
 
 const Profile: FC = () => {
-  return (
-    <div>
-      <ProfilePageComponent />
-    </div>
-  );
+  return <ProfilePageComponent />;
 };
 
 export default Profile;

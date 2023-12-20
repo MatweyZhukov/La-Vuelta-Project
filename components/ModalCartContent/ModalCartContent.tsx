@@ -1,9 +1,6 @@
 //Global
-import { FC } from "react";
-import { showToastMessage } from "@/app/layout";
-
-//Icons
-import { GrClose } from "react-icons/gr";
+import { FC, useEffect } from "react";
+import { changeModalClasses } from "@/app/layout";
 
 //Components
 import { ModalCartContentEmpty } from "../ModalCartContentEmpty/ModalCartContentEmpty";
@@ -14,87 +11,71 @@ import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Actions
-import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
-import { deletePizzaFromCart } from "@/GlobalRedux/reducers/cartSlice";
+import { setUsers } from "@/GlobalRedux/reducers/userSlice";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/cart.module.css";
 
 const ModalCartContent: FC = () => {
-  const { cart } = useTyppedSelector((state) => state.cart),
+  const { currentUser } = useTyppedSelector((state) => state.user),
     { modalCart } = useTyppedSelector((state) => state.modals);
 
   const dispatch = useAppDispatch();
 
-  const totalPrice = cart.reduce(
+  useEffect(() => {
+    dispatch(setUsers());
+  }, [dispatch, currentUser.userCart]);
+
+  const totalPrice = currentUser.userCart.reduce(
       (sum, currItem) => sum + currItem.totalPrice,
       0
     ),
-    totalQuantity = cart.reduce((sum, currItem) => sum + currItem.count, 0);
-
-  const onClearCart = () => {
-    cart.forEach((item) => {
-      dispatch(deletePizzaFromCart(item.id));
-    });
-
-    showToastMessage("success", "Your cart has been emptied!");
-  };
+    totalQuantity = currentUser.userCart.reduce(
+      (sum, currItem) => sum + currItem.count,
+      0
+    );
 
   return (
     <>
-      <section
-        onClick={(e) => e.stopPropagation()}
-        className={
-          modalCart
-            ? `${styles.closeBlock} ${styles.closeBlockActive}`
-            : styles.closeBlock
-        }
-      >
-        <GrClose onClick={() => dispatch(changeModalCartStatus(false))} />
-      </section>
-
       <nav
         onClick={(e) => e.stopPropagation()}
-        className={
-          modalCart
-            ? `${styles.modalCartContent} ${styles.modalCartContentActive}`
-            : styles.modalCartContent
+        className={changeModalClasses({
+          modalStatus: modalCart,
+          modalClass: styles.modalCartContent,
+          modalActiveClass: styles.modalCartContentActive,
+        })}
+        style={
+          !currentUser.userCart.length
+            ? {
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }
+            : undefined
         }
       >
-        <h1 className={styles.modalCartTitle}>Your Cart!</h1>
-
-        {cart.length > 1 ? (
-          <button
-            data-clear
-            onClick={onClearCart}
-            className={styles.modalCartButton}
-          >
-            Clear your cart
-          </button>
-        ) : null}
-
-        {totalPrice && totalQuantity ? (
+        {currentUser.userCart.length ? (
           <>
+            <h1 className={styles.modalCartTitle}>Your Cart!</h1>
+
             <p className={styles.modalCartInfo}>
-              Total Quantity: {totalQuantity}
+              Total Quantity:
+              {` ${totalQuantity} thing${totalQuantity > 1 ? "s" : ""}`}
             </p>
             <p className={styles.modalCartInfo}>Total Price: {totalPrice} $</p>
-          </>
-        ) : null}
 
-        <div className={styles.cardsWrapper}>
-          {cart.length ? (
-            <>
-              <ModalCartList cart={cart} />
+            <div className={styles.cardsWrapper}>
+              <ModalCartList cart={currentUser.userCart} />
 
               <button data-order className={styles.modalCartButton}>
                 Make an order
               </button>
-            </>
-          ) : (
-            <ModalCartContentEmpty />
-          )}
-        </div>
+            </div>
+          </>
+        ) : (
+          <ModalCartContentEmpty />
+        )}
       </nav>
     </>
   );

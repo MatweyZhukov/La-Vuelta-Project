@@ -15,7 +15,7 @@ import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 import {
   addToCart,
   changePizzaCounter,
-} from "@/GlobalRedux/reducers/cartSlice";
+} from "@/GlobalRedux/reducers/userSlice";
 import {
   setDoughSize,
   setPizzaSize,
@@ -30,14 +30,14 @@ import { useAuth } from "@/hooks/useAuth";
 import { ToggleButtonComponent } from "@/components/ToggleButtonComponent/ToggleButtonComponent";
 
 //Styles
-import styles from "../../styles/styles.module.css";
+import styles from "../../styles/pizzaSinglePage.module.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
-  const { cart } = useTyppedSelector((state) => state.cart),
-    { doughSizeOption, pizzaSizeOption } = useTyppedSelector(
+  const { doughSizeOption, pizzaSizeOption } = useTyppedSelector(
       (state) => state.pizzaOptions
-    );
+    ),
+    { currentUser } = useTyppedSelector((state) => state.user);
 
   const { isAuth } = useAuth();
 
@@ -79,7 +79,7 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
   };
 
   const onAddToCart = () => {
-    const currentPizza = cart.find(
+    const currentPizza = currentUser.userCart.find(
       (elem) =>
         elem.pizzaId === pizzaId &&
         elem.pizzaSize === pizzaSizeOption &&
@@ -111,7 +111,7 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
     }
 
     if (currentPizza && currentPizza.count >= 10) {
-      showToastMessage("warning", "You can't add more then 10 pizzas!");
+      showToastMessage("warning", "You can't add more than 10 pizzas!");
     }
 
     if (!currentPizza) {
@@ -142,6 +142,11 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
         onClick={() => {
           if (isAuth) {
             onAddToCart();
+          } else {
+            showToastMessage(
+              "warning",
+              "SignUp or LogIn to add product to cart!"
+            );
           }
         }}
       >
