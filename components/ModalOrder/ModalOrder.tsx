@@ -4,6 +4,12 @@
 import { FC, useState } from "react";
 import { changeModalClasses } from "@/app/layout";
 
+//Components
+import { YMapsComponent } from "../YMapsComponent/YMapsComponent";
+
+//Types
+import { IMapsInitialState } from "@/types/types";
+
 //Hooks
 import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
@@ -16,9 +22,14 @@ import { AiFillCloseCircle } from "react-icons/ai";
 
 //Styles
 import styles from "../../styles/modals.module.css";
-import { YMapsComponent } from "../YMapsComponent/YMapsComponent";
 
 const ModalOrder: FC = () => {
+  const [state, setState] = useState<IMapsInitialState>({
+    title: "",
+    center: [55.749451, 37.542824],
+    zoom: 12,
+  });
+
   const { modalOrder } = useTyppedSelector((state) => state.modals);
 
   const dispatch = useAppDispatch();
@@ -46,9 +57,9 @@ const ModalOrder: FC = () => {
           />
         </div>
 
-        <h1>{"Make an order to..."}</h1>
+        <h1>Make an order to...</h1>
 
-        <YMapsComponent />
+        <YMapsComponent YMapsState={state} setYMapsState={setState} />
 
         <button data-map-order type="button">
           Order

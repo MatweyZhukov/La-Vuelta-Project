@@ -1,5 +1,5 @@
 //Global
-import { LegacyRef, Ref } from "react";
+import { LegacyRef, Ref, Dispatch, SetStateAction } from "react";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import { FieldErrors, UseFormRegister, UseFormReset } from "react-hook-form";
 
@@ -146,6 +146,37 @@ export interface IPizzaOptionsState {
 
 export interface IMapsInitialState {
   title: string;
-  center: number[];
+  center: [number, number];
   zoom: number;
+}
+
+export interface IGeoObject {
+  properties: {
+    get: (key: string) => string;
+  };
+  geometry: {
+    getCoordinates: () => [number, number];
+  };
+}
+
+export interface IGeoResponse {
+  geoObjects: {
+    get: (index: number) => IGeoObject;
+  };
+}
+
+export interface IMapConstructor {
+  geocode: (coords: [number, number]) => Promise<IGeoResponse>;
+}
+
+export interface IMapRef {
+  setCenter: (center: [number, number]) => void;
+  setZoom: (zoom: number) => void;
+  getCenter: () => [number, number];
+  geocode: (coords: [number, number]) => Promise<IGeoResponse>;
+}
+
+export interface IYMapsComponentProps {
+  YMapsState: IMapsInitialState;
+  setYMapsState: Dispatch<SetStateAction<IMapsInitialState>>;
 }
