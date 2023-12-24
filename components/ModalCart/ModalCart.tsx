@@ -8,7 +8,7 @@ import { changeModalClasses } from "@/app/layout";
 import { ModalCartContent } from "../ModalCartContent/ModalCartContent";
 
 //Icons
-import { GrClose } from "react-icons/gr";
+import CloseIcon from "@mui/icons-material/Close";
 
 //Actions
 import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
@@ -50,7 +50,10 @@ const ModalCart: FC = () => {
           modalActiveClass: styles.closeBlockActive,
         })}
       >
-        <GrClose onClick={() => dispatch(changeModalCartStatus(false))} />
+        <CloseIcon
+          style={{ color: "#fff6e7" }}
+          onClick={() => dispatch(changeModalCartStatus(false))}
+        />
       </section>
       <ModalCartContent />
     </main>

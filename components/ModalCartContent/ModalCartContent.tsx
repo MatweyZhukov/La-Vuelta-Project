@@ -12,6 +12,10 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Actions
 import { setUsers } from "@/GlobalRedux/reducers/userSlice";
+import {
+  changeModalCartStatus,
+  changeModalOrderStatus,
+} from "@/GlobalRedux/reducers/modalsSlice";
 
 //Styles
 import styles from "../../styles/cart.module.css";
@@ -61,16 +65,25 @@ const ModalCartContent: FC = () => {
 
             <p className={styles.modalCartInfo}>
               Total Quantity:
-              {totalQuantity > 1
-                ? `${totalQuantity} things`
-                : `${totalQuantity} thing`}
+              {` ${totalQuantity} thing${totalQuantity > 1 ? "s" : ""}`}
             </p>
             <p className={styles.modalCartInfo}>Total Price: {totalPrice} $</p>
 
             <div className={styles.cardsWrapper}>
               <ModalCartList cart={currentUser.userCart} />
 
-              <button data-order className={styles.modalCartButton}>
+              <button
+                data-order
+                className={styles.modalCartButton}
+                onClick={() => {
+                  dispatch(changeModalCartStatus(false));
+
+                  const timer = setTimeout(() => {
+                    dispatch(changeModalOrderStatus(true));
+                    clearTimeout(timer);
+                  }, 300);
+                }}
+              >
                 Make an order
               </button>
             </div>

@@ -19,6 +19,13 @@ type TypeHandleFunction = (
   reset: UseFormReset<IValueState>
 ) => void;
 
+export type PizzaTypes = "all" | "vegan" | "meat" | "kids";
+
+export type RequestType = "get" | "post" | "put" | "patch" | "delete";
+export interface INewObj {
+  userCart: IUserState["currentUser"]["userCart"];
+}
+
 export interface IChangeModalClassesFunc {
   modalStatus: boolean;
   modalClass: string;
@@ -116,6 +123,7 @@ export interface IPizzaTileItem {
   pizzaId: number;
   pizzaTitle: string;
   pizzaPrice: number;
+  pizzaType: Omit<PizzaTypes, "all">;
   weight: number;
 }
 
@@ -123,6 +131,7 @@ export interface IModalsState {
   modalCart: boolean;
   modalSignUp: boolean;
   modalLogIn: boolean;
+  modalOrder: boolean;
 }
 
 export interface ErrorComponentProps {
@@ -131,6 +140,12 @@ export interface ErrorComponentProps {
 }
 
 export interface IPizzaOptionsState {
-  pizzaSizeOption: number;
-  doughSizeOption: string;
+  pizzaSizeOption: 24 | 30 | 35;
+  doughSizeOption: "traditional" | "thin";
+}
+
+export interface IMapsInitialState {
+  title: string;
+  center: number[];
+  zoom: number;
 }

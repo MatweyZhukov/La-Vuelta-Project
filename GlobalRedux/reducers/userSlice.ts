@@ -1,9 +1,21 @@
 //GLobal
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
 //Services
-import { getDataFromApi, requestToApiCart } from "@/services/services";
+import {
+  serviceFetchCart,
+  serviceAddToCart,
+  serviceChangePizzaCounter,
+  serviceChangePizzaPrice,
+  serviceDeletePizzaFromCart,
+} from "@/services/cartAPI";
+
+import {
+  serviceSetUser,
+  serviceAddUser,
+  serviceResetUser,
+  serviceSetUsers,
+} from "@/services/userAPI";
 
 //Types
 import {
@@ -11,6 +23,7 @@ import {
   IUserState,
   IPizzaCartItem,
   IChangePizzaCounterType,
+  INewObj,
 } from "@/types/types";
 
 const initialState: IUserState = {
@@ -29,220 +42,69 @@ export const fetchCart = createAsyncThunk<
   IUser["userCart"],
   undefined,
   { rejectValue: string }
->("userSlice/fetchCart", async function (_, { rejectWithValue }) {
-  try {
-    const response = await requestToApiCart<IUser>(
-      "http://localhost:4000/currentUser",
-      "get"
-    );
-
-    return response.userCart;
-  } catch (e) {
-    return rejectWithValue("Can't fetch your cart. Server error.");
-  }
-});
+>("userSlice/fetchCart", async (_, { rejectWithValue }) =>
+  serviceFetchCart(rejectWithValue)
+);
 
 export const addToCart = createAsyncThunk<
   IPizzaCartItem,
   IPizzaCartItem,
   { rejectValue: string; state: { user: typeof initialState } }
->(
-  "userSlice/addToCart",
-  async function (newPizza, { rejectWithValue, getState }) {
-    try {
-      const user = getState().user.currentUser,
-        { userCart } = user;
-
-      await requestToApiCart<IUser>(
-        "http://localhost:4000/currentUser",
-        "put",
-        {
-          ...user,
-          userCart: [...userCart, newPizza],
-        }
-      );
-
-      return newPizza;
-    } catch (e) {
-      return rejectWithValue("Can't add pizza to cart. Server error.");
-    }
-  }
+>("userSlice/addToCart", async (newPizza, { rejectWithValue, getState }) =>
+  serviceAddToCart(rejectWithValue, getState, newPizza)
 );
 
 export const deletePizzaFromCart = createAsyncThunk<
   string,
   string,
   { rejectValue: string; state: { user: typeof initialState } }
->(
-  "userSlice/deletePizzaFromCart",
-  async function (id, { rejectWithValue, getState }) {
-    try {
-      const user = getState().user.currentUser,
-        { userCart } = user;
-
-      await requestToApiCart<IUser>(
-        `http://localhost:4000/currentUser`,
-        "put",
-        {
-          ...user,
-          userCart: userCart.filter((item) => item.id !== id),
-        }
-      );
-
-      return id;
-    } catch (e) {
-      return rejectWithValue("Something went wrong! Server Error.");
-    }
-  }
+>("userSlice/deletePizzaFromCart", async (id, { rejectWithValue, getState }) =>
+  serviceDeletePizzaFromCart(rejectWithValue, getState, id)
 );
 
 export const changePizzaCounter = createAsyncThunk<
   IChangePizzaCounterType,
   IChangePizzaCounterType,
   { rejectValue: string; state: { user: typeof initialState } }
->(
-  "cart/changePizzaCounter",
-  async function (params, { rejectWithValue, getState }) {
-    try {
-      const { id, actionCounter } = params;
-
-      const user = getState().user.currentUser,
-        { userCart } = user;
-
-      const pizzaItem = userCart.find((pizza) => pizza.id === id);
-
-      if (pizzaItem) {
-        await requestToApiCart(`http://localhost:4000/currentUser`, "put", {
-          ...user,
-          userCart: userCart.map((item) => {
-            if (item.id === pizzaItem.id) {
-              return {
-                ...item,
-                count: actionCounter === "+" ? item.count + 1 : item.count - 1,
-              };
-            } else {
-              return item;
-            }
-          }),
-        });
-      }
-    } catch (e) {
-      return rejectWithValue("Something went wrong! Server Error.");
-    }
-
-    return params;
-  }
+>("cart/changePizzaCounter", async (params, { rejectWithValue, getState }) =>
+  serviceChangePizzaCounter(rejectWithValue, getState, params)
 );
 
 export const changePizzaPrice = createAsyncThunk<
   IPizzaCartItem,
   IPizzaCartItem,
   { rejectValue: string; state: { user: typeof initialState } }
->(
-  "userSlice/changePizzaPrice",
-  async function (pizza, { rejectWithValue, getState }) {
-    const user = getState().user.currentUser,
-      { userCart } = user;
-
-    const pizzaItem = userCart.find((elem) => elem.id === pizza.id);
-
-    try {
-      if (pizzaItem) {
-        await requestToApiCart(`http://localhost:4000/currentUser`, "put", {
-          ...user,
-          userCart: userCart.map((item) => {
-            if (item.id === pizzaItem.id) {
-              return {
-                ...item,
-                totalPrice: item.count * item.pizzaPrice,
-              };
-            } else {
-              return item;
-            }
-          }),
-        });
-      }
-
-      return pizza;
-    } catch (e) {
-      return rejectWithValue("Something went wrong! Server Error.");
-    }
-  }
+>("userSlice/changePizzaPrice", async (pizza, { rejectWithValue, getState }) =>
+  serviceChangePizzaPrice(rejectWithValue, getState, pizza)
 );
 
 export const setUsers = createAsyncThunk<
   IUserState["users"],
   undefined,
   { rejectValue: string; state: { user: IUserState } }
->("userSlice/setUsers", async function (_, { rejectWithValue, getState }) {
-  try {
-    const user = getState().user.currentUser;
-
-    const { userCart, id } = user;
-
-    if (id) {
-      await axios.put<IUser>(`http://localhost:4000/users/${id}`, {
-        ...user,
-        userCart: userCart,
-      });
-    }
-
-    return await getDataFromApi<
-      IUserState["users"]
-    >("http://localhost:4000/users");
-  } catch (e) {
-    return rejectWithValue("Something went wrong!");
-  }
-});
+>("userSlice/setUsers", async (_, { rejectWithValue, getState }) =>
+  serviceSetUsers(rejectWithValue, getState)
+);
 
 export const addUser = createAsyncThunk<IUser, IUser, { rejectValue: string }>(
   "userSlice/addUser",
-  async function (newUser, { rejectWithValue }) {
-    try {
-      await axios.post<IUser>("http://localhost:4000/users", newUser);
-
-      return newUser;
-    } catch (e) {
-      return rejectWithValue("Something went wrong!");
-    }
-  }
+  async (newUser, { rejectWithValue }) =>
+    serviceAddUser(rejectWithValue, newUser)
 );
 
 export const setUser = createAsyncThunk<IUser, IUser, { rejectValue: string }>(
   "userSlice/setUser",
-  async function (newUser, { rejectWithValue }) {
-    try {
-      await axios.put<IUserState>("http://localhost:4000/currentUser", newUser);
-
-      return newUser;
-    } catch (e) {
-      return rejectWithValue("Something went wrong!");
-    }
-  }
+  async (newUser, { rejectWithValue }) =>
+    serviceSetUser(rejectWithValue, newUser)
 );
 
 export const resetUser = createAsyncThunk<
   IUserState,
   undefined,
   { rejectValue: string }
->("userSlice/resetUser", async function (_, { rejectWithValue }) {
-  try {
-    const response = await axios.put<IUserState>(
-      "http://localhost:4000/currentUser",
-      {
-        name: null,
-        email: null,
-        id: null,
-        token: null,
-        userCart: [],
-      }
-    );
-
-    return response.data;
-  } catch (e) {
-    return rejectWithValue("Something went wrong!");
-  }
-});
+>("userSlice/resetUser", async (_, { rejectWithValue }) =>
+  serviceResetUser(rejectWithValue)
+);
 
 const userSlice = createSlice({
   name: "userSlice",
@@ -289,12 +151,12 @@ const userSlice = createSlice({
         state.status = "pending";
       })
       .addCase(setUser.fulfilled, (state, action) => {
-        state.status = "fuifiled";
-
         state.currentUser.name = action.payload.name;
         state.currentUser.email = action.payload.email;
         state.currentUser.id = action.payload.id;
         state.currentUser.token = action.payload.token;
+
+        state.status = "fuifiled";
       })
       .addCase(resetUser.fulfilled, (state) => {
         state.currentUser.name = null;

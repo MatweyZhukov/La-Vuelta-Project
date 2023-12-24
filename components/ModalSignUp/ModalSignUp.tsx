@@ -18,7 +18,7 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { IInputsForm, IUser, IValueState } from "@/types/types";
 
 //Services
-import { getDataFromApi } from "@/services/services";
+import { requestToAPI } from "@/services";
 
 //Actions
 import {
@@ -37,7 +37,7 @@ const ModalSignUp: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getDataFromApi<IUser>("http://localhost:4000/currentUser")
+    requestToAPI<IUser>("/currentUser", "get")
       .then((res) => dispatch(setUser(res)))
       .catch((e) => console.log(e));
   }, [dispatch]);

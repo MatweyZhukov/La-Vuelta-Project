@@ -10,17 +10,17 @@ import { Spinner } from "@/components/Spinner/Spinner";
 import { ITabsItem } from "@/types/types";
 
 //Services
-import { getDataFromApi } from "@/services/services";
+import { requestToAPI } from "@/services";
 
 //Styles
 import styles from "../styles/mainPage.module.css";
 
 export default async function Home() {
-  const tabs = await getDataFromApi<ITabsItem[]>("http://localhost:4000/tabs");
+  const tabs = await requestToAPI<ITabsItem[]>("/tabs", "get");
 
   return (
     <main className={styles.mainPageContent}>
-      <h1 className={styles.mainPageTitle}>Welcome to our website!</h1>
+      <h1 className={styles.mainPageTitle}>Welcome to La Vuelta!</h1>
 
       <nav className={styles.navSlider}>
         <Slider />

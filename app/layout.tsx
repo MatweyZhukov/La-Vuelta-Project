@@ -23,6 +23,7 @@ import { Footer } from "@/components/Footer/Footer";
 import { ModalCart } from "@/components/ModalCart/ModalCart";
 import { ModalSignUp } from "@/components/ModalSignUp/ModalSignUp";
 import { ModalLogIn } from "@/components/ModalLogIn/ModalLogIn";
+import { ModalOrder } from "@/components/ModalOrder/ModalOrder";
 
 export const metadata: Metadata = {
   title: "La Vuelta | Main page",
@@ -35,6 +36,7 @@ export const showToastMessage = (
 ) => {
   toast[toastStatus](text, {
     position: "top-left",
+    autoClose: 1500,
     style: {
       color: "black",
       background: "#fff6e7",
@@ -85,6 +87,7 @@ export default function RootLayout({
             <nav className="main">{children}</nav>
             <Footer />
           </main>
+          <ModalOrder />
           <ModalCart />
           <ModalSignUp />
           <ModalLogIn />

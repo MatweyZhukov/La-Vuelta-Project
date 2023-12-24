@@ -129,7 +129,7 @@
     }
 
     .offerToPizzasLink {
-        padding: 5px;
+        padding: 10px;
         font-size: 20px;
     }
 }
@@ -190,16 +190,6 @@
     .tabDescriptionText {
         font-size: 18px;
         line-height: 40px;
-    }
-
-    .offerToPizzasText {
-        font-size: 20px;
-        line-height: 50px;
-    }
-
-    .offerToPizzasLink {
-        padding: 10px;
-        font-size: 20px;
     }
 }
 
@@ -410,7 +400,7 @@
     }
 
     .offerToPizzasLink {
-        padding: 3px 5px;
+        padding: 5px 8px;
         font-size: 8px;
     }
 }
