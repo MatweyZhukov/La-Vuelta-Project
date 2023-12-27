@@ -53,14 +53,13 @@ const Form: FC<IFormProps> = ({
     }, 300);
   };
 
-  const onHandleFunction = () => {
+  const onHandleFunction = () =>
     handleFunction(
       getValues().email,
       getValues().password,
       getValues().name,
       reset
     );
-  };
 
   return (
     <div

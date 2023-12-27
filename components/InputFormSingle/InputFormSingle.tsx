@@ -18,6 +18,7 @@ const InputFormSingle: FC<IInputFormSingleProps> = ({
     <label key={index}>
       {name.toUpperCase()}:
       <input
+        data-modal-input
         {...register(name, {
           required: "This field is required!",
           minLength: {

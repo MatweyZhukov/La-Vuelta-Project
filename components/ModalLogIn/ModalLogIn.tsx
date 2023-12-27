@@ -60,7 +60,8 @@ const ModalLogIn: FC = () => {
       })
       .catch(() =>
         showToastMessage("error", "Uncorrect password or email, try again!")
-      );
+      )
+      .finally(() => setDisabled(false));
   };
 
   const logInArrayInputs: IInputsForm[] = [

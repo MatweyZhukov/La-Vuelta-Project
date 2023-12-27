@@ -1,6 +1,6 @@
 //Global
 import { FC, useEffect } from "react";
-import { changeModalClasses } from "@/app/layout";
+import { changeModalClasses, showToastMessage } from "@/app/layout";
 
 //Components
 import { ModalCartContentEmpty } from "../ModalCartContentEmpty/ModalCartContentEmpty";
@@ -11,7 +11,11 @@ import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Actions
-import { setUsers } from "@/GlobalRedux/reducers/userSlice";
+import { clearUserCart } from "@/GlobalRedux/reducers/userSlice";
+import {
+  changeModalCartStatus,
+  changeModalOrderStatus,
+} from "@/GlobalRedux/reducers/modalsSlice";
 
 //Styles
 import styles from "../../styles/cart.module.css";
@@ -22,10 +26,6 @@ const ModalCartContent: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(setUsers());
-  }, [dispatch, currentUser.userCart]);
-
   const totalPrice = currentUser.userCart.reduce(
       (sum, currItem) => sum + currItem.totalPrice,
       0
@@ -34,6 +34,11 @@ const ModalCartContent: FC = () => {
       (sum, currItem) => sum + currItem.count,
       0
     );
+
+  const onResetUserCart = () => {
+    dispatch(clearUserCart());
+    showToastMessage("success", "Your cart was cleared!");
+  };
 
   return (
     <>
@@ -68,9 +73,30 @@ const ModalCartContent: FC = () => {
             <div className={styles.cardsWrapper}>
               <ModalCartList cart={currentUser.userCart} />
 
-              <button data-order className={styles.modalCartButton}>
+              <button
+                data-order
+                className={styles.modalCartButton}
+                onClick={() => {
+                  dispatch(changeModalCartStatus(false));
+
+                  const timer = setTimeout(() => {
+                    dispatch(changeModalOrderStatus(true));
+                    clearTimeout(timer);
+                  }, 300);
+                }}
+              >
                 Make an order
               </button>
+
+              {currentUser.userCart.length > 1 && (
+                <button
+                  data-order
+                  className={styles.modalCartButton}
+                  onClick={onResetUserCart}
+                >
+                  Reset cart
+                </button>
+              )}
             </div>
           </>
         ) : (

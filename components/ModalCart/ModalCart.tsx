@@ -8,11 +8,11 @@ import { changeModalClasses } from "@/app/layout";
 import { ModalCartContent } from "../ModalCartContent/ModalCartContent";
 
 //Icons
-import { GrClose } from "react-icons/gr";
+import CloseIcon from "@mui/icons-material/Close";
 
 //Actions
 import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
-import { fetchCart } from "@/GlobalRedux/reducers/userSlice";
+import { fetchCart, setUsers } from "@/GlobalRedux/reducers/userSlice";
 
 //Hooks
 import { useTyppedSelector } from "@/hooks/useTyppedSelector";
@@ -23,7 +23,8 @@ import { useAuth } from "@/hooks/useAuth";
 import styles from "../../styles/cart.module.css";
 
 const ModalCart: FC = () => {
-  const { modalCart } = useTyppedSelector((state) => state.modals);
+  const { modalCart } = useTyppedSelector((state) => state.modals),
+    { currentUser } = useTyppedSelector((state) => state.user);
 
   const { isAuth } = useAuth();
 
@@ -32,6 +33,10 @@ const ModalCart: FC = () => {
   useEffect(() => {
     isAuth && dispatch(fetchCart());
   }, [dispatch, isAuth]);
+
+  useEffect(() => {
+    dispatch(setUsers());
+  }, [dispatch, currentUser.userCart]);
 
   return (
     <main
@@ -50,7 +55,10 @@ const ModalCart: FC = () => {
           modalActiveClass: styles.closeBlockActive,
         })}
       >
-        <GrClose onClick={() => dispatch(changeModalCartStatus(false))} />
+        <CloseIcon
+          style={{ color: "#fff6e7" }}
+          onClick={() => dispatch(changeModalCartStatus(false))}
+        />
       </section>
       <ModalCartContent />
     </main>

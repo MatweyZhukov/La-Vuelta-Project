@@ -3,11 +3,6 @@ import type { Metadata } from "next";
 import { ToastContainer, toast } from "react-toastify";
 import "../firebase";
 
-//Styles
-import "../styles/globals.css";
-import styles from "../styles/footer.module.css";
-import "react-toastify/dist/ReactToastify.css";
-
 //Icons
 import { BsTelegram, BsWhatsapp } from "react-icons/bs";
 import { SlSocialVkontakte } from "react-icons/sl";
@@ -23,6 +18,12 @@ import { Footer } from "@/components/Footer/Footer";
 import { ModalCart } from "@/components/ModalCart/ModalCart";
 import { ModalSignUp } from "@/components/ModalSignUp/ModalSignUp";
 import { ModalLogIn } from "@/components/ModalLogIn/ModalLogIn";
+import { ModalOrder } from "@/components/ModalOrder/ModalOrder";
+
+//Styles
+import "../styles/globals.css";
+import styles from "../styles/footer.module.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "La Vuelta | Main page",
@@ -34,6 +35,7 @@ export const showToastMessage = (
   text: string
 ) => {
   toast[toastStatus](text, {
+    draggable: false,
     position: "top-left",
     autoClose: 1500,
     style: {
@@ -86,6 +88,7 @@ export default function RootLayout({
             <nav className="main">{children}</nav>
             <Footer />
           </main>
+          <ModalOrder />
           <ModalCart />
           <ModalSignUp />
           <ModalLogIn />

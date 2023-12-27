@@ -116,3 +116,15 @@ export const serviceChangePizzaPrice = async (
     return rejectWithValue("Something went wrong! Server Error.");
   }
 };
+
+export const serviceClearUserCart = async (rejectWithValue: any) => {
+  const newObj: INewObj = {
+    userCart: [],
+  };
+
+  try {
+    await requestToAPI<IUser["userCart"]>("/currentUser", "patch", newObj);
+  } catch (e) {
+    return rejectWithValue("Something went wrong!");
+  }
+};

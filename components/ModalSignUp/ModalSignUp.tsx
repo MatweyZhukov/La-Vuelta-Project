@@ -84,7 +84,8 @@ const ModalSignUp: FC = () => {
       })
       .catch(() =>
         showToastMessage("error", "Something went wrong, try again!")
-      );
+      )
+      .finally(() => setDisabled(false));
   };
 
   const signUpArrayInputs: IInputsForm[] = [

@@ -10,6 +10,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 
 //Hooks
 import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 
 //Types
 import { IPizzaCartItem } from "@/types/types";
@@ -25,6 +26,8 @@ import {
 import styles from "../../styles/cart.module.css";
 
 const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
+  const { currentUser } = useTyppedSelector((state) => state.user);
+
   const dispatch = useAppDispatch();
 
   const {
@@ -55,9 +58,7 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
     showToastMessage("success", "Item deleted from cart!");
   };
 
-  const onChangePizzaPrice = () => {
-    dispatch(changePizzaPrice(pizza));
-  };
+  const onChangePizzaPrice = () => dispatch(changePizzaPrice(pizza));
 
   const onChangePizzaCounter = (action: "+" | "-") => {
     if (action === "+") {

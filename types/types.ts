@@ -1,5 +1,11 @@
 //Global
-import { LegacyRef, Ref } from "react";
+import {
+  LegacyRef,
+  Ref,
+  Dispatch,
+  SetStateAction,
+  MutableRefObject,
+} from "react";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import { FieldErrors, UseFormRegister, UseFormReset } from "react-hook-form";
 
@@ -131,6 +137,7 @@ export interface IModalsState {
   modalCart: boolean;
   modalSignUp: boolean;
   modalLogIn: boolean;
+  modalOrder: boolean;
 }
 
 export interface ErrorComponentProps {
@@ -141,4 +148,68 @@ export interface ErrorComponentProps {
 export interface IPizzaOptionsState {
   pizzaSizeOption: 24 | 30 | 35;
   doughSizeOption: "traditional" | "thin";
+}
+
+export interface IMapsInitialState {
+  title: string;
+  center: [number, number];
+  zoom: number;
+}
+
+export interface IGeoObject {
+  properties: {
+    get: (key: string) => string;
+  };
+  geometry: {
+    getCoordinates: () => [number, number];
+  };
+}
+
+export interface IGeoResponse {
+  geoObjects: {
+    get: (index: number) => IGeoObject;
+  };
+}
+
+export interface IMapConstructor {
+  geocode: (coords: [number, number]) => Promise<IGeoResponse>;
+}
+
+export interface IMapRef {
+  setCenter: (center: [number, number]) => void;
+  setZoom: (zoom: number) => void;
+  getCenter: () => [number, number];
+  geocode: (coords: [number, number]) => Promise<IGeoResponse>;
+}
+
+export interface IYMapsComponentProps {
+  formRef: MutableRefObject<HTMLDivElement | null>;
+  handleReset: () => void;
+  mapRef: MutableRefObject<IMapRef | null>;
+  YMapsState: IMapsInitialState;
+  setYMapsState: Dispatch<SetStateAction<IMapsInitialState>>;
+}
+
+export interface IOrder {
+  address: string;
+  userEmail: IUser["email"];
+  userName: IUser["name"];
+  userCart: IUser["userCart"];
+  userId: IUser["id"];
+}
+
+export interface IOrderState {
+  orders: IOrder[];
+}
+
+export interface IMapOptions {
+  modules: string[];
+  defaultOptions: { suppressMapOpenBlock: boolean };
+  width: number | string;
+  height: number | string;
+}
+
+export interface ISize {
+  offsetWidth: number;
+  offsetHeight: number;
 }

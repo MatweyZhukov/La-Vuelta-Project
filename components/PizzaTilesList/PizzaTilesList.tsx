@@ -80,7 +80,7 @@ const PizzaTilesList: FC<{ tiles: IPizzaTileItem[] }> = ({ tiles }) => {
         {newTiles.length ? (
           newTiles.map((tile) => <PizzaTile key={tile.id} pizza={tile} />)
         ) : (
-          <h1>Nothing found...</h1>
+          <h1 className={styles.pizzasPageTitle}>Nothing found...</h1>
         )}
       </ul>
     </>

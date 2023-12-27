@@ -43,13 +43,8 @@
     }
 
     .blockCounterAndPrice p {
-        width: 40px;
         padding: 5px 10px;
         font-size: 15px;
-    }
-
-    .blockCounterAndPrice p:last-child {
-        width: 56px;
     }
 
     .blockCounter {
@@ -67,6 +62,7 @@
     }
 
     .cartProductContent {
+        gap: 10px 0;
         width: 250px;
     }
 
@@ -77,7 +73,7 @@
 
 @media (max-width:980px) {
     .deleteItem {
-        right: 10px;
+        right: 5px;
         margin-bottom: 150px;
     }
 
@@ -117,7 +113,7 @@
     }
 
     .cartProductContentTitle {
-        font-size: 17px;
+        font-size: 15px;
     }
 
     .cartProductContentDescription {
@@ -129,13 +125,8 @@
     }
 
     .blockCounterAndPrice p {
-        width: 35px;
-        padding: 3px 5px;
+        padding: 3px 10px;
         font-size: 12px;
-    }
-
-    .blockCounterAndPrice p:last-child {
-        width: 45px;
     }
 
     .blockCounter {
@@ -159,7 +150,7 @@
 @media (max-width: 650px) {
     .deleteItem {
         right: 0px;
-        margin-bottom: 130px;
+        margin-bottom: 120px;
     }
 
     .deleteItem svg {
@@ -171,6 +162,14 @@
         width: 300px;
         padding: 10px;
         transform: translateX(300px);
+    }
+
+    .cartProductContent {
+        gap: 5px 0;
+    }
+
+    .cartProductContentTitle {
+        font-size: 12px;
     }
 
     .modalCartTitle {
@@ -209,7 +208,7 @@
 @media (max-width: 350px) {
     .deleteItem {
         right: 0px;
-        margin-bottom: 120px;
+        margin-bottom: 115px;
     }
 
     .deleteItem svg {
@@ -250,10 +249,6 @@
         font-size: 15px;
     }
 
-    .cartProductContentTitle {
-        font-size: 15px;
-    }
-
     .cartProductContentDescription {
         font-size: 10px;
     }
@@ -263,13 +258,8 @@
     }
 
     .blockCounterAndPrice p {
-        width: 30px;
-        padding: 1px 5px;
+        padding: 1px 7px;
         font-size: 12px;
-    }
-
-    .blockCounterAndPrice p:last-child {
-        width: 40px;
     }
 
     .blockCounter {
@@ -277,7 +267,7 @@
     }
 
     .blockCounter button {
-        padding: 0 5px;
+        padding: 1px 7px;
         font-size: 10px;
     }
 }
@@ -288,7 +278,7 @@
     align-items: center;
     z-index: 1;
     background: rgb(0, 0, 0, .5);
-    transition: .5s all;
+    transition: .3s all;
     position: fixed;
     top: 0;
     left: 0;
@@ -307,7 +297,7 @@
 
 .closeBlock {
     border-radius: 20px 0 0 20px;
-    background: #fff6e7;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -315,8 +305,12 @@
 }
 
 .closeBlock svg {
-    transition: .5s all;
+    transition: .3s all;
     cursor: pointer;
+}
+
+.closeBlock svg:hover {
+    transform: rotate(180deg);
 }
 
 .closeBlockActive {
@@ -353,7 +347,6 @@
 }
 
 .modalCartContentActive {
-    border-radius: 20px 0 0 20px;
     transform: translateX(0);
 }
 
@@ -402,8 +395,8 @@
 }
 
 .cartProductContent {
+    width: auto;
     height: 100%;
-    gap: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -425,6 +418,7 @@
 }
 
 .blockCounterAndPrice p {
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -436,6 +430,7 @@
 }
 
 .blockCounterAndPrice p:last-child {
+    width: auto;
     display: flex;
     justify-content: center;
 }

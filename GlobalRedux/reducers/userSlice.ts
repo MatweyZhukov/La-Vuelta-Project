@@ -8,6 +8,7 @@ import {
   serviceChangePizzaCounter,
   serviceChangePizzaPrice,
   serviceDeletePizzaFromCart,
+  serviceClearUserCart,
 } from "@/services/cartAPI";
 
 import {
@@ -31,8 +32,8 @@ const initialState: IUserState = {
   currentUser: {
     name: null,
     email: null,
-    token: null,
     id: null,
+    token: null,
     userCart: [],
   },
   status: "pending",
@@ -76,6 +77,14 @@ export const changePizzaPrice = createAsyncThunk<
   { rejectValue: string; state: { user: typeof initialState } }
 >("userSlice/changePizzaPrice", async (pizza, { rejectWithValue, getState }) =>
   serviceChangePizzaPrice(rejectWithValue, getState, pizza)
+);
+
+export const clearUserCart = createAsyncThunk<
+  undefined,
+  undefined,
+  { rejectValue: string }
+>("userSlice/clearUserCart", async (_, { rejectWithValue }) =>
+  serviceClearUserCart(rejectWithValue)
 );
 
 export const setUsers = createAsyncThunk<
@@ -124,9 +133,10 @@ const userSlice = createSlice({
         );
       })
       .addCase(changePizzaCounter.fulfilled, (state, action) => {
-        const pizzaItem = state.currentUser.userCart.find(
-          (item) => item.id === action.payload.id
-        );
+        const pizzaItem: IPizzaCartItem | undefined =
+          state.currentUser.userCart.find(
+            (item) => item.id === action.payload.id
+          );
 
         if (pizzaItem) {
           pizzaItem.count =
@@ -136,16 +146,26 @@ const userSlice = createSlice({
         }
       })
       .addCase(changePizzaPrice.fulfilled, (state, action) => {
-        const pizzaItem = state.currentUser.userCart.find(
-          (item) => item.id === action.payload.id
-        );
+        const pizzaItem: IPizzaCartItem | undefined =
+          state.currentUser.userCart.find(
+            (item) => item.id === action.payload.id
+          );
 
         if (pizzaItem) {
           pizzaItem.totalPrice = pizzaItem.count * pizzaItem.pizzaPrice;
         }
       })
+      .addCase(clearUserCart.fulfilled, (state) => {
+        state.currentUser.userCart = [];
+      })
       .addCase(setUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
+        state.users = action.payload.map((user) => {
+          if (user.token === state.currentUser.token) {
+            return state.currentUser;
+          }
+
+          return user;
+        });
       })
       .addCase(setUser.pending, (state) => {
         state.status = "pending";
