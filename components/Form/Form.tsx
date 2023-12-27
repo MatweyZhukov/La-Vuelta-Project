@@ -1,7 +1,7 @@
 "use client";
 
 //Global
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { changeModalClasses } from "@/app/layout";
 
@@ -41,6 +41,14 @@ const Form: FC<IFormProps> = ({
   } = useForm<IValueState>({
     mode: "onBlur",
   });
+
+  useEffect(() => {
+    if (!modalStatus) {
+      reset();
+    }
+
+    //eslint-disable-next-line
+  }, [modalStatus]);
 
   const submitForm = (values: IValueState) => values;
 

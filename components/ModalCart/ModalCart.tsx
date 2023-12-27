@@ -24,7 +24,7 @@ import styles from "../../styles/cart.module.css";
 
 const ModalCart: FC = () => {
   const { modalCart } = useTyppedSelector((state) => state.modals),
-    { currentUser } = useTyppedSelector((state) => state.user);
+    { currentUser, users } = useTyppedSelector((state) => state.user);
 
   const { isAuth } = useAuth();
 

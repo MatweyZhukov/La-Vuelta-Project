@@ -222,12 +222,46 @@
     }
   ],
   "currentUser": {
-    "name": null,
-    "email": null,
-    "id": null,
-    "token": null,
-    "userCart": []
+    "name": "Matvey",
+    "email": "mat@gmail.com",
+    "id": "K9K3I123YnbquwcwwIEQRIAQse62",
+    "token": "AMf-vBxEAxZ-B0ZttnaaOSdkpB0Swcw52OSL6KBW-3m9C0up_Z8rVaJDgJjIuI4mVgaeKMgxU9YByPdFTC33MDbQ0B-Ko29efeuPfA5Xuvwldi0h547G1Mf5uqFIqni3vsYCRrQHYdEfGFYLU-K0LD0FNWo60EVGWlKeYZKlCqMDfeoPOQbLeZSPFM3RFdkA8g76fDYym8Awu4aHDkSIUxXV1aNUBi77Ow",
+    "userCart": [
+      {
+        "pizzaImage": "/pizza-7.webp",
+        "pizzaPrice": 5,
+        "totalPrice": 50,
+        "pizzaTitle": "Margharita",
+        "count": 10,
+        "id": "64f81f8e-2036-450d-899b-0509cca9cc89",
+        "pizzaId": 7,
+        "pizzaSize": 24,
+        "doughSize": "traditional",
+        "weight": 413
+      }
+    ]
   },
-  "users": [],
+  "users": [
+    {
+      "name": "Matvey",
+      "email": "mat@gmail.com",
+      "id": "K9K3I123YnbquwcwwIEQRIAQse62",
+      "token": "AMf-vBxEAxZ-B0ZttnaaOSdkpB0Swcw52OSL6KBW-3m9C0up_Z8rVaJDgJjIuI4mVgaeKMgxU9YByPdFTC33MDbQ0B-Ko29efeuPfA5Xuvwldi0h547G1Mf5uqFIqni3vsYCRrQHYdEfGFYLU-K0LD0FNWo60EVGWlKeYZKlCqMDfeoPOQbLeZSPFM3RFdkA8g76fDYym8Awu4aHDkSIUxXV1aNUBi77Ow",
+      "userCart": [
+        {
+          "pizzaImage": "/pizza-7.webp",
+          "pizzaPrice": 5,
+          "totalPrice": 50,
+          "pizzaTitle": "Margharita",
+          "count": 10,
+          "id": "64f81f8e-2036-450d-899b-0509cca9cc89",
+          "pizzaId": 7,
+          "pizzaSize": 24,
+          "doughSize": "traditional",
+          "weight": 413
+        }
+      ]
+    }
+  ],
   "orders": []
 }

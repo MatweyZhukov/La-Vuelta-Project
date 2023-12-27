@@ -133,27 +133,25 @@ const userSlice = createSlice({
         );
       })
       .addCase(changePizzaCounter.fulfilled, (state, action) => {
-        const pizzaItem: IPizzaCartItem | undefined =
-          state.currentUser.userCart.find(
-            (item) => item.id === action.payload.id
-          );
+        state.currentUser.userCart = state.currentUser.userCart.map((pizza) => {
+          if (pizza.id === action.payload.id) {
+            pizza.count =
+              action.payload.actionCounter === "+"
+                ? pizza.count + 1
+                : pizza.count - 1;
+          }
 
-        if (pizzaItem) {
-          pizzaItem.count =
-            action.payload.actionCounter === "+"
-              ? pizzaItem.count + 1
-              : pizzaItem.count - 1;
-        }
+          return pizza;
+        });
       })
       .addCase(changePizzaPrice.fulfilled, (state, action) => {
-        const pizzaItem: IPizzaCartItem | undefined =
-          state.currentUser.userCart.find(
-            (item) => item.id === action.payload.id
-          );
+        state.currentUser.userCart = state.currentUser.userCart.map((pizza) => {
+          if (pizza.id === action.payload.id) {
+            pizza.totalPrice = pizza.count * pizza.pizzaPrice;
+          }
 
-        if (pizzaItem) {
-          pizzaItem.totalPrice = pizzaItem.count * pizzaItem.pizzaPrice;
-        }
+          return pizza;
+        });
       })
       .addCase(clearUserCart.fulfilled, (state) => {
         state.currentUser.userCart = [];
