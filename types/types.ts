@@ -66,7 +66,7 @@ export interface IInputsForm {
 }
 
 export interface IChangePizzaCounterType {
-  actionCounter: "+" | "-";
+  actionCounter: "inc" | "dec";
   id: string;
 }
 

@@ -92,28 +92,24 @@ const ModalOrder: FC = () => {
     }
   };
 
+  const handleClick = () => dispatch(changeModalOrderStatus(false));
+
+  const modalWrapper = changeModalClasses({
+      modalStatus: modalOrder,
+      modalClass: styles.modalWrapper,
+      modalActiveClass: styles.modalWrapperActive,
+    }),
+    modalContent = changeModalClasses({
+      modalStatus: modalOrder,
+      modalClass: styles.modalContent,
+      modalActiveClass: styles.modalContentActive,
+    });
+
   return (
-    <div
-      ref={formRef}
-      onClick={() => dispatch(changeModalOrderStatus(false))}
-      className={changeModalClasses({
-        modalStatus: modalOrder,
-        modalClass: styles.modalWrapper,
-        modalActiveClass: styles.modalWrapperActive,
-      })}
-    >
-      <form
-        onClick={(e) => e.stopPropagation()}
-        className={changeModalClasses({
-          modalStatus: modalOrder,
-          modalClass: styles.modalContent,
-          modalActiveClass: styles.modalContentActive,
-        })}
-      >
+    <div ref={formRef} onClick={handleClick} className={modalWrapper}>
+      <form onClick={(e) => e.stopPropagation()} className={modalContent}>
         <div className={styles.closeModal}>
-          <AiFillCloseCircle
-            onClick={() => dispatch(changeModalOrderStatus(false))}
-          />
+          <AiFillCloseCircle onClick={handleClick} />
         </div>
 
         <h1>Orderring to...</h1>

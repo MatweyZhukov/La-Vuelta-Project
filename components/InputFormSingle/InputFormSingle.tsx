@@ -14,22 +14,28 @@ const InputFormSingle: FC<IInputFormSingleProps> = ({
   inputPlaceholder,
   errors,
 }) => {
+  const labelName = name.toUpperCase();
+
+  const inputFormProps = {
+    ...register(name, {
+      required: "This field is required!",
+      minLength: {
+        value: minLength,
+        message: minLengthText,
+      },
+      maxLength: {
+        value: maxLength ? maxLength : 300,
+        message: maxLengthText ? maxLengthText : "",
+      },
+    }),
+  };
+
   return (
     <label key={index}>
-      {name.toUpperCase()}:
+      {labelName}:
       <input
+        {...inputFormProps}
         data-modal-input
-        {...register(name, {
-          required: "This field is required!",
-          minLength: {
-            value: minLength,
-            message: minLengthText,
-          },
-          maxLength: {
-            value: maxLength ? maxLength : 300,
-            message: maxLengthText ? maxLengthText : "",
-          },
-        })}
         required
         type={inputType}
         placeholder={inputPlaceholder}

@@ -19,10 +19,10 @@ export default async function Home() {
   const tabs = await requestToAPI<ITabsItem[]>("/tabs", "get");
 
   return (
-    <main className={styles.mainPageContent}>
+    <div className={styles.mainPageContent}>
       <h1 className={styles.mainPageTitle}>Welcome to La Vuelta!</h1>
 
-      <nav className={styles.navSlider}>
+      <div className={styles.navSlider}>
         <Slider />
         <div className={styles.offer}>
           <h1 className={styles.offerTitle}>Our offers to you:</h1>
@@ -45,11 +45,11 @@ export default async function Home() {
             </li>
           </ul>
         </div>
-      </nav>
+      </div>
       <h1 className={styles.mainPageTitle}>Our Kinds of Pizza!</h1>
-      <nav className={styles.navTabs}>
+      <section className={styles.navTabs}>
         {tabs ? <Tabs tabsItem={tabs} /> : <Spinner />}
-      </nav>
+      </section>
 
       <h1 className={styles.mainPageTitle}>Make an order!</h1>
 
@@ -61,6 +61,6 @@ export default async function Home() {
           </Link>
         </p>
       </section>
-    </main>
+    </div>
   );
 }

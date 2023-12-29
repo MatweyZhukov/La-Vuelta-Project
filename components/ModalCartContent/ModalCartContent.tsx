@@ -40,70 +40,72 @@ const ModalCartContent: FC = () => {
     showToastMessage("success", "Your cart was cleared!");
   };
 
+  const handleClick = () => {
+    dispatch(changeModalCartStatus(false));
+
+    const timer = setTimeout(() => {
+      dispatch(changeModalOrderStatus(true));
+      clearTimeout(timer);
+    }, 300);
+  };
+
+  const modalContent = changeModalClasses({
+    modalStatus: modalCart,
+    modalClass: styles.modalCartContent,
+    modalActiveClass: styles.modalCartContentActive,
+  });
+
+  const blockStyles = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  } as const;
+
+  const infoText = `Total Quantity: ${totalQuantity} ${
+      totalQuantity > 1 ? "things" : "thing"
+    }`,
+    priceText = `Total Price: ${totalPrice} $`;
+
   return (
-    <>
-      <nav
-        onClick={(e) => e.stopPropagation()}
-        className={changeModalClasses({
-          modalStatus: modalCart,
-          modalClass: styles.modalCartContent,
-          modalActiveClass: styles.modalCartContentActive,
-        })}
-        style={
-          !currentUser.userCart.length
-            ? {
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }
-            : undefined
-        }
-      >
-        {currentUser.userCart.length ? (
-          <>
-            <h1 className={styles.modalCartTitle}>Your Cart!</h1>
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className={modalContent}
+      style={!currentUser.userCart.length ? blockStyles : undefined}
+    >
+      {currentUser.userCart.length ? (
+        <>
+          <h1 className={styles.modalCartTitle}>Your Cart!</h1>
 
-            <p className={styles.modalCartInfo}>
-              Total Quantity:
-              {` ${totalQuantity} thing${totalQuantity > 1 ? "s" : ""}`}
-            </p>
-            <p className={styles.modalCartInfo}>Total Price: {totalPrice} $</p>
+          <p className={styles.modalCartInfo}>{infoText}</p>
+          <p className={styles.modalCartInfo}>{priceText}</p>
 
-            <div className={styles.cardsWrapper}>
-              <ModalCartList cart={currentUser.userCart} />
+          <div className={styles.cardsWrapper}>
+            <ModalCartList cart={currentUser.userCart} />
 
+            <button
+              data-order
+              className={styles.modalCartButton}
+              onClick={handleClick}
+            >
+              Make an order
+            </button>
+
+            {currentUser.userCart.length > 1 && (
               <button
                 data-order
                 className={styles.modalCartButton}
-                onClick={() => {
-                  dispatch(changeModalCartStatus(false));
-
-                  const timer = setTimeout(() => {
-                    dispatch(changeModalOrderStatus(true));
-                    clearTimeout(timer);
-                  }, 300);
-                }}
+                onClick={onResetUserCart}
               >
-                Make an order
+                Reset cart
               </button>
-
-              {currentUser.userCart.length > 1 && (
-                <button
-                  data-order
-                  className={styles.modalCartButton}
-                  onClick={onResetUserCart}
-                >
-                  Reset cart
-                </button>
-              )}
-            </div>
-          </>
-        ) : (
-          <ModalCartContentEmpty />
-        )}
-      </nav>
-    </>
+            )}
+          </div>
+        </>
+      ) : (
+        <ModalCartContentEmpty />
+      )}
+    </div>
   );
 };
 

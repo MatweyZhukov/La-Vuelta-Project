@@ -13,22 +13,24 @@ import "swiper/css/pagination";
 import "swiper/css/effect-flip";
 
 const Slider: FC = () => {
+  const swiperOptions = {
+    effect: "flip",
+    centeredSlides: true,
+    flipEffect: {
+      slideShadows: false,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    modules: [Navigation, Pagination, Autoplay, EffectFlip],
+    slidesPerView: 1,
+    navigation: true,
+    pagination: { clickable: true },
+  };
+
   return (
-    <Swiper
-      effect={"flip"}
-      centeredSlides
-      flipEffect={{
-        slideShadows: false,
-      }}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-      }}
-      modules={[Navigation, Pagination, Autoplay, EffectFlip]}
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-    >
+    <Swiper {...swiperOptions}>
       <SwiperSlide>
         <Image src={"/pizza-16.webp"} width={400} height={400} alt="pizza" />
       </SwiperSlide>

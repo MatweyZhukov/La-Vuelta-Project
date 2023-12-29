@@ -31,17 +31,18 @@ export const Header: FC = () => {
     }
   }, [modalSignUp, modalCart, modalLogIn, modalOrder]);
 
+  const tagline = "Pizza la Vuelta, Quickly and Tasty!";
+
   return (
     <header className={styles.header}>
-      <nav className={styles.headerContent}>
+      <div className={styles.headerContent}>
         <Link href="/">
           <Image width={120} height={120} src="/logotype.png" alt="Pizza" />
         </Link>
-        <p className={styles.tagline}>Pizza la Vuelta, Quickly and Tasty!</p>
-        <section className={styles.headerButtons}>
-          <ButtonsHeader />
-        </section>
-      </nav>
+        <p className={styles.tagline}>{tagline}</p>
+
+        <ButtonsHeader />
+      </div>
     </header>
   );
 };

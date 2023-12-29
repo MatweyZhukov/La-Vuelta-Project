@@ -72,7 +72,7 @@ export const serviceChangePizzaCounter = async (
           if (item.id === pizzaItem.id) {
             return {
               ...item,
-              count: actionCounter === "+" ? item.count + 1 : item.count - 1,
+              count: actionCounter === "inc" ? item.count + 1 : item.count - 1,
             };
           } else {
             return item;

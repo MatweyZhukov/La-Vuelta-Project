@@ -27,8 +27,10 @@ const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
       img.classList.add(`${styles.fade}`);
       descr.classList.add(`${styles.fade}`);
 
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setDisabled(false);
+
+        clearTimeout(timer);
 
         img.classList.remove(`${styles.fade}`);
         descr.classList.remove(`${styles.fade}`);
@@ -43,8 +45,7 @@ const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
           <button
             disabled={disabled}
             id={`${index}`}
-            onClick={(e) => {
-              // @ts-ignore
+            onClick={(e: any) => {
               setActiveTab(+e.target.id);
               addFadeAnimation();
             }}

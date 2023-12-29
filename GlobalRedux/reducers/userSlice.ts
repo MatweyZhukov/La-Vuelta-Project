@@ -136,7 +136,7 @@ const userSlice = createSlice({
         state.currentUser.userCart = state.currentUser.userCart.map((pizza) => {
           if (pizza.id === action.payload.id) {
             pizza.count =
-              action.payload.actionCounter === "+"
+              action.payload.actionCounter === "inc"
                 ? pizza.count + 1
                 : pizza.count - 1;
           }

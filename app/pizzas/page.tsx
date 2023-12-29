@@ -20,10 +20,10 @@ const SinglePizza: FC = async () => {
   const tiles = await requestToAPI<IPizzaTileItem[]>("/cards", "get");
 
   return (
-    <nav className={styles.pizzasPageContent}>
+    <div className={styles.pizzasPageContent}>
       <h1 className={styles.pizzasPageTitle}>Check our pizzas!</h1>
       {tiles ? <PizzaTilesList tiles={tiles} /> : <Spinner />}
-    </nav>
+    </div>
   );
 };
 

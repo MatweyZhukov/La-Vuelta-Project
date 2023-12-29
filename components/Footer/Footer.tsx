@@ -9,7 +9,7 @@ import styles from "../../styles/footer.module.css";
 export const Footer: FC = () => {
   return (
     <footer className={styles.footer}>
-      <nav className={styles.footerContent}>
+      <div className={styles.footerContent}>
         <div className={styles.footerLeft}>
           <p className={styles.footerLeftText}>
             @{new Date().getFullYear()}, My social media:
@@ -27,7 +27,7 @@ export const Footer: FC = () => {
           <p className={styles.footerRightText}>Other sources:</p>
           <p className={styles.footerRightText}>zhukov.matwei@gmail.com</p>
         </div>
-      </nav>
+      </div>
     </footer>
   );
 };

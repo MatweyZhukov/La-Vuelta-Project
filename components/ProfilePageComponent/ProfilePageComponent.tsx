@@ -43,7 +43,7 @@ const ProfilePageComponent: FC = () => {
   };
 
   return (
-    <nav className={styles.profileContent}>
+    <section className={styles.profileContent}>
       {!isAuth ? (
         <Spinner />
       ) : (
@@ -61,7 +61,7 @@ const ProfilePageComponent: FC = () => {
           <button onClick={logOut}>Log Out</button>
         </>
       )}
-    </nav>
+    </section>
   );
 };
 

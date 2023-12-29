@@ -83,6 +83,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="shortcut icon" href="#" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
       <body>
         <ProviderComponent>

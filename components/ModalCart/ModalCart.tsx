@@ -24,7 +24,7 @@ import styles from "../../styles/cart.module.css";
 
 const ModalCart: FC = () => {
   const { modalCart } = useTyppedSelector((state) => state.modals),
-    { currentUser, users } = useTyppedSelector((state) => state.user);
+    { currentUser } = useTyppedSelector((state) => state.user);
 
   const { isAuth } = useAuth();
 
@@ -38,30 +38,26 @@ const ModalCart: FC = () => {
     dispatch(setUsers());
   }, [dispatch, currentUser.userCart]);
 
+  const handleClick = () => dispatch(changeModalCartStatus(false));
+
+  const modalWrapper = changeModalClasses({
+      modalStatus: modalCart,
+      modalClass: styles.modalCartWrapper,
+      modalActiveClass: styles.modalCartWrapperActive,
+    }),
+    closeBlock = changeModalClasses({
+      modalStatus: modalCart,
+      modalClass: styles.closeBlock,
+      modalActiveClass: styles.closeBlockActive,
+    });
+
   return (
-    <main
-      onClick={() => dispatch(changeModalCartStatus(false))}
-      className={changeModalClasses({
-        modalStatus: modalCart,
-        modalClass: styles.modalCartWrapper,
-        modalActiveClass: styles.modalCartWrapperActive,
-      })}
-    >
-      <section
-        onClick={(e) => e.stopPropagation()}
-        className={changeModalClasses({
-          modalStatus: modalCart,
-          modalClass: styles.closeBlock,
-          modalActiveClass: styles.closeBlockActive,
-        })}
-      >
-        <CloseIcon
-          style={{ color: "#fff6e7" }}
-          onClick={() => dispatch(changeModalCartStatus(false))}
-        />
+    <div onClick={handleClick} className={modalWrapper}>
+      <section onClick={(e) => e.stopPropagation()} className={closeBlock}>
+        <CloseIcon style={{ color: "#fff6e7" }} onClick={handleClick} />
       </section>
       <ModalCartContent />
-    </main>
+    </div>
   );
 };
 

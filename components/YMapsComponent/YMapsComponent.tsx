@@ -40,13 +40,14 @@ const YMapsComponent: FC<IYMapsComponentProps> = ({
     [size, setSize] = useState<ISize>({
       offsetHeight: 0,
       offsetWidth: 0,
-    }),
-    [mapOptions, setMapOptions] = useState<IMapOptions>({
-      modules: ["geocode", "SuggestView"],
-      defaultOptions: { suppressMapOpenBlock: true },
-      width: 400,
-      height: 400,
     });
+
+  const [mapOptions, setMapOptions] = useState<IMapOptions>({
+    modules: ["geocode", "SuggestView"],
+    defaultOptions: { suppressMapOpenBlock: true },
+    width: 400,
+    height: 400,
+  });
 
   const resizeHandler = () => {
     if (formRef.current) {
@@ -54,6 +55,13 @@ const YMapsComponent: FC<IYMapsComponentProps> = ({
       setSize({ offsetHeight, offsetWidth });
     }
   };
+
+  const YMapsQuery = {
+    lang: "en_US",
+    apikey: process.env.NEXT_PUBLIC_YMAPS_APIKEY,
+    ns: "use-load-option",
+    load: "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
+  } as const;
 
   const changeMapWidth = () => {
     if (size.offsetWidth < 8000) {
@@ -143,14 +151,7 @@ const YMapsComponent: FC<IYMapsComponentProps> = ({
       </Box>
 
       <Box className={styles.mapRoot}>
-        <YMaps
-          query={{
-            lang: "en_US",
-            apikey: process.env.NEXT_PUBLIC_YMAPS_APIKEY,
-            ns: "use-load-option",
-            load: "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
-          }}
-        >
+        <YMaps query={YMapsQuery}>
           <Map
             {...mapOptions}
             state={YMapsState}
