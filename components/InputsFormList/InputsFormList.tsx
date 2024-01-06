@@ -5,45 +5,45 @@ import { FC } from "react";
 import { IInputsFormListProps } from "@/types/types";
 import { InputFormSingle } from "../InputFormSingle/InputFormSingle";
 
-const InputsFormList: FC<IInputsFormListProps> = (props) => {
-  const { inputsForm, register, errors } = props;
+const InputsFormList: FC<IInputsFormListProps> = ({
+  inputsForm,
+  register,
+  errors,
+}) => {
+  const Inputs = () => (
+    <>
+      {inputsForm.map(
+        (
+          {
+            inputType,
+            name,
+            maxLength,
+            minLength,
+            inputPlaceholder,
+            minLengthText,
+            maxLengthText,
+          },
+          index
+        ) => (
+          <InputFormSingle
+            key={index}
+            errors={errors}
+            index={index}
+            inputPlaceholder={inputPlaceholder}
+            inputType={inputType}
+            minLength={minLength}
+            minLengthText={minLengthText}
+            name={name}
+            register={register}
+            maxLength={maxLength}
+            maxLengthText={maxLengthText}
+          />
+        )
+      )}
+    </>
+  );
 
-  const InputsForm = () => {
-    return (
-      <>
-        {inputsForm.map(
-          (
-            {
-              inputType,
-              name,
-              maxLength,
-              minLength,
-              inputPlaceholder,
-              minLengthText,
-              maxLengthText,
-            },
-            index
-          ) => (
-            <InputFormSingle
-              key={index}
-              errors={errors}
-              index={index}
-              inputPlaceholder={inputPlaceholder}
-              inputType={inputType}
-              minLength={minLength}
-              minLengthText={minLengthText}
-              name={name}
-              register={register}
-              maxLength={maxLength}
-              maxLengthText={maxLengthText}
-            />
-          )
-        )}
-      </>
-    );
-  };
-
-  return <InputsForm />;
+  return <>{Inputs()}</>;
 };
 
 export { InputsFormList };

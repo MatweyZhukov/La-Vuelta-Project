@@ -42,27 +42,26 @@ const ProfilePageComponent: FC = () => {
       .catch((e) => console.log(e));
   };
 
-  return (
-    <section className={styles.profileContent}>
-      {!isAuth ? (
-        <Spinner />
-      ) : (
-        <>
-          <h1>This is your profile page, {name}!</h1>
+  const IsAuthUser = () =>
+    !isAuth ? (
+      <Spinner />
+    ) : (
+      <>
+        <h1>This is your profile page, {name}!</h1>
 
-          <p>
-            Your email: <span>{email}</span>
-          </p>
+        <p>
+          Your email: <span>{email}</span>
+        </p>
 
-          <p>
-            Your name: <span>{name}</span>
-          </p>
+        <p>
+          Your name: <span>{name}</span>
+        </p>
 
-          <button onClick={logOut}>Log Out</button>
-        </>
-      )}
-    </section>
-  );
+        <button onClick={logOut}>Log Out</button>
+      </>
+    );
+
+  return <section className={styles.profileContent}>{IsAuthUser()}</section>;
 };
 
 export { ProfilePageComponent };

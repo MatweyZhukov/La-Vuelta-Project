@@ -73,9 +73,8 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
     handleClickDEC = () => onChangePizzaCounter("dec");
 
   const textSize = `${pizzaSize}сm, ${doughSize} dough`,
-    textWeight = `Weight: ${weight}g`;
-
-  const textTotalPrice = `${totalPrice} $`;
+    textWeight = `Weight: ${weight}g`,
+    textTotalPrice = `${totalPrice} $`;
 
   return (
     <div className={styles.cartProduct}>

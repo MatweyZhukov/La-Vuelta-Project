@@ -44,8 +44,8 @@ const ButtonsHeader: FC = () => {
   const buttonSighUpText = isAuth ? "Profile" : "SignUp",
     buttonLogIn = isAuth ? "Cart" : "LogIn";
 
-  const Buttons = () => {
-    return status === "pending" ? (
+  const Buttons = () =>
+    status === "pending" ? (
       <p className={styles.tagline}>Loading...</p>
     ) : (
       <>
@@ -64,13 +64,8 @@ const ButtonsHeader: FC = () => {
         </button>
       </>
     );
-  };
 
-  return (
-    <section className={styles.headerButtons}>
-      <Buttons />
-    </section>
-  );
+  return <section className={styles.headerButtons}>{Buttons()}</section>;
 };
 
 export { ButtonsHeader };

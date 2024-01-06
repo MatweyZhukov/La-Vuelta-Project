@@ -224,16 +224,16 @@
   "currentUser": {
     "name": "Matvey",
     "email": "mat@gmail.com",
-    "id": "K9K3I123YnbquwcwwIEQRIAQse62",
-    "token": "AMf-vBxEAxZ-B0ZttnaaOSdkpB0Swcw52OSL6KBW-3m9C0up_Z8rVaJDgJjIuI4mVgaeKMgxU9YByPdFTC33MDbQ0B-Ko29efeuPfA5Xuvwldi0h547G1Mf5uqFIqni3vsYCRrQHYdEfGFYLU-K0LD0FNWo60EVGWlKeYZKlCqMDfeoPOQbLeZSPFM3RFdkA8g76fDYym8Awu4aHDkSIUxXV1aNUBi77Ow",
+    "id": "IJxer4WgF7g0U19IIphd8MmemJL2",
+    "token": "AMf-vBzZt7BsNeFeIuUDCj2qtlUzc3Vqo8IRjeFfg8-wQKC-_lGTb_WY7Nc6BwyMb57yErP8JhFuBgMjSauJu2hALVr_kbooVOCCaDBVYEhwbrgyWkHL9pYrLnKhroQAyKk_bzF0pHehtoC52_nvG96ec77oXoZ6xwIDVhesggrhcoWmFBtJVYkUklZtjh9dTGr3-MRnSMa67bclksRrxEWH4jccZ2iAVQ",
     "userCart": []
   },
   "users": [
     {
       "name": "Matvey",
       "email": "mat@gmail.com",
-      "id": "K9K3I123YnbquwcwwIEQRIAQse62",
-      "token": "AMf-vBxEAxZ-B0ZttnaaOSdkpB0Swcw52OSL6KBW-3m9C0up_Z8rVaJDgJjIuI4mVgaeKMgxU9YByPdFTC33MDbQ0B-Ko29efeuPfA5Xuvwldi0h547G1Mf5uqFIqni3vsYCRrQHYdEfGFYLU-K0LD0FNWo60EVGWlKeYZKlCqMDfeoPOQbLeZSPFM3RFdkA8g76fDYym8Awu4aHDkSIUxXV1aNUBi77Ow",
+      "id": "IJxer4WgF7g0U19IIphd8MmemJL2",
+      "token": "AMf-vBzZt7BsNeFeIuUDCj2qtlUzc3Vqo8IRjeFfg8-wQKC-_lGTb_WY7Nc6BwyMb57yErP8JhFuBgMjSauJu2hALVr_kbooVOCCaDBVYEhwbrgyWkHL9pYrLnKhroQAyKk_bzF0pHehtoC52_nvG96ec77oXoZ6xwIDVhesggrhcoWmFBtJVYkUklZtjh9dTGr3-MRnSMa67bclksRrxEWH4jccZ2iAVQ",
       "userCart": []
     }
   ],

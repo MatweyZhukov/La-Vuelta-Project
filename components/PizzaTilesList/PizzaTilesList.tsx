@@ -50,18 +50,6 @@ const PizzaTilesList: FC<{ tiles: IPizzaTileItem[] }> = ({ tiles }) => {
 
   const newTiles = filterTiles();
 
-  const NewTiles = () => {
-    return (
-      <>
-        {newTiles.length ? (
-          newTiles.map((tile) => <PizzaTile key={tile.id} pizza={tile} />)
-        ) : (
-          <h1 className={styles.pizzasPageTitle}>Nothing found...</h1>
-        )}
-      </>
-    );
-  };
-
   return (
     <>
       <section className={styles.searchPanel}>
@@ -80,22 +68,26 @@ const PizzaTilesList: FC<{ tiles: IPizzaTileItem[] }> = ({ tiles }) => {
           onChange={changePizzaType}
         >
           <ToggleButton className={styles.toggleButton} value={"all"}>
-            {"all"}
+            all
           </ToggleButton>
           <ToggleButton className={styles.toggleButton} value={"kids"}>
-            {"kids"}
+            kids
           </ToggleButton>
           <ToggleButton className={styles.toggleButton} value={"meat"}>
-            {"meat"}
+            meat
           </ToggleButton>
           <ToggleButton className={styles.toggleButton} value={"vegan"}>
-            {"vegan"}
+            vegan
           </ToggleButton>
         </ToggleButtonGroup>
       </section>
 
       <ul className={styles.pizzaTilesWrapper}>
-        <NewTiles />
+        {newTiles.length ? (
+          newTiles.map((tile) => <PizzaTile key={tile.id} pizza={tile} />)
+        ) : (
+          <h1 className={styles.pizzasPageTitle}>Nothing found...</h1>
+        )}
       </ul>
     </>
   );

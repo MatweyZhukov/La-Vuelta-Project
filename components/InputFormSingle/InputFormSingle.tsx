@@ -32,21 +32,23 @@ const InputFormSingle: FC<IInputFormSingleProps> = (props) => {
     }),
   };
 
+  const InputError = () =>
+    errors[name] && (
+      <p style={{ textAlign: "left", color: "red", marginTop: "15px" }}>
+        {errors[name]?.message?.toString()}
+      </p>
+    );
+
   return (
     <label key={index}>
       {labelName}:
       <input
         {...inputFormProps}
         data-modal-input
-        required
         type={inputType}
         placeholder={inputPlaceholder}
       />
-      {errors[name] && (
-        <p style={{ textAlign: "left", color: "red", marginTop: "15px" }}>
-          {errors[name]?.message?.toString()}
-        </p>
-      )}
+      {InputError()}
     </label>
   );
 };

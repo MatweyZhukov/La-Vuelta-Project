@@ -10,13 +10,9 @@ import { ITabsItem } from "@/types/types";
 //Styles
 import styles from "../../styles/mainPage.module.css";
 
-const TabsContent: FC<ITabsItem> = ({
-  tabDescription,
-  tabImg,
-  tabName,
-  refDescr,
-  refImg,
-}) => {
+const TabsContent: FC<ITabsItem> = (props) => {
+  const { tabDescription, tabImg, tabName, refDescr, refImg } = props;
+
   return (
     <>
       <Image
