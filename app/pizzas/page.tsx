@@ -1,5 +1,6 @@
 //Global
 import { FC } from "react";
+import { Metadata } from "next";
 
 //Types
 import { IPizzaTileItem } from "@/types/types";
@@ -16,13 +17,22 @@ import { requestToAPI } from "@/services";
 //Styles
 import styles from "../../styles/pizzasPage.module.css";
 
+export const metadata: Metadata = {
+  title: "La Vuelta | Pizzas",
+  description: "Created by Zhukov Matvey",
+};
+
 const SinglePizza: FC = async () => {
   const tiles = await requestToAPI<IPizzaTileItem[]>("/cards", "get");
+
+  const Tiles = () => {
+    return <>{tiles ? <PizzaTilesList tiles={tiles} /> : <Spinner />}</>;
+  };
 
   return (
     <div className={styles.pizzasPageContent}>
       <h1 className={styles.pizzasPageTitle}>Check our pizzas!</h1>
-      {tiles ? <PizzaTilesList tiles={tiles} /> : <Spinner />}
+      <Tiles />
     </div>
   );
 };

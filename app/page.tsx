@@ -1,5 +1,6 @@
 //GLobal
 import Link from "next/link";
+import { Metadata } from "next";
 
 //Components
 import { Slider } from "@/components/Slider/Slider";
@@ -15,8 +16,17 @@ import { requestToAPI } from "@/services";
 //Styles
 import styles from "../styles/mainPage.module.css";
 
+export const metadata: Metadata = {
+  title: "La Vuelta | Main page",
+  description: "Created by Zhukov Matvey",
+};
+
 export default async function Home() {
   const tabs = await requestToAPI<ITabsItem[]>("/tabs", "get");
+
+  const TabsFunc = () => {
+    return tabs ? <Tabs tabsItem={tabs} /> : <Spinner />;
+  };
 
   return (
     <div className={styles.mainPageContent}>
@@ -48,7 +58,7 @@ export default async function Home() {
       </div>
       <h1 className={styles.mainPageTitle}>Our Kinds of Pizza!</h1>
       <section className={styles.navTabs}>
-        {tabs ? <Tabs tabsItem={tabs} /> : <Spinner />}
+        <TabsFunc />
       </section>
 
       <h1 className={styles.mainPageTitle}>Make an order!</h1>

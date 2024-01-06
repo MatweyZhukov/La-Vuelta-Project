@@ -63,9 +63,10 @@ const ModalCartContent: FC = () => {
   } as const;
 
   const infoText = `Total Quantity: ${totalQuantity} ${
-      totalQuantity > 1 ? "things" : "thing"
-    }`,
-    priceText = `Total Price: ${totalPrice} $`;
+    totalQuantity > 1 ? "things" : "thing"
+  }`;
+
+  const priceText = `Total Price: ${totalPrice} $`;
 
   return (
     <div

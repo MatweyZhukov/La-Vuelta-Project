@@ -1,19 +1,21 @@
 //GLobal
-import { IInputFormSingleProps, IInputsForm } from "@/types/types";
+import { IInputFormSingleProps } from "@/types/types";
 import { FC } from "react";
 
-const InputFormSingle: FC<IInputFormSingleProps> = ({
-  index,
-  name,
-  register,
-  minLength,
-  minLengthText,
-  maxLength,
-  maxLengthText,
-  inputType,
-  inputPlaceholder,
-  errors,
-}) => {
+const InputFormSingle: FC<IInputFormSingleProps> = (props) => {
+  const {
+    index,
+    name,
+    register,
+    minLength,
+    minLengthText,
+    maxLength,
+    maxLengthText,
+    inputType,
+    inputPlaceholder,
+    errors,
+  } = props;
+
   const labelName = name.toUpperCase();
 
   const inputFormProps = {

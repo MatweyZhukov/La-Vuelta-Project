@@ -1,15 +1,11 @@
 //Global
-import type { Metadata } from "next";
 import { ToastContainer, toast } from "react-toastify";
+
+//Firebase
 import "../firebase";
 
-//Icons
-import { BsTelegram, BsWhatsapp } from "react-icons/bs";
-import { SlSocialVkontakte } from "react-icons/sl";
-import { FaGithub } from "react-icons/fa";
-
 //Types
-import { ILinksMedia, IChangeModalClassesFunc } from "@/types/types";
+import { IChangeModalClassesFunc } from "@/types/types";
 
 //Components
 import { ProviderComponent } from "@/GlobalRedux/provider";
@@ -22,57 +18,38 @@ import { ModalOrder } from "@/components/ModalOrder/ModalOrder";
 
 //Styles
 import "../styles/globals.css";
-import styles from "../styles/footer.module.css";
 import "react-toastify/dist/ReactToastify.css";
-
-export const metadata: Metadata = {
-  title: "La Vuelta | Main page",
-  description: "Created by Zhukov Matvey",
-};
 
 export const showToastMessage = (
   toastStatus: "success" | "error" | "warning",
   text: string
 ) => {
+  const toastStyles = {
+    color: "black",
+    background: "#fff6e7",
+    userSelect: "none",
+    textAlign: "center",
+    boxShadow:
+      "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+  } as const;
+
   toast[toastStatus](text, {
     draggable: false,
     position: "top-left",
     autoClose: 1500,
-    style: {
-      color: "black",
-      background: "#fff6e7",
-      userSelect: "none",
-      textAlign: "center",
-      boxShadow:
-        "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
-    },
+    style: toastStyles,
   });
 };
 
 export const changeModalClasses = (params: IChangeModalClassesFunc) => {
   const { modalActiveClass, modalClass, modalStatus } = params;
 
-  return modalStatus ? `${modalClass} ${modalActiveClass}` : modalClass;
-};
+  const stringResult = modalStatus
+    ? `${modalClass} ${modalActiveClass}`
+    : modalClass;
 
-export const linksMedia: ILinksMedia[] = [
-  {
-    href: "https://vk.com/zhukmatvey",
-    icon: <SlSocialVkontakte className={styles.footerSvg} />,
-  },
-  {
-    href: "https://t.me/ZhukovMatwey",
-    icon: <BsTelegram className={styles.footerSvg} />,
-  },
-  {
-    href: "https://api.whatsapp.com/send/?phone=79001483800&text&type=phone_number&app_absent=0",
-    icon: <BsWhatsapp className={styles.footerSvg} />,
-  },
-  {
-    href: "https://github.com/MatweyZhukov",
-    icon: <FaGithub className={styles.footerSvg} />,
-  },
-];
+  return stringResult;
+};
 
 export default function RootLayout({
   children,

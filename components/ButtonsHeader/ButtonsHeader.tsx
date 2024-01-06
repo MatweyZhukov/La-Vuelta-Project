@@ -44,27 +44,31 @@ const ButtonsHeader: FC = () => {
   const buttonSighUpText = isAuth ? "Profile" : "SignUp",
     buttonLogIn = isAuth ? "Cart" : "LogIn";
 
+  const Buttons = () => {
+    return status === "pending" ? (
+      <p className={styles.tagline}>Loading...</p>
+    ) : (
+      <>
+        <button
+          onClick={firstHandleButtonClick}
+          className={styles.headerButton}
+        >
+          {buttonSighUpText}
+        </button>
+
+        <button
+          onClick={secondHandleButtonClick}
+          className={styles.headerButton}
+        >
+          {buttonLogIn}
+        </button>
+      </>
+    );
+  };
+
   return (
     <section className={styles.headerButtons}>
-      {status === "pending" ? (
-        <p className={styles.tagline}>Loading...</p>
-      ) : (
-        <>
-          <button
-            onClick={firstHandleButtonClick}
-            className={styles.headerButton}
-          >
-            {buttonSighUpText}
-          </button>
-
-          <button
-            onClick={secondHandleButtonClick}
-            className={styles.headerButton}
-          >
-            {buttonLogIn}
-          </button>
-        </>
-      )}
+      <Buttons />
     </section>
   );
 };

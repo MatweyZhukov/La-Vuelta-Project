@@ -20,17 +20,19 @@ import { IFormProps, IValueState } from "@/types/types";
 //Styles
 import styles from "../../styles/modals.module.css";
 
-const Form: FC<IFormProps> = ({
-  title,
-  titleButton,
-  modalStatus,
-  changeModalStatus,
-  changeModalStatusSecond,
-  inputsForm,
-  handleFunction,
-  disabled,
-}) => {
+const Form: FC<IFormProps> = (props) => {
   const dispatch = useAppDispatch();
+
+  const {
+    title,
+    titleButton,
+    modalStatus,
+    changeModalStatus,
+    changeModalStatusSecond,
+    inputsForm,
+    handleFunction,
+    disabled,
+  } = props;
 
   const {
     register,

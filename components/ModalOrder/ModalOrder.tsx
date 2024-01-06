@@ -8,7 +8,7 @@ import { changeModalClasses, showToastMessage } from "@/app/layout";
 import { YMapsComponent } from "../YMapsComponent/YMapsComponent";
 
 //Types
-import { IMapRef, IMapsInitialState, IOrder, IUser } from "@/types/types";
+import { IMapRef, IMapsInitialState, IOrder } from "@/types/types";
 
 //Hooks
 import { useTyppedSelector } from "@/hooks/useTyppedSelector";
@@ -23,10 +23,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 //Styles
 import styles from "../../styles/modals.module.css";
 import { getOrders, postUserOrder } from "@/GlobalRedux/reducers/orderSlice";
-import {
-  deletePizzaFromCart,
-  clearUserCart,
-} from "@/GlobalRedux/reducers/userSlice";
+import { clearUserCart } from "@/GlobalRedux/reducers/userSlice";
 
 const ModalOrder: FC = () => {
   const [state, setState] = useState<IMapsInitialState>({
@@ -57,6 +54,8 @@ const ModalOrder: FC = () => {
     }
   };
 
+  const makeAnOrder = (newOrder: IOrder) => dispatch(postUserOrder(newOrder));
+
   const makeOrderByUser = () => {
     const newUserOrder: IOrder = {
       address: state.title,
@@ -69,7 +68,7 @@ const ModalOrder: FC = () => {
     if (state.title) {
       setDisabled(true);
 
-      dispatch(postUserOrder(newUserOrder))
+      makeAnOrder(newUserOrder)
         .then(() =>
           showToastMessage(
             "success",
