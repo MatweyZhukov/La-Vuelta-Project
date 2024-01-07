@@ -17,6 +17,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 //Types
 import {
+  IBreakPoints,
   IMapConstructor,
   IMapOptions,
   ISize,
@@ -49,6 +50,13 @@ const YMapsComponent: FC<IYMapsComponentProps> = ({
     height: 400,
   });
 
+  const breakpoints: IBreakPoints[] = [
+    { clientWidth: 8000, mapHeight: 400, mapWidth: 400 },
+    { clientWidth: 1380, mapHeight: 300, mapWidth: 300 },
+    { clientWidth: 980, mapHeight: 250, mapWidth: 250 },
+    { clientWidth: 650, mapHeight: 200, mapWidth: 200 },
+  ];
+
   const resizeHandler = () => {
     if (formRef.current) {
       const { offsetHeight, offsetWidth } = formRef.current;
@@ -64,37 +72,21 @@ const YMapsComponent: FC<IYMapsComponentProps> = ({
   } as const;
 
   const changeMapWidth = () => {
-    if (size.offsetWidth < 8000) {
-      setMapOptions({
-        ...mapOptions,
-        height: 400,
-        width: 400,
-      });
-    }
+    const newMapOptions = breakpoints.reduce((options, breakpoint) => {
+      const { clientWidth, mapHeight, mapWidth } = breakpoint;
 
-    if (size.offsetWidth < 1380) {
-      setMapOptions({
-        ...mapOptions,
-        height: 300,
-        width: 300,
-      });
-    }
+      if (size.offsetWidth < clientWidth) {
+        return {
+          ...options,
+          height: mapHeight,
+          width: mapWidth,
+        };
+      }
 
-    if (size.offsetWidth < 980) {
-      setMapOptions({
-        ...mapOptions,
-        height: 250,
-        width: 250,
-      });
-    }
+      return options;
+    }, mapOptions);
 
-    if (size.offsetWidth < 650) {
-      setMapOptions({
-        ...mapOptions,
-        height: 200,
-        width: 200,
-      });
-    }
+    setMapOptions(newMapOptions);
   };
 
   useEffect(() => {

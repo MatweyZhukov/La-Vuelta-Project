@@ -105,6 +105,7 @@ const Form: FC<IFormProps> = ({
             type="submit"
             disabled={!isValid && disabled}
             onClick={onHandleFunction}
+            value={title}
           >
             {title}
           </button>

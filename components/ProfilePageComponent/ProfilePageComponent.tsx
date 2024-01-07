@@ -43,9 +43,7 @@ const ProfilePageComponent: FC = () => {
   };
 
   const IsAuthUser = () =>
-    !isAuth ? (
-      <Spinner />
-    ) : (
+    isAuth ? (
       <>
         <h1>This is your profile page, {name}!</h1>
 
@@ -59,6 +57,8 @@ const ProfilePageComponent: FC = () => {
 
         <button onClick={logOut}>Log Out</button>
       </>
+    ) : (
+      <Spinner />
     );
 
   return <section className={styles.profileContent}>{IsAuthUser()}</section>;

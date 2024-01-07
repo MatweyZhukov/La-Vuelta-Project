@@ -24,9 +24,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   const tabs = await requestToAPI<ITabsItem[]>("/tabs", "get");
 
-  const TabsFunc = () => {
-    return tabs ? <Tabs tabsItem={tabs} /> : <Spinner />;
-  };
+  const TabsFunc = () => (tabs ? <Tabs tabsItem={tabs} /> : <Spinner />);
 
   return (
     <div className={styles.mainPageContent}>
@@ -57,9 +55,7 @@ export default async function Home() {
         </div>
       </div>
       <h1 className={styles.mainPageTitle}>Our Kinds of Pizza!</h1>
-      <section className={styles.navTabs}>
-        <TabsFunc />
-      </section>
+      <section className={styles.navTabs}>{TabsFunc()}</section>
 
       <h1 className={styles.mainPageTitle}>Make an order!</h1>
 

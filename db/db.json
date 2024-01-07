@@ -226,7 +226,32 @@
     "email": "mat@gmail.com",
     "id": "IJxer4WgF7g0U19IIphd8MmemJL2",
     "token": "AMf-vBzZt7BsNeFeIuUDCj2qtlUzc3Vqo8IRjeFfg8-wQKC-_lGTb_WY7Nc6BwyMb57yErP8JhFuBgMjSauJu2hALVr_kbooVOCCaDBVYEhwbrgyWkHL9pYrLnKhroQAyKk_bzF0pHehtoC52_nvG96ec77oXoZ6xwIDVhesggrhcoWmFBtJVYkUklZtjh9dTGr3-MRnSMa67bclksRrxEWH4jccZ2iAVQ",
-    "userCart": []
+    "userCart": [
+      {
+        "pizzaImage": "/pizza-4.webp",
+        "pizzaPrice": 6,
+        "totalPrice": 6,
+        "pizzaTitle": "Ham and Cheese",
+        "count": 1,
+        "id": "f65684bb-97d3-416e-b7d0-0711219be0b4",
+        "pizzaId": 4,
+        "pizzaSize": 30,
+        "doughSize": "traditional",
+        "weight": 480
+      },
+      {
+        "pizzaImage": "/pizza-4.webp",
+        "pizzaPrice": 4,
+        "totalPrice": 4,
+        "pizzaTitle": "Ham and Cheese",
+        "count": 1,
+        "id": "3df89586-ed73-4a48-b3a6-899d784d5c18",
+        "pizzaId": 4,
+        "pizzaSize": 24,
+        "doughSize": "traditional",
+        "weight": 336
+      }
+    ]
   },
   "users": [
     {
@@ -234,7 +259,32 @@
       "email": "mat@gmail.com",
       "id": "IJxer4WgF7g0U19IIphd8MmemJL2",
       "token": "AMf-vBzZt7BsNeFeIuUDCj2qtlUzc3Vqo8IRjeFfg8-wQKC-_lGTb_WY7Nc6BwyMb57yErP8JhFuBgMjSauJu2hALVr_kbooVOCCaDBVYEhwbrgyWkHL9pYrLnKhroQAyKk_bzF0pHehtoC52_nvG96ec77oXoZ6xwIDVhesggrhcoWmFBtJVYkUklZtjh9dTGr3-MRnSMa67bclksRrxEWH4jccZ2iAVQ",
-      "userCart": []
+      "userCart": [
+        {
+          "pizzaImage": "/pizza-4.webp",
+          "pizzaPrice": 6,
+          "totalPrice": 6,
+          "pizzaTitle": "Ham and Cheese",
+          "count": 1,
+          "id": "f65684bb-97d3-416e-b7d0-0711219be0b4",
+          "pizzaId": 4,
+          "pizzaSize": 30,
+          "doughSize": "traditional",
+          "weight": 480
+        },
+        {
+          "pizzaImage": "/pizza-4.webp",
+          "pizzaPrice": 4,
+          "totalPrice": 4,
+          "pizzaTitle": "Ham and Cheese",
+          "count": 1,
+          "id": "3df89586-ed73-4a48-b3a6-899d784d5c18",
+          "pizzaId": 4,
+          "pizzaSize": 24,
+          "doughSize": "traditional",
+          "weight": 336
+        }
+      ]
     }
   ],
   "orders": []

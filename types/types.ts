@@ -213,3 +213,9 @@ export interface ISize {
   offsetWidth: number;
   offsetHeight: number;
 }
+
+export interface IBreakPoints {
+  clientWidth: number;
+  mapHeight: number;
+  mapWidth: number;
+}

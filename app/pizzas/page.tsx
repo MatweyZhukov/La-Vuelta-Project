@@ -25,14 +25,14 @@ export const metadata: Metadata = {
 const SinglePizza: FC = async () => {
   const tiles = await requestToAPI<IPizzaTileItem[]>("/cards", "get");
 
-  const Tiles = () => {
-    return <>{tiles ? <PizzaTilesList tiles={tiles} /> : <Spinner />}</>;
-  };
+  const Tiles = () => (
+    <>{tiles ? <PizzaTilesList tiles={tiles} /> : <Spinner />}</>
+  );
 
   return (
     <div className={styles.pizzasPageContent}>
       <h1 className={styles.pizzasPageTitle}>Check our pizzas!</h1>
-      <Tiles />
+      {Tiles()}
     </div>
   );
 };

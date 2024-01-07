@@ -48,7 +48,7 @@ const SinglePizza: FC<{ params: { id: number } }> = async ({ params }) => {
     );
   };
 
-  return <Pizza />;
+  return <>{Pizza()}</>;
 };
 
 export default SinglePizza;
