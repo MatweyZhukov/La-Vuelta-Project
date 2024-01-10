@@ -1,7 +1,7 @@
 "use client";
 
 //Global
-import { FC, MouseEventHandler, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { changeModalClasses } from "@/app/layout";
 
@@ -20,16 +20,7 @@ import { IFormProps, IValueState } from "@/types/types";
 //Styles
 import styles from "../../styles/modals.module.css";
 
-const Form: FC<IFormProps> = ({
-  title,
-  titleButton,
-  modalStatus,
-  changeModalStatus,
-  changeModalStatusSecond,
-  inputsForm,
-  handleFunction,
-  disabled,
-}) => {
+const Form: FC<IFormProps> = (formProps) => {
   const dispatch = useAppDispatch();
 
   const {
@@ -38,14 +29,21 @@ const Form: FC<IFormProps> = ({
     getValues,
     handleSubmit,
     reset,
-  } = useForm<IValueState>({
-    mode: "onBlur",
-  });
+  } = useForm<IValueState>({ mode: "onBlur" });
+
+  const {
+    title,
+    titleButton,
+    modalStatus,
+    changeModalStatus,
+    changeModalStatusSecond,
+    inputsForm,
+    handleFunction,
+    disabled,
+  } = formProps;
 
   useEffect(() => {
-    if (!modalStatus) {
-      reset();
-    }
+    !modalStatus && reset();
 
     //eslint-disable-next-line
   }, [modalStatus]);
@@ -61,13 +59,11 @@ const Form: FC<IFormProps> = ({
     }, 300);
   };
 
-  const onHandleFunction = () =>
-    handleFunction(
-      getValues().email,
-      getValues().password,
-      getValues().name,
-      reset
-    );
+  const onHandleFunction = () => {
+    const { email, password, name } = getValues();
+
+    handleFunction({ email, password, name, reset });
+  };
 
   const handleClick = () => dispatch(changeModalStatus(false));
 

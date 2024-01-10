@@ -2,7 +2,7 @@
 
 //GLobal
 import { FC, useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { User, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { showToastMessage } from "@/app/layout";
 import { UseFormReset } from "react-hook-form";
 
@@ -10,7 +10,7 @@ import { UseFormReset } from "react-hook-form";
 import { Form } from "../Form/Form";
 
 //Types
-import { IInputsForm, IValueState } from "@/types/types";
+import { IInputsForm, IHandleFunctionParams } from "@/types/types";
 
 //Hooks
 import { useTyppedSelector } from "@/hooks/useTyppedSelector";
@@ -31,36 +31,39 @@ const ModalLogIn: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const functionLogInUser = (
-    email: IValueState["email"],
-    password: IValueState["password"],
-    _: IValueState["name"],
-    reset: UseFormReset<IValueState>
-  ) => {
+  const userAction = (user: User) => {
+    const currentUser = users.find(
+      (arrUser) => arrUser.email === user.email && arrUser.id === user.uid
+    );
+
+    currentUser && dispatch(setUser(currentUser));
+  };
+
+  const userSuccessNotification = (reset: IHandleFunctionParams["reset"]) => {
+    showToastMessage("success", "You've successfully logged in!");
+    dispatch(changeModalLogInStatus(false));
+    reset();
+  };
+
+  const userUnsuccessNotification = () => {
+    const text = "Uncorrect password or email, try again!";
+
+    showToastMessage("error", text);
+  };
+
+  const functionLogInUser = (logInParams: IHandleFunctionParams) => {
     const auth = getAuth();
+
+    const { email, password, reset } = logInParams;
 
     setDisabled(true);
 
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        const currentUser = users.find(
-          (arrUser) => arrUser.email === email && arrUser.id === user.uid
-        );
-
-        if (currentUser) {
-          dispatch(setUser(currentUser));
-        }
-
-        setDisabled(false);
+        userAction(user);
+        userSuccessNotification(reset);
       })
-      .then(() => {
-        showToastMessage("success", "You've successfully logged in!");
-        dispatch(changeModalLogInStatus(false));
-        reset();
-      })
-      .catch(() =>
-        showToastMessage("error", "Uncorrect password or email, try again!")
-      )
+      .catch(() => userUnsuccessNotification())
       .finally(() => setDisabled(false));
   };
 

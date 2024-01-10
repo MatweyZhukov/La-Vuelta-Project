@@ -34,16 +34,20 @@ const ProfilePageComponent: FC = () => {
   }, [isAuth]);
 
   const logOut = () => {
+    const messageText = "You've successfully logged out!";
+
     dispatch(resetUser())
-      .then(() => {
-        showToastMessage("success", "You've successfully logged out!");
-        push("/");
-      })
-      .catch((e) => console.log(e));
+      .then(() => showToastMessage("success", messageText))
+      .then(() => push("/"))
+      .catch((error) => console.log(error));
   };
 
-  const IsAuthUser = () =>
-    isAuth ? (
+  const IsAuthUser = () => {
+    if (!isAuth) {
+      return <Spinner />;
+    }
+
+    return (
       <>
         <h1>This is your profile page, {name}!</h1>
 
@@ -57,9 +61,8 @@ const ProfilePageComponent: FC = () => {
 
         <button onClick={logOut}>Log Out</button>
       </>
-    ) : (
-      <Spinner />
     );
+  };
 
   return <section className={styles.profileContent}>{IsAuthUser()}</section>;
 };
