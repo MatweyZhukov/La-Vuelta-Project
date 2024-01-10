@@ -9,10 +9,9 @@ import { ErrorComponentProps } from "@/types/types";
 //Styles
 import styles from "../../styles/error.module.css";
 
-export const ErrorComponent: FC<ErrorComponentProps> = ({
-  errorText,
-  errorImage,
-}) => {
+export const ErrorComponent: FC<ErrorComponentProps> = (props) => {
+  const { errorText, errorImage } = props;
+
   return (
     <div className={styles.notFoundWrapper}>
       <Image width={300} height={300} src={errorImage} alt="erorr" />

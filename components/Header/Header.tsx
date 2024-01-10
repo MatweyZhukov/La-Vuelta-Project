@@ -15,33 +15,34 @@ import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 import styles from "../../styles/header.module.css";
 
 export const Header: FC = () => {
-  const { modalCart, modalSignUp, modalLogIn } = useTyppedSelector(
+  const { modalCart, modalSignUp, modalLogIn, modalOrder } = useTyppedSelector(
     (state) => state.modals
   );
 
   useEffect(() => {
     let scroll = window.innerWidth - document.body.offsetWidth;
 
-    if (modalSignUp || modalCart || modalLogIn) {
+    if (modalSignUp || modalCart || modalLogIn || modalOrder) {
       document.body.style.overflow = `hidden`;
       document.body.style.paddingRight = `${scroll}px`;
     } else {
       document.body.style.overflow = `auto`;
       document.body.style.paddingRight = `0px`;
     }
-  }, [modalSignUp, modalCart, modalLogIn]);
+  }, [modalSignUp, modalCart, modalLogIn, modalOrder]);
+
+  const tagline = "Pizza la Vuelta, Quickly and Tasty!";
 
   return (
     <header className={styles.header}>
-      <nav className={styles.headerContent}>
+      <div className={styles.headerContent}>
         <Link href="/">
           <Image width={120} height={120} src="/logotype.png" alt="Pizza" />
         </Link>
-        <p className={styles.tagline}>Pizza la Vuelta, Quickly and Tasty!</p>
-        <section className={styles.headerButtons}>
-          <ButtonsHeader />
-        </section>
-      </nav>
+        <p className={styles.tagline}>{tagline}</p>
+
+        <ButtonsHeader />
+      </div>
     </header>
   );
 };

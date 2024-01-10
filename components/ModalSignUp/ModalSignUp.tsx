@@ -2,10 +2,9 @@
 
 //GLobal
 import { FC, useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, User } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { showToastMessage } from "@/app/layout";
-import { UseFormReset } from "react-hook-form";
 
 //Components
 import { Form } from "../Form/Form";
@@ -15,7 +14,12 @@ import { useTyppedSelector } from "@/hooks/useTyppedSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 //Types
-import { IInputsForm, IUser, IValueState } from "@/types/types";
+import {
+  IHandleFunctionParams,
+  IInputsForm,
+  IUser,
+  UserActionType,
+} from "@/types/types";
 
 //Services
 import { requestToAPI } from "@/services";
@@ -42,49 +46,50 @@ const ModalSignUp: FC = () => {
       .catch((e) => console.log(e));
   }, [dispatch]);
 
-  const functionSignUpUser = (
-    email: IValueState["email"],
-    password: IValueState["password"],
-    name: IValueState["name"],
-    reset: UseFormReset<IValueState>
-  ) => {
+  const userAction = (name: string, user: User, userFunc: UserActionType) => {
+    const { email, uid, refreshToken } = user;
+
+    const userObj: IUser = {
+      name,
+      email,
+      id: uid,
+      token: refreshToken,
+      userCart: [],
+    };
+
+    dispatch(userFunc(userObj));
+  };
+
+  const userNotification = (reset: IHandleFunctionParams["reset"]) => {
+    const messageText = "You've successfully created the account!";
+
+    push("/profile");
+    showToastMessage("success", messageText);
+    dispatch(changeModalSignUpStatus(false));
+    reset();
+  };
+
+  const userUnsuccessNotification = () => {
+    const messageText = "Something went wrong, try again!";
+
+    showToastMessage("error", messageText);
+  };
+
+  const functionSignUpUser = (sighUpParams: IHandleFunctionParams) => {
     const auth = getAuth();
 
     setDisabled(true);
 
+    const { email, password, name, reset } = sighUpParams;
+
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        dispatch(
-          addUser({
-            name: name,
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-            userCart: [],
-          })
-        );
-
-        dispatch(
-          setUser({
-            name: name,
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-            userCart: [],
-          })
-        );
-
-        setDisabled(false);
+        userAction(name, user, addUser);
+        userAction(name, user, setUser);
       })
-      .then(() => {
-        push("/profile");
-        showToastMessage("success", "You've successfully created the account!");
-        dispatch(changeModalSignUpStatus(false));
-        reset();
-      })
-      .catch(() =>
-        showToastMessage("error", "Something went wrong, try again!")
-      );
+      .then(() => userNotification(reset))
+      .catch(() => userUnsuccessNotification())
+      .finally(() => setDisabled(false));
   };
 
   const signUpArrayInputs: IInputsForm[] = [

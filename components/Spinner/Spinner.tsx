@@ -6,9 +6,9 @@ import styles from "../../styles/spinner.module.css";
 
 const Spinner: FC = () => {
   return (
-    <nav className={styles.loaderWrapper}>
+    <div className={styles.loaderWrapper}>
       <span className={styles.loader} />
-    </nav>
+    </div>
   );
 };
 

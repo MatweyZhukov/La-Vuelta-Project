@@ -8,11 +8,11 @@ import { changeModalClasses } from "@/app/layout";
 import { ModalCartContent } from "../ModalCartContent/ModalCartContent";
 
 //Icons
-import { GrClose } from "react-icons/gr";
+import CloseIcon from "@mui/icons-material/Close";
 
 //Actions
 import { changeModalCartStatus } from "@/GlobalRedux/reducers/modalsSlice";
-import { fetchCart } from "@/GlobalRedux/reducers/userSlice";
+import { fetchCart, setUsers } from "@/GlobalRedux/reducers/userSlice";
 
 //Hooks
 import { useTyppedSelector } from "@/hooks/useTyppedSelector";
@@ -23,7 +23,8 @@ import { useAuth } from "@/hooks/useAuth";
 import styles from "../../styles/cart.module.css";
 
 const ModalCart: FC = () => {
-  const { modalCart } = useTyppedSelector((state) => state.modals);
+  const { modalCart } = useTyppedSelector((state) => state.modals),
+    { currentUser } = useTyppedSelector((state) => state.user);
 
   const { isAuth } = useAuth();
 
@@ -33,27 +34,30 @@ const ModalCart: FC = () => {
     isAuth && dispatch(fetchCart());
   }, [dispatch, isAuth]);
 
+  useEffect(() => {
+    dispatch(setUsers());
+  }, [dispatch, currentUser.userCart]);
+
+  const handleClick = () => dispatch(changeModalCartStatus(false));
+
+  const modalWrapper = changeModalClasses({
+      modalStatus: modalCart,
+      modalClass: styles.modalCartWrapper,
+      modalActiveClass: styles.modalCartWrapperActive,
+    }),
+    closeBlock = changeModalClasses({
+      modalStatus: modalCart,
+      modalClass: styles.closeBlock,
+      modalActiveClass: styles.closeBlockActive,
+    });
+
   return (
-    <main
-      onClick={() => dispatch(changeModalCartStatus(false))}
-      className={changeModalClasses({
-        modalStatus: modalCart,
-        modalClass: styles.modalCartWrapper,
-        modalActiveClass: styles.modalCartWrapperActive,
-      })}
-    >
-      <section
-        onClick={(e) => e.stopPropagation()}
-        className={changeModalClasses({
-          modalStatus: modalCart,
-          modalClass: styles.closeBlock,
-          modalActiveClass: styles.closeBlockActive,
-        })}
-      >
-        <GrClose onClick={() => dispatch(changeModalCartStatus(false))} />
+    <div onClick={handleClick} className={modalWrapper}>
+      <section onClick={(e) => e.stopPropagation()} className={closeBlock}>
+        <CloseIcon style={{ color: "#fff6e7" }} onClick={handleClick} />
       </section>
       <ModalCartContent />
-    </main>
+    </div>
   );
 };
 

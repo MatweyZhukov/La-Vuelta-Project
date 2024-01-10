@@ -10,7 +10,7 @@ const InputsFormList: FC<IInputsFormListProps> = ({
   register,
   errors,
 }) => {
-  return (
+  const Inputs = () => (
     <>
       {inputsForm.map(
         (
@@ -42,6 +42,8 @@ const InputsFormList: FC<IInputsFormListProps> = ({
       )}
     </>
   );
+
+  return <>{Inputs()}</>;
 };
 
 export { InputsFormList };

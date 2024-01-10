@@ -102,7 +102,9 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
     };
 
     if (currentPizza && currentPizza.count < 10) {
-      dispatch(changePizzaCounter({ actionCounter: "+", id: currentPizza.id }))
+      dispatch(
+        changePizzaCounter({ actionCounter: "inc", id: currentPizza.id })
+      )
         .then(() => {
           resetPizzaOptions();
           showToastMessage("success", "Item added to cart!");
@@ -126,30 +128,26 @@ const SinglePagePizzaContent: FC<{ pizza: IPizzaTileItem }> = ({ pizza }) => {
     resetPizzaOptions();
   };
 
+  const handleClick = () => {
+    if (isAuth) {
+      onAddToCart();
+    } else {
+      showToastMessage("warning", "SignUp or LogIn to add product to cart!");
+    }
+  };
+
+  const newPizzaPrice = returnChangedPizzaOption(pizzaPrice, 1),
+    priceText = `${newPizzaPrice} $, ${returnChangedPizzaOption(weight, 50)}g`;
+
   return (
     <section className={styles.singlePagePizzaInformation}>
-      <p data-price>{`${returnChangedPizzaOption(
-        pizzaPrice,
-        1
-      )} $, ${returnChangedPizzaOption(weight, 50)}g`}</p>
+      <p data-price>{priceText}</p>
 
       <p data-description>{pizzaDescription}</p>
 
       <ToggleButtonComponent />
 
-      <button
-        data-order
-        onClick={() => {
-          if (isAuth) {
-            onAddToCart();
-          } else {
-            showToastMessage(
-              "warning",
-              "SignUp or LogIn to add product to cart!"
-            );
-          }
-        }}
-      >
+      <button data-order onClick={handleClick}>
         add to cart
       </button>
     </section>

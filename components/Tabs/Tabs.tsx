@@ -27,8 +27,10 @@ const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
       img.classList.add(`${styles.fade}`);
       descr.classList.add(`${styles.fade}`);
 
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setDisabled(false);
+
+        clearTimeout(timer);
 
         img.classList.remove(`${styles.fade}`);
         descr.classList.remove(`${styles.fade}`);
@@ -36,37 +38,40 @@ const Tabs: FC<{ tabsItem: ITabsItem[] }> = ({ tabsItem }) => {
     }
   };
 
+  const TabsFunc = () =>
+    tabsItem.map(({ tabName }, index) => (
+      <button
+        disabled={disabled}
+        id={`${index}`}
+        onClick={(e: any) => {
+          setActiveTab(+e.target.id);
+          addFadeAnimation();
+        }}
+        key={index}
+        className={
+          index === activeTab
+            ? `${styles.tabOption} ${styles.tabOptionActive}`
+            : styles.tabOption
+        }
+      >
+        {tabName}
+      </button>
+    ));
+
+  const TabsContentFunc = () =>
+    tabsItem[activeTab] && (
+      <TabsContent
+        {...tabsItem[activeTab]}
+        refImg={refImg}
+        refDescr={refDescr}
+      />
+    );
+
   return (
     <>
-      <ul className={styles.tabOptions}>
-        {tabsItem.map(({ tabName }, index) => (
-          <button
-            disabled={disabled}
-            id={`${index}`}
-            onClick={(e) => {
-              // @ts-ignore
-              setActiveTab(+e.target.id);
-              addFadeAnimation();
-            }}
-            key={index}
-            className={
-              index === activeTab
-                ? `${styles.tabOption} ${styles.tabOptionActive}`
-                : styles.tabOption
-            }
-          >
-            {tabName}
-          </button>
-        ))}
-      </ul>
+      <ul className={styles.tabOptions}>{TabsFunc()}</ul>
 
-      {tabsItem[activeTab] && (
-        <TabsContent
-          {...tabsItem[activeTab]}
-          refImg={refImg}
-          refDescr={refDescr}
-        />
-      )}
+      {TabsContentFunc()}
     </>
   );
 };

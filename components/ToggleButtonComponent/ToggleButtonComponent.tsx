@@ -24,9 +24,6 @@ const ToggleButtonComponent: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const buttonsSize = [24, 30, 35],
-    buttonsDough = ["traditional", "thin"];
-
   const changePizzaSize = (
     event: React.MouseEvent<HTMLElement>,
     newSize: string
@@ -52,15 +49,15 @@ const ToggleButtonComponent: FC = () => {
           exclusive
           onChange={changePizzaSize}
         >
-          {buttonsSize.map((size, index) => (
-            <ToggleButton
-              key={index}
-              className={styles.toggleButton}
-              value={size}
-            >
-              {`${size}сm`}
-            </ToggleButton>
-          ))}
+          <ToggleButton className={styles.toggleButton} value={24}>
+            24 cm
+          </ToggleButton>
+          <ToggleButton className={styles.toggleButton} value={30}>
+            30 cm
+          </ToggleButton>
+          <ToggleButton className={styles.toggleButton} value={35}>
+            25 cm
+          </ToggleButton>
         </ToggleButtonGroup>
       </div>
 
@@ -73,15 +70,12 @@ const ToggleButtonComponent: FC = () => {
           exclusive
           onChange={changePizzaDough}
         >
-          {buttonsDough.map((dough, index) => (
-            <ToggleButton
-              key={index}
-              className={styles.toggleButton}
-              value={dough}
-            >
-              {dough}
-            </ToggleButton>
-          ))}
+          <ToggleButton className={styles.toggleButton} value={"traditional"}>
+            traditional
+          </ToggleButton>
+          <ToggleButton className={styles.toggleButton} value={"thin"}>
+            thin
+          </ToggleButton>
         </ToggleButtonGroup>
       </div>
     </div>

@@ -7,12 +7,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import modalsSlice from "./reducers/modalsSlice";
 import pizzaOptionsSlice from "./reducers/pizzaOptionsSlice";
 import userSlice from "./reducers/userSlice";
+import orderSlice from "./reducers/orderSlice";
 
 export const store = configureStore({
   reducer: {
     modals: modalsSlice,
     pizzaOptions: pizzaOptionsSlice,
     user: userSlice,
+    orders: orderSlice,
   },
 });
 

@@ -1,5 +1,6 @@
 //GLobal
 import Link from "next/link";
+import { Metadata } from "next";
 
 //Components
 import { Slider } from "@/components/Slider/Slider";
@@ -15,14 +16,21 @@ import { requestToAPI } from "@/services";
 //Styles
 import styles from "../styles/mainPage.module.css";
 
+export const metadata: Metadata = {
+  title: "La Vuelta | Main page",
+  description: "Created by Zhukov Matvey",
+};
+
 export default async function Home() {
   const tabs = await requestToAPI<ITabsItem[]>("/tabs", "get");
 
+  const TabsFunc = () => (tabs ? <Tabs tabsItem={tabs} /> : <Spinner />);
+
   return (
-    <main className={styles.mainPageContent}>
+    <div className={styles.mainPageContent}>
       <h1 className={styles.mainPageTitle}>Welcome to La Vuelta!</h1>
 
-      <nav className={styles.navSlider}>
+      <div className={styles.navSlider}>
         <Slider />
         <div className={styles.offer}>
           <h1 className={styles.offerTitle}>Our offers to you:</h1>
@@ -45,11 +53,11 @@ export default async function Home() {
             </li>
           </ul>
         </div>
-      </nav>
+      </div>
+
       <h1 className={styles.mainPageTitle}>Our Kinds of Pizza!</h1>
-      <nav className={styles.navTabs}>
-        {tabs ? <Tabs tabsItem={tabs} /> : <Spinner />}
-      </nav>
+
+      <section className={styles.navTabs}>{TabsFunc()}</section>
 
       <h1 className={styles.mainPageTitle}>Make an order!</h1>
 
@@ -61,6 +69,6 @@ export default async function Home() {
           </Link>
         </p>
       </section>
-    </main>
+    </div>
   );
 }

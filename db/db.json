@@ -222,33 +222,20 @@
     }
   ],
   "currentUser": {
-    "name": "Matvey",
-    "email": "mat@gmail.com",
-    "id": "JaAw2FKvTJg1yADk7hrGQEopr8K2",
-    "token": "AMf-vByxPiSY5s9Yi-GhkHjCTMIKGu_YZ714GSmrCssrMqwSB_EtSJXPjDPFfMv4ZeqMryqQYYa-qR7MqnKiDkE60u9E1oYT7rtZ4nPaEUQNYZeom4K1Qabw6pH7q2DJPfZqOi6v01sYTl2Kyz8F7_eqi5znNlnxNWvjQxb4WdH0626cmAkyk7wba7MGjt3iqp62QEw4wuPO9fGfG90Xo7FDe3XNgxigug",
+    "name": null,
+    "email": null,
+    "id": null,
+    "token": null,
     "userCart": []
   },
   "users": [
     {
       "name": "Matvey",
       "email": "mat@gmail.com",
-      "id": "JaAw2FKvTJg1yADk7hrGQEopr8K2",
-      "token": "AMf-vByxPiSY5s9Yi-GhkHjCTMIKGu_YZ714GSmrCssrMqwSB_EtSJXPjDPFfMv4ZeqMryqQYYa-qR7MqnKiDkE60u9E1oYT7rtZ4nPaEUQNYZeom4K1Qabw6pH7q2DJPfZqOi6v01sYTl2Kyz8F7_eqi5znNlnxNWvjQxb4WdH0626cmAkyk7wba7MGjt3iqp62QEw4wuPO9fGfG90Xo7FDe3XNgxigug",
-      "userCart": []
-    },
-    {
-      "name": "Denis",
-      "email": "den@yandex.ru",
-      "id": "Aaj5WMjNngcHHLXLxbMS4erWDa02",
-      "token": "AMf-vBxo5VN2fCc-_BulxNtJ3tE4NvkQ62vGrrqqwvdRncp9xDwB8gq0v1OgCQVKc4npnDHUH3z5oErLX-n-aCLg59B9iNOQ5XtRoyGisWDbVWGh1xfWJQgMeDhadmPDs9QXwS8loLMnXQGU2FGfXbU_taUyKy0u5zwrdb0vBXDtgm9zdLlKOqZF0_spL5R2jckO9gFOxsqRjJlB3m8kMzOsDN2C03yB5A",
-      "userCart": []
-    },
-    {
-      "name": "Masha",
-      "email": "mas@mail.ru",
-      "id": "RyohcaSCPicliw5Zv7dtq01gCnt1",
-      "token": "AMf-vBxIDXaoHusklqTCClJfUY5NdoG0oWTWeRW9yU8FttpkXYgsxuZPHbw5GmzIywX-0ZNqS_tgfCF856ze7iLKKB0iYFslXGomwrrtE-Xo4DabRliHJXv-JaB6aOypRL57bHvhDgcNaxWR6gX2dMmDdU5PTbfHyZwN0gGJeLfUd1QEiiSgUoRjEoIfAuip_KFyv6Y7znLDrVfl__NbjrnfOEgKRO0t8w",
+      "id": "lzJnR847RhYYLpq1OHPUfyKjNUo2",
+      "token": "AMf-vBwADG6AxcAsYFXX258Zq2kyigeMt4rB-fcPDsAQfFzMS5HNxrQIe9GN3YWHPijD67Mrq5EDwjXrXmXUT9ew1X61p9uJDMBIbc2O0XYxCfI90fO7XpH6yvMRziu0tb3kvRvkkagrP_1HHGxQd3y5ekNL8dAmSX_m77vyvhghHcl8V4NTbGIPBYgNci2HrqKRGxhAme4vqH3EimirT_xrkaB7dp8UVw",
       "userCart": []
     }
-  ]
+  ],
+  "orders": []
 }

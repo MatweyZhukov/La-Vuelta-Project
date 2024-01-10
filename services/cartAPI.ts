@@ -72,7 +72,7 @@ export const serviceChangePizzaCounter = async (
           if (item.id === pizzaItem.id) {
             return {
               ...item,
-              count: actionCounter === "+" ? item.count + 1 : item.count - 1,
+              count: actionCounter === "inc" ? item.count + 1 : item.count - 1,
             };
           } else {
             return item;
@@ -114,5 +114,17 @@ export const serviceChangePizzaPrice = async (
     return pizza;
   } catch (e) {
     return rejectWithValue("Something went wrong! Server Error.");
+  }
+};
+
+export const serviceClearUserCart = async (rejectWithValue: any) => {
+  const newObj: INewObj = {
+    userCart: [],
+  };
+
+  try {
+    await requestToAPI<IUser["userCart"]>("/currentUser", "patch", newObj);
+  } catch (e) {
+    return rejectWithValue("Something went wrong!");
   }
 };

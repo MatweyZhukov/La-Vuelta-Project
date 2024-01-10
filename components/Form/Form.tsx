@@ -1,7 +1,7 @@
 "use client";
 
 //Global
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { changeModalClasses } from "@/app/layout";
 
@@ -20,16 +20,7 @@ import { IFormProps, IValueState } from "@/types/types";
 //Styles
 import styles from "../../styles/modals.module.css";
 
-const Form: FC<IFormProps> = ({
-  title,
-  titleButton,
-  modalStatus,
-  changeModalStatus,
-  changeModalStatusSecond,
-  inputsForm,
-  handleFunction,
-  disabled,
-}) => {
+const Form: FC<IFormProps> = (formProps) => {
   const dispatch = useAppDispatch();
 
   const {
@@ -38,9 +29,24 @@ const Form: FC<IFormProps> = ({
     getValues,
     handleSubmit,
     reset,
-  } = useForm<IValueState>({
-    mode: "onBlur",
-  });
+  } = useForm<IValueState>({ mode: "onBlur" });
+
+  const {
+    title,
+    titleButton,
+    modalStatus,
+    changeModalStatus,
+    changeModalStatusSecond,
+    inputsForm,
+    handleFunction,
+    disabled,
+  } = formProps;
+
+  useEffect(() => {
+    !modalStatus && reset();
+
+    //eslint-disable-next-line
+  }, [modalStatus]);
 
   const submitForm = (values: IValueState) => values;
 
@@ -54,36 +60,33 @@ const Form: FC<IFormProps> = ({
   };
 
   const onHandleFunction = () => {
-    handleFunction(
-      getValues().email,
-      getValues().password,
-      getValues().name,
-      reset
-    );
+    const { email, password, name } = getValues();
+
+    handleFunction({ email, password, name, reset });
   };
 
+  const handleClick = () => dispatch(changeModalStatus(false));
+
+  const modalWrapper = changeModalClasses({
+      modalStatus,
+      modalClass: styles.modalWrapper,
+      modalActiveClass: styles.modalWrapperActive,
+    }),
+    modalContent = changeModalClasses({
+      modalStatus,
+      modalClass: styles.modalContent,
+      modalActiveClass: styles.modalContentActive,
+    });
+
   return (
-    <div
-      onClick={() => dispatch(changeModalStatus(false))}
-      className={changeModalClasses({
-        modalStatus,
-        modalClass: styles.modalWrapper,
-        modalActiveClass: styles.modalWrapperActive,
-      })}
-    >
+    <div onClick={handleClick} className={modalWrapper}>
       <form
         onSubmit={handleSubmit(submitForm)}
         onClick={(e) => e.stopPropagation()}
-        className={changeModalClasses({
-          modalStatus,
-          modalClass: styles.modalContent,
-          modalActiveClass: styles.modalContentActive,
-        })}
+        className={modalContent}
       >
         <div className={styles.closeModal}>
-          <AiFillCloseCircle
-            onClick={() => dispatch(changeModalStatus(false))}
-          />
+          <AiFillCloseCircle onClick={handleClick} />
         </div>
         <h1>{title}!</h1>
 
@@ -98,17 +101,14 @@ const Form: FC<IFormProps> = ({
             type="submit"
             disabled={!isValid && disabled}
             onClick={onHandleFunction}
+            value={title}
           >
             {title}
           </button>
 
           <p>or</p>
 
-          <button
-            disabled={disabled}
-            onClick={onChangeModalsStatus}
-            type="button"
-          >
+          <button disabled={disabled} onClick={onChangeModalsStatus}>
             {titleButton}
           </button>
         </section>

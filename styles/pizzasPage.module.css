@@ -228,6 +228,10 @@
     border-bottom: 1px solid #ffe1ac;
 }
 
+.pizzasPageTitle:last-child {
+    border-bottom: none;
+}
+
 .pizzaTilesWrapper {
     list-style: none;
     display: grid;

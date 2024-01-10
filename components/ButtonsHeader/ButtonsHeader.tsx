@@ -20,49 +20,52 @@ import {
 import styles from "../../styles/header.module.css";
 
 const ButtonsHeader: FC = () => {
-  const { status } = useTyppedSelector((state) => state.user);
+  const { status } = useTyppedSelector((state) => state.user),
+    { isAuth } = useAuth(),
+    { push } = useRouter(),
+    dispatch = useAppDispatch();
 
-  const { isAuth } = useAuth();
+  const firstHandleButtonClick = () => {
+    if (!isAuth) {
+      dispatch(changeModalSignUpStatus(true));
+    } else {
+      push("/profile");
+    }
+  };
 
-  const { push } = useRouter();
+  const secondHandleButtonClick = () => {
+    if (!isAuth) {
+      dispatch(changeModalLogInStatus(true));
+    } else {
+      dispatch(changeModalCartStatus(true));
+    }
+  };
 
-  const dispatch = useAppDispatch();
+  const buttonSighUpText = isAuth ? "Profile" : "SignUp",
+    buttonLogIn = isAuth ? "Cart" : "LogIn";
 
-  return (
-    <>
-      {status === "pending" ? (
-        <p className={styles.tagline}>Wait please...</p>
-      ) : (
-        <>
-          <button
-            onClick={() => {
-              if (!isAuth) {
-                dispatch(changeModalSignUpStatus(true));
-              } else {
-                push("/profile");
-              }
-            }}
-            className={styles.headerButton}
-          >
-            {isAuth ? "Profile" : "SignUp"}
-          </button>
+  const Buttons = () =>
+    status === "pending" ? (
+      <p className={styles.tagline}>Loading...</p>
+    ) : (
+      <>
+        <button
+          onClick={firstHandleButtonClick}
+          className={styles.headerButton}
+        >
+          {buttonSighUpText}
+        </button>
 
-          <button
-            onClick={() => {
-              if (!isAuth) {
-                dispatch(changeModalLogInStatus(true));
-              } else {
-                dispatch(changeModalCartStatus(true));
-              }
-            }}
-            className={styles.headerButton}
-          >
-            {isAuth ? "Cart" : "LogIn"}
-          </button>
-        </>
-      )}
-    </>
-  );
+        <button
+          onClick={secondHandleButtonClick}
+          className={styles.headerButton}
+        >
+          {buttonLogIn}
+        </button>
+      </>
+    );
+
+  return <section className={styles.headerButtons}>{Buttons()}</section>;
 };
 
 export { ButtonsHeader };

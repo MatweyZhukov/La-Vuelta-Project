@@ -34,35 +34,37 @@ const ProfilePageComponent: FC = () => {
   }, [isAuth]);
 
   const logOut = () => {
+    const messageText = "You've successfully logged out!";
+
     dispatch(resetUser())
-      .then(() => {
-        showToastMessage("success", "You've successfully logged out!");
-        push("/");
-      })
-      .catch((e) => console.log(e));
+      .then(() => showToastMessage("success", messageText))
+      .then(() => push("/"))
+      .catch((error) => console.log(error));
   };
 
-  return (
-    <nav className={styles.profileContent}>
-      {!isAuth ? (
-        <Spinner />
-      ) : (
-        <>
-          <h1>This is your profile page, {name}!</h1>
+  const IsAuthUser = () => {
+    if (!isAuth) {
+      return <Spinner />;
+    }
 
-          <p>
-            Your email: <span>{email}</span>
-          </p>
+    return (
+      <>
+        <h1>This is your profile page, {name}!</h1>
 
-          <p>
-            Your name: <span>{name}</span>
-          </p>
+        <p>
+          Your email: <span>{email}</span>
+        </p>
 
-          <button onClick={logOut}>Log Out</button>
-        </>
-      )}
-    </nav>
-  );
+        <p>
+          Your name: <span>{name}</span>
+        </p>
+
+        <button onClick={logOut}>Log Out</button>
+      </>
+    );
+  };
+
+  return <section className={styles.profileContent}>{IsAuthUser()}</section>;
 };
 
 export { ProfilePageComponent };

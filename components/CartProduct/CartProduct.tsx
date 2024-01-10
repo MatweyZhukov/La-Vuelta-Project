@@ -55,21 +55,26 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
     showToastMessage("success", "Item deleted from cart!");
   };
 
-  const onChangePizzaPrice = () => {
-    dispatch(changePizzaPrice(pizza));
-  };
+  const onChangePizzaPrice = () => dispatch(changePizzaPrice(pizza));
 
-  const onChangePizzaCounter = (action: "+" | "-") => {
-    if (action === "+") {
-      count < 10 && dispatch(changePizzaCounter({ actionCounter: "+", id }));
+  const onChangePizzaCounter = (action: "inc" | "dec") => {
+    if (action === "inc") {
+      count < 10 && dispatch(changePizzaCounter({ actionCounter: "inc", id }));
 
       if (count === 10) {
         showToastMessage("warning", "You can't add more than 10 pizzas!");
       }
     } else {
-      count > 0 && dispatch(changePizzaCounter({ actionCounter: "-", id }));
+      count > 0 && dispatch(changePizzaCounter({ actionCounter: "dec", id }));
     }
   };
+
+  const handleClickINC = () => onChangePizzaCounter("inc"),
+    handleClickDEC = () => onChangePizzaCounter("dec");
+
+  const textSize = `${pizzaSize}сm, ${doughSize} dough`,
+    textWeight = `Weight: ${weight}g`,
+    textTotalPrice = `${totalPrice} $`;
 
   return (
     <div className={styles.cartProduct}>
@@ -82,22 +87,18 @@ const CartProduct: FC<{ pizza: IPizzaCartItem }> = ({ pizza }) => {
       <div className={styles.cartProductContent}>
         <h3 className={styles.cartProductContentTitle}>{pizzaTitle}</h3>
 
-        <p className={styles.cartProductContentDescription}>
-          {`${pizzaSize}сm, ${doughSize} dough`}
-        </p>
+        <p className={styles.cartProductContentDescription}>{textSize}</p>
 
-        <p
-          className={styles.cartProductContentDescription}
-        >{`Weight: ${weight}g`}</p>
+        <p className={styles.cartProductContentDescription}>{textWeight}</p>
 
         <div className={styles.blockCounterAndPrice}>
           <section className={styles.blockCounter}>
-            <button onClick={() => onChangePizzaCounter("-")}>-</button>
+            <button onClick={handleClickDEC}>-</button>
             <p>{count}</p>
-            <button onClick={() => onChangePizzaCounter("+")}>+</button>
+            <button onClick={handleClickINC}>+</button>
           </section>
 
-          <p>{`${totalPrice} $`}</p>
+          <p>{textTotalPrice}</p>
         </div>
       </div>
     </div>
