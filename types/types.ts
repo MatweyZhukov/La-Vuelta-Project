@@ -21,14 +21,9 @@ type ChangeModalStatusType =
   | ActionCreatorWithPayload<boolean, "modals/changeModalSignUpStatus">
   | ActionCreatorWithPayload<boolean, "modals/changeModalLogInStatus">;
 
-export interface IHandleFunctionParams {
-  email: IValueState["email"];
-  password: IValueState["password"];
-  name: IValueState["name"];
-  reset: UseFormReset<IValueState>;
-}
-
 type TypeHandleFunction = (params: IHandleFunctionParams) => void;
+
+export type ToastStatusType = "success" | "error" | "warning";
 
 export type PizzaTypes = "all" | "vegan" | "meat" | "kids";
 
@@ -38,6 +33,13 @@ export type UserActionType = typeof addUser | typeof setUser;
 
 export interface INewObj {
   userCart: IUserState["currentUser"]["userCart"];
+}
+
+export interface IHandleFunctionParams {
+  email: IValueState["email"];
+  password: IValueState["password"];
+  name: IValueState["name"];
+  reset: UseFormReset<IValueState>;
 }
 
 export interface IChangeModalClassesFunc {
@@ -111,7 +113,7 @@ export interface IValueState {
 
 export interface ILinksMedia {
   href: string;
-  icon: React.ReactElement;
+  icon: JSX.Element;
 }
 
 export interface ITabsItem {
