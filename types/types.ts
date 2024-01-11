@@ -9,6 +9,9 @@ import {
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import { FieldErrors, UseFormRegister, UseFormReset } from "react-hook-form";
 
+//Actions
+import { addUser, setUser } from "@/GlobalRedux/reducers/userSlice";
+
 type PizzaCartType = Pick<
   IPizzaTileItem,
   "pizzaId" | "pizzaImage" | "pizzaPrice" | "pizzaTitle" | "weight"
@@ -18,18 +21,25 @@ type ChangeModalStatusType =
   | ActionCreatorWithPayload<boolean, "modals/changeModalSignUpStatus">
   | ActionCreatorWithPayload<boolean, "modals/changeModalLogInStatus">;
 
-type TypeHandleFunction = (
-  email: IValueState["email"],
-  password: IValueState["password"],
-  name: IValueState["name"],
-  reset: UseFormReset<IValueState>
-) => void;
+type TypeHandleFunction = (params: IHandleFunctionParams) => void;
+
+export type ToastStatusType = "success" | "error" | "warning";
 
 export type PizzaTypes = "all" | "vegan" | "meat" | "kids";
 
 export type RequestType = "get" | "post" | "put" | "patch" | "delete";
+
+export type UserActionType = typeof addUser | typeof setUser;
+
 export interface INewObj {
   userCart: IUserState["currentUser"]["userCart"];
+}
+
+export interface IHandleFunctionParams {
+  email: IValueState["email"];
+  password: IValueState["password"];
+  name: IValueState["name"];
+  reset: UseFormReset<IValueState>;
 }
 
 export interface IChangeModalClassesFunc {
@@ -103,7 +113,7 @@ export interface IValueState {
 
 export interface ILinksMedia {
   href: string;
-  icon: React.ReactElement;
+  icon: JSX.Element;
 }
 
 export interface ITabsItem {
