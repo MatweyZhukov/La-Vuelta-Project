@@ -1,0 +1,320 @@
+@media (max-width: 8000px) {
+    .singlePagePizzaWrapper h1 {
+        width: 1380px;
+        font-size: 50px;
+    }
+
+    .singlePagePizzaWrapper img {
+        margin: 15px 0 0 15px;
+    }
+
+    .singlePagePizzaContent {
+        width: 1380px;
+        gap: 0 70px;
+    }
+
+    .singlePagePizzaInformation {
+        width: 700px;
+        gap: 30px 0;
+    }
+
+    .singlePagePizzaInformation p[data-price] {
+        padding: 7px 20px;
+        font-size: 30px;
+    }
+
+    .singlePagePizzaInformation p[data-description] {
+        font-size: 30px;
+    }
+
+    .singlePagePizzaInformation p[data-text-size],
+    .singlePagePizzaInformation p[data-text-dough] {
+        font-size: 30px;
+    }
+
+    .singlePagePizzaInformation div[data-toggle] {
+        gap: 0 40px;
+    }
+
+    .singlePagePizzaInformation div[data-toggle-single] {
+        gap: 30px 0;
+    }
+
+    .singlePagePizzaInformation button[data-order] {
+        padding: 10px 50px;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1380px) {
+    .singlePagePizzaWrapper h1 {
+        width: 980px;
+        font-size: 40px;
+    }
+
+    .singlePagePizzaWrapper img {
+        margin: 30px 0 0 30px;
+        width: 400px !important;
+        height: 400px !important;
+    }
+
+    .singlePagePizzaContent {
+        width: 980px;
+        gap: 0 40px;
+    }
+
+    .singlePagePizzaInformation p[data-price] {
+        padding: 5px 20px;
+    }
+
+    .singlePagePizzaInformation p[data-description],
+    .singlePagePizzaInformation p[data-price],
+    .singlePagePizzaInformation p[data-text-size],
+    .singlePagePizzaInformation p[data-text-dough] {
+        font-size: 25px;
+    }
+
+    .singlePagePizzaInformation button[data-order] {
+        padding: 10px 40px;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 980px) {
+    .singlePagePizzaWrapper h1 {
+        width: 850px;
+        font-size: 30px;
+    }
+
+    .singlePagePizzaWrapper img {
+        margin: 25px 0 0 25px;
+        width: 350px !important;
+        height: 350px !important;
+    }
+
+    .singlePagePizzaContent {
+        width: 850px;
+        gap: 0 20px;
+    }
+
+    .singlePagePizzaInformation p[data-description],
+    .singlePagePizzaInformation p[data-price],
+    .singlePagePizzaInformation p[data-text-size],
+    .singlePagePizzaInformation p[data-text-dough] {
+        font-size: 20px;
+    }
+
+    .singlePagePizzaInformation div[data-toggle-single] {
+        gap: 15px 0;
+    }
+
+    .singlePagePizzaInformation button[data-order] {
+        padding: 10px 40px;
+        font-size: 20px;
+    }
+
+    .toggleButton {
+        padding: 8px !important;
+        font-size: 10px !important;
+    }
+}
+
+@media (max-width: 850px) {
+    .singlePagePizzaWrapper h1 {
+        width: 650px;
+        font-size: 20px;
+    }
+
+    .singlePagePizzaWrapper img {
+        margin: 20px 0 0 20px;
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .singlePagePizzaContent {
+        width: 650px;
+    }
+
+    .singlePagePizzaInformation p[data-description],
+    .singlePagePizzaInformation p[data-price],
+    .singlePagePizzaInformation p[data-text-size],
+    .singlePagePizzaInformation p[data-text-dough] {
+        font-size: 15px;
+    }
+
+    .singlePagePizzaInformation div[data-toggle] {
+        gap: 0 20px;
+    }
+
+    .singlePagePizzaInformation div[data-toggle-single] {
+        gap: 15px 0;
+    }
+
+    .singlePagePizzaInformation button[data-order] {
+        padding: 8px 30px;
+        font-size: 15px;
+    }
+
+    .toggleButton {
+        padding: 5px !important;
+        font-size: 8px !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .singlePagePizzaWrapper h1 {
+        width: 350px;
+        font-size: 25px;
+    }
+
+    .singlePagePizzaWrapper img {
+        margin: 20px 0 0 20px;
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .singlePagePizzaContent {
+        width: 350px;
+        flex-direction: column-reverse;
+    }
+
+    .singlePagePizzaInformation {
+        width: 350px;
+        gap: 30px 0;
+    }
+
+    .singlePagePizzaInformation p[data-price] {
+        padding: 5px 15px;
+    }
+
+    .singlePagePizzaInformation p[data-description],
+    .singlePagePizzaInformation p[data-price],
+    .singlePagePizzaInformation p[data-text-size],
+    .singlePagePizzaInformation p[data-text-dough] {
+        font-size: 15px;
+    }
+
+    .singlePagePizzaInformation div[data-toggle] {
+        gap: 0 20px;
+    }
+
+    .singlePagePizzaInformation div[data-toggle-single] {
+        gap: 15px 0;
+    }
+
+    .singlePagePizzaInformation button[data-order] {
+        padding: 5px 25px;
+        font-size: 15px;
+    }
+
+    .toggleButton {
+        padding: 5px !important;
+        font-size: 8px !important;
+    }
+}
+
+@media (max-width: 350px) {
+    .singlePagePizzaWrapper h1 {
+        width: 250px;
+    }
+
+    .singlePagePizzaWrapper img {
+        margin: 10px 0 0 10px;
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .singlePagePizzaContent {
+        width: 250px;
+    }
+
+    .singlePagePizzaInformation {
+        width: 250px;
+    }
+}
+
+.singlePagePizzaWrapper {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.singlePagePizzaWrapper h1 {
+    text-align: center;
+    font-weight: 300;
+    border-bottom: 1px solid #ffe1ac;
+}
+
+.singlePagePizzaWrapper img {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.singlePagePizzaContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.singlePagePizzaInformation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.singlePagePizzaInformation p[data-price] {
+    user-select: none;
+    color: white;
+    background: #ffa500;
+    border-radius: 30px;
+    font-style: italic;
+    font-weight: 800;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.singlePagePizzaInformation p[data-description] {
+    text-align: center;
+    color: gray;
+}
+
+.singlePagePizzaInformation p[data-text-size],
+.singlePagePizzaInformation p[data-text-dough] {
+    text-align: center;
+    color: gray;
+    background: transparent;
+}
+
+.singlePagePizzaInformation div[data-toggle] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.singlePagePizzaInformation div[data-toggle-single] {
+    display: flex;
+    flex-direction: column;
+}
+
+.toggleButtonGroup {
+    user-select: none;
+    justify-content: center;
+}
+
+.toggleButton {
+    transition: .5s all;
+    color: gray;
+}
+
+.singlePagePizzaInformation button[data-order] {
+    transition: .3s all;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: #ffa500;
+    border: none;
+    border-radius: 5px 20px 5px 20px;
+    font-weight: 600;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}

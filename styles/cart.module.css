@@ -1,0 +1,466 @@
+@media (max-width: 8000px) {
+    .deleteItem {
+        right: 15px;
+        margin-bottom: 160px;
+    }
+
+    .deleteItem svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    .modalCartContent {
+        width: 500px;
+        padding: 30px;
+        transform: translateX(500px);
+    }
+
+    .modalCartTitle {
+        font-size: 30px;
+    }
+
+    .modalCartInfo {
+        font-size: 20px;
+    }
+
+    .closeBlock {
+        height: 70px;
+        width: 70px;
+        transform: translateX(500px);
+    }
+
+    .closeBlock svg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cartProductContentTitle {
+        font-size: 20px;
+    }
+
+    .blockCounterAndPrice {
+        gap: 0 30px;
+    }
+
+    .blockCounterAndPrice p {
+        padding: 5px 10px;
+        font-size: 15px;
+    }
+
+    .blockCounter {
+        gap: 0 15px;
+    }
+
+
+    .blockCounter button {
+        padding: 0 10px;
+        font-size: 20px;
+    }
+
+    .cartProduct {
+        gap: 0 15px;
+    }
+
+    .cartProductContent {
+        gap: 10px 0;
+        width: 250px;
+    }
+
+    .titleEmpty {
+        font-size: 25px;
+    }
+}
+
+@media (max-width:980px) {
+    .deleteItem {
+        right: 5px;
+        margin-bottom: 150px;
+    }
+
+    .deleteItem svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .modalCartContent {
+        width: 350px;
+        padding: 15px;
+        transform: translateX(350px);
+    }
+
+    .modalCartTitle {
+        font-size: 25px;
+    }
+
+    .modalCartInfo {
+        font-size: 15px;
+    }
+
+    .closeBlock {
+        height: 50px;
+        width: 50px;
+        transform: translateX(350px);
+    }
+
+    .closeBlock svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .cartProduct img {
+        width: 125px !important;
+        height: 125px !important;
+    }
+
+    .cartProductContentTitle {
+        font-size: 15px;
+    }
+
+    .cartProductContentDescription {
+        font-size: 12px;
+    }
+
+    .blockCounterAndPrice {
+        gap: 0 15px;
+    }
+
+    .blockCounterAndPrice p {
+        padding: 3px 10px;
+        font-size: 12px;
+    }
+
+    .blockCounter {
+        gap: 0 10px;
+    }
+
+    .blockCounter button {
+        padding: 0 5px;
+        font-size: 15px;
+    }
+
+    .cartProductContent {
+        width: 150px;
+    }
+
+    .modalCartButton[data-order] {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .deleteItem {
+        right: 0px;
+        margin-bottom: 120px;
+    }
+
+    .deleteItem svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .modalCartContent {
+        width: 300px;
+        padding: 10px;
+        transform: translateX(300px);
+    }
+
+    .cartProductContent {
+        gap: 5px 0;
+    }
+
+    .cartProductContentTitle {
+        font-size: 12px;
+    }
+
+    .modalCartTitle {
+        font-size: 20px;
+    }
+
+    .modalCartInfo {
+        font-size: 13px;
+    }
+
+    .closeBlock {
+        height: 45px;
+        width: 45px;
+        transform: translateX(300px);
+    }
+
+    .cartProduct {
+        gap: 0;
+    }
+
+    .cartProduct img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    .titleEmpty {
+        font-size: 15px;
+    }
+
+    .imageEmpty {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 350px) {
+    .deleteItem {
+        right: 0px;
+        margin-bottom: 115px;
+    }
+
+    .deleteItem svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .modalCartContent {
+        width: 250px;
+        padding: 10px;
+        transform: translateX(250px);
+    }
+
+    .modalCartTitle {
+        font-size: 15px;
+    }
+
+    .modalCartInfo {
+        font-size: 10px;
+    }
+
+    .closeBlock {
+        height: 40px;
+        width: 40px;
+        transform: translateX(250px);
+    }
+
+    .cartProduct {
+        gap: 0;
+    }
+
+    .cartProduct img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .modalCartButton[data-order] {
+        font-size: 15px;
+    }
+
+    .cartProductContentDescription {
+        font-size: 10px;
+    }
+
+    .blockCounterAndPrice {
+        gap: 0 10px;
+    }
+
+    .blockCounterAndPrice p {
+        padding: 1px 7px;
+        font-size: 12px;
+    }
+
+    .blockCounter {
+        gap: 0 5px;
+    }
+
+    .blockCounter button {
+        padding: 1px 7px;
+        font-size: 10px;
+    }
+}
+
+.modalCartWrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1;
+    background: rgb(0, 0, 0, .5);
+    transition: .3s all;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.modalCartWrapperActive {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+.closeBlock {
+    border-radius: 20px 0 0 20px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s all;
+}
+
+.closeBlock svg {
+    transition: .3s all;
+    cursor: pointer;
+}
+
+.closeBlock svg:hover {
+    transform: rotate(180deg);
+}
+
+.closeBlockActive {
+    transform: translateX(0);
+}
+
+.modalCartContent {
+    overflow: auto;
+    transition: .3s all;
+    z-index: 1;
+    background: #fff6e7;
+    height: 100%;
+}
+
+.modalCartInfo {
+    text-align: left;
+}
+
+.modalCartInfo:first-of-type {
+    margin-top: 30px;
+}
+
+.modalCartInfo:last-of-type {
+    border-bottom: 1px solid rgb(0, 0, 0, .3);
+}
+
+.titleEmpty {
+    font-weight: 300;
+    text-align: center;
+}
+
+.modalCartContent::-webkit-scrollbar {
+    display: none;
+}
+
+.modalCartContentActive {
+    transform: translateX(0);
+}
+
+.modalCartTitle {
+    text-decoration: underline;
+    text-align: center;
+    font-weight: 300;
+}
+
+.cardsWrapper {
+    gap: 30px 0;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartProduct {
+    padding: 10px 0;
+    background: #ffe9ce;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 5px 20px 5px;
+    width: 100%;
+    transition: .3s all;
+    border: 1px solid rgb(0, 0, 0, .1);
+}
+
+.deleteItem {
+    cursor: pointer;
+    transition: .3s all;
+    border: 1px solid rgb(0, 0, 0, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: #ffe9ce;
+    position: absolute;
+}
+
+.cartProduct img {
+    margin-top: 7px;
+    margin-left: 7px;
+}
+
+.cartProductContent {
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cartProductContentTitle {
+    text-align: center;
+}
+
+.cartProductContentDescription {
+    text-align: center;
+    color: gray;
+}
+
+.blockCounterAndPrice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blockCounterAndPrice p {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    background: #ffa500;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.blockCounterAndPrice p:last-child {
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.blockCounter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blockCounter button {
+    cursor: pointer;
+    transition: .3s all;
+    border-radius: 30px;
+    background: transparent;
+    border: 1px solid rgb(0, 0, 0, .1);
+}
+
+.modalCartButton {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    background: #ffa500;
+    font-size: 25px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.modalCartButton[data-order] {
+    border-radius: 5px 20px 5px 20px;
+}

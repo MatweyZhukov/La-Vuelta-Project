@@ -1,0 +1,138 @@
+@media (max-width: 8000px) {
+    .swiper {
+        width: 500px !important;
+        height: 450px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 15px !important;
+        height: 15px !important;
+    }
+}
+
+@media (max-width: 1380px) {
+    .swiper {
+        width: 400px !important;
+        height: 350px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 10px !important;
+        height: 10px !important;
+    }
+}
+
+@media (max-width: 980px) {
+    .swiper {
+        width: 300px !important;
+        height: 250px !important;
+    }
+}
+
+@media (max-width: 860px) {
+    .swiper {
+        width: 300px !important;
+        height: 250px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 8px !important;
+        height: 8px !important;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        display: none;
+    }
+}
+
+@media (max-width: 350px) {
+    .swiper {
+        width: 250px !important;
+        height: 200px !important;
+    }
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    font-family: JetBrains Mono Light;
+    font-stretch: normal;
+    padding: 0;
+    margin: 0;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #fff3dd;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #f2bf93;
+    background-image: -webkit-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.25) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(255, 255, 255, 0.25) 75%,
+            transparent 75%,
+            transparent);
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(255, 246, 231);
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+/* Slider */
+.swiper {
+    margin: 0 !important;
+    user-select: none;
+}
+
+.swiper-slide {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    color: #ffe1ac;
+}
+
+.swiper img {
+    margin: 2% 0 0 2%;
+}
+
+.swiper-pagination-bullet-active {
+    background: #ffe9ce !important;
+    border: 1px solid rgb(0, 0, 0, .5);
+}
