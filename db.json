@@ -222,77 +222,12 @@
     }
   ],
   "currentUser": {
-    "name": "Matvey",
-    "email": "mat@gmail.com",
-    "id": "oy0lQTV2GXQMLqBGjjcl023xnmD2",
-    "token": "AMf-vBw3lyCAIw1xvi4g9-tRpaGTuTA9x6y5X--RWA9MKjvxo3oBkSVhbRNgyLq_TfeYxevDVvBaXi5cy5mzOZrFcPyY9nTXMBD3GtTv454GLwrzHsRcL4rmJn2Evep4G3IymvmDte-2qL0Xcq8Imf5nUHl1Fvc76eCwJy_OZ8HKMZgXMbJDZC1WoawvdcAnjkBtckuDlUJrYAHymYX-ebJGdeFxWZtBrQ",
+    "name": null,
+    "email": null,
+    "id": null,
+    "token": null,
     "userCart": []
   },
-  "users": [
-    {
-      "name": "Matvey",
-      "email": "mat@gmail.com",
-      "id": "oy0lQTV2GXQMLqBGjjcl023xnmD2",
-      "token": "AMf-vBw3lyCAIw1xvi4g9-tRpaGTuTA9x6y5X--RWA9MKjvxo3oBkSVhbRNgyLq_TfeYxevDVvBaXi5cy5mzOZrFcPyY9nTXMBD3GtTv454GLwrzHsRcL4rmJn2Evep4G3IymvmDte-2qL0Xcq8Imf5nUHl1Fvc76eCwJy_OZ8HKMZgXMbJDZC1WoawvdcAnjkBtckuDlUJrYAHymYX-ebJGdeFxWZtBrQ",
-      "userCart": []
-    },
-    {
-      "name": "Denis",
-      "email": "den@gmail.com",
-      "id": "C4CRmx9dYHQXA0mLNKyRvVXt62J2",
-      "token": "AMf-vBxzlxfOljWADE8ejOHWURe6yLIMAMRi4CWOJeff0ol8KD3AfFcTnjU2_m72qQOMa6t1OVC7MpQ7RUxuJcGPtxlvpbiVgQNaExF0bUSB8x5x-_mFfhxflAbrJgCTYzA4sZQco5TlOc5OMWr1f325MvslGiG-rw6VVS4AI6kKnDe1YXN6CMevIhSgjFMdf-daOYU9a6ZFlYZ_GFBZT_3CjVriUH6Tmw",
-      "userCart": []
-    },
-    {
-      "name": "Sergey",
-      "email": "ser@mail.ru",
-      "id": "gdU6HwAJW0MuRzTk05hW3OyK2sj2",
-      "token": "AMf-vBz9erR5oZKgL24gkHEUJ5x7UzqwCQPMLPGHqngZupwpMt9IrZ9DPEetFIxjn9MXtzL1DDWx_uMRXOt4_eTU09fiehENRK6N4T3i_0Q3ccvUvzjNag9T0HUjBrkXhmAH6wfmzsyC2W4DI-eC7gFmCMRU_q2sAgc9BHfUOO6YaRECU0PsYb5lc43kDeJvKkqUmtQa_bdQV6scXyF8MrLAcOb3EkFeMA",
-      "userCart": []
-    }
-  ],
-  "orders": [
-    {
-      "address": "Russian Federation, Moscow, Mikhalkovskaya Street, 3",
-      "userCart": [
-        {
-          "pizzaImage": "/pizza-8.webp",
-          "pizzaPrice": 4,
-          "totalPrice": 12,
-          "pizzaTitle": "Ham and Mashrooms",
-          "count": 3,
-          "id": "3cd72061-fc20-4247-a80f-446fca036b5c",
-          "pizzaId": 8,
-          "pizzaSize": 24,
-          "doughSize": "thin",
-          "weight": 356
-        }
-      ],
-      "userEmail": "mat@gmail.com",
-      "userName": "Matvey",
-      "userId": "oy0lQTV2GXQMLqBGjjcl023xnmD2",
-      "id": 1
-    },
-    {
-      "address": "Russian Federation, Moscow, Vostochniy Administrative Okrug, Sokolniki District, Territory of Sokolniki Park",
-      "userCart": [
-        {
-          "pizzaImage": "/pizza-11.webp",
-          "pizzaPrice": 9,
-          "totalPrice": 36,
-          "pizzaTitle": "Diablo",
-          "count": 4,
-          "id": "2fa30063-6635-4126-b9cd-2f7324d134d0",
-          "pizzaId": 11,
-          "pizzaSize": 35,
-          "doughSize": "thin",
-          "weight": 834
-        }
-      ],
-      "userEmail": "ser@mail.ru",
-      "userName": "Sergey",
-      "userId": "gdU6HwAJW0MuRzTk05hW3OyK2sj2",
-      "id": 2
-    }
-  ]
+  "users": [],
+  "orders": []
 }

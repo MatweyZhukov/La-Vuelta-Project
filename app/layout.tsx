@@ -6,10 +6,10 @@ import React from "react";
 import { ProviderComponent } from "@/redux/provider";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
-import { ModalCart } from "@/components/Modals/Cart/ModalCart/ModalCart";
-import { ModalSignUp } from "@/components/Modals/ModalSignUp/ModalSignUp";
-import { ModalLogIn } from "@/components/Modals/ModalLogIn/ModalLogIn";
-import { ModalOrder } from "@/components/Modals/ModalOrder/ModalOrder";
+import { ModalCart } from "@/components/modals/cart/modalCart/ModalCart";
+import { ModalSignUp } from "@/components/modals/modalSignUp/ModalSignUp";
+import { ModalLogIn } from "@/components/modals/modalLogIn/ModalLogIn";
+import { ModalOrder } from "@/components/modals/modalOrder/ModalOrder";
 
 //Styles
 import "../styles/globals.css";

@@ -46,7 +46,7 @@ const ProfilePage: FC = () => {
     dispatch(resetUser())
       .then(() => showToastMessage("success", messageText))
       .then(() => redirect(MAIN_PAGE))
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   };
 
   const IsAuthUser = () => {

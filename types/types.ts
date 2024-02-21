@@ -147,7 +147,7 @@ export interface IModalsState {
   modalOrder: boolean;
 }
 
-export interface ErrorProps {
+export interface IErrorProps {
   errorText: string;
   errorImage: string;
 }

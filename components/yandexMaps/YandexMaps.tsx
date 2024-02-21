@@ -111,15 +111,15 @@ const YandexMaps: FC<IYandexMapsProps> = ({
       const newCoords = mapRef.current.getCenter();
 
       mapConstructor &&
-        mapConstructor.geocode(newCoords).then((res) => {
-          //@ts-expect-error
+        mapConstructor.geocode(newCoords).then(res => {
+          //@ts-expect-error This line intentionally contains an error
           const nearest = res.geoObjects.get(0),
             foundAddress = nearest.properties.get("text"),
             [centerX, centerY] = nearest.geometry.getCoordinates(),
             [initialCenterX, initialCenterY] = YMapsState.center;
 
           if (centerX !== initialCenterX && centerY !== initialCenterY) {
-            setYMapsState((prev) => ({
+            setYMapsState(prev => ({
               ...prev,
               title: foundAddress,
             }));
@@ -149,10 +149,10 @@ const YandexMaps: FC<IYandexMapsProps> = ({
             {...mapOptions}
             state={YMapsState}
             onBoundsChange={handleBoundsChange}
-            //@ts-expect-error
-            onLoad={(ymaps) => setMapConstructor(() => ymaps)}
-            //@ts-expect-error
-            instanceRef={(map) => (mapRef.current = map)}
+            //@ts-expect-error This line intentionally contains an error
+            onLoad={ymaps => setMapConstructor(() => ymaps)}
+            //@ts-expect-error This line intentionally contains an error
+            instanceRef={map => (mapRef.current = map)}
           >
             <LocationPlacemark className={styles.placemark} color="error" />
             <GeolocationControl options={{ maxWidth: 128 }} />

@@ -4,12 +4,12 @@ import { Image } from "next/dist/client/image-component";
 import Link from "next/dist/client/link";
 
 //Types
-import { ErrorProps } from "@/types/types";
+import { IErrorProps } from "@/types/types";
 
 //Styles
 import styles from "@/styles/error.module.css";
 
-const Error: FC<ErrorProps> = (errorProps) => {
+const ErrorComponent: FC<IErrorProps> = errorProps => {
   const { errorText, errorImage } = errorProps;
 
   return (
@@ -22,4 +22,4 @@ const Error: FC<ErrorProps> = (errorProps) => {
   );
 };
 
-export { Error };
+export { ErrorComponent };

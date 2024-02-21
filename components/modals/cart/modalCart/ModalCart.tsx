@@ -7,7 +7,7 @@ import React, { FC, useEffect } from "react";
 import { changeModalClasses } from "@/utils/functions";
 
 //Components
-import { ModalCartContent } from "../ModalCartContent/ModalCartContent";
+import { ModalCartContent } from "../modalCartContent/ModalCartContent";
 
 //Icons
 import CloseIcon from "@mui/icons-material/Close";
@@ -25,8 +25,8 @@ import { useAuth } from "@/hooks/useAuth";
 import styles from "@/styles/cart.module.css";
 
 const ModalCart: FC = () => {
-  const { modalCart } = useTypedSelector((state) => state.modals),
-    { currentUser } = useTypedSelector((state) => state.user);
+  const { modalCart } = useTypedSelector(state => state.modals),
+    { currentUser } = useTypedSelector(state => state.user);
 
   const { isAuth } = useAuth();
 
@@ -55,7 +55,7 @@ const ModalCart: FC = () => {
 
   return (
     <div onClick={handleClick} className={modalWrapper}>
-      <section onClick={(e) => e.stopPropagation()} className={closeBlock}>
+      <section onClick={e => e.stopPropagation()} className={closeBlock}>
         <CloseIcon style={{ color: "#fff6e7" }} onClick={handleClick} />
       </section>
       <ModalCartContent />

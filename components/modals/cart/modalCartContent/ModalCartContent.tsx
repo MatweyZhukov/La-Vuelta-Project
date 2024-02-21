@@ -6,8 +6,8 @@ import { showToastMessage } from "@/utils/functions";
 import { changeModalClasses } from "@/utils/functions";
 
 //Components
-import { ModalCartContentEmpty } from "../ModalCartContentEmpty/ModalCartContentEmpty";
-import { ModalCartList } from "../ModalCartList/ModalCartList";
+import { ModalCartContentEmpty } from "../modalCartContentEmpty/ModalCartContentEmpty";
+import { ModalCartList } from "../modalCartList/ModalCartList";
 
 //Hooks
 import { useTypedSelector } from "@/hooks/useTypedSelector";
@@ -24,8 +24,8 @@ import {
 import styles from "@/styles/cart.module.css";
 
 const ModalCartContent: FC = () => {
-  const { currentUser } = useTypedSelector((state) => state.user),
-    { modalCart } = useTypedSelector((state) => state.modals);
+  const { currentUser } = useTypedSelector(state => state.user),
+    { modalCart } = useTypedSelector(state => state.modals);
 
   const dispatch = useAppDispatch();
 
@@ -117,7 +117,7 @@ const ModalCartContent: FC = () => {
 
   return (
     <div
-      onClick={(e) => e.stopPropagation()}
+      onClick={e => e.stopPropagation()}
       className={modalContent}
       style={!currentUser.userCart.length ? blockStyles : undefined}
     >
