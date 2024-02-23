@@ -1,5 +1,5 @@
 //Types
-import { IInputsForm, ILinksMedia } from "@/types/types";
+import { IInputsForm } from "@/types/types";
 
 export const signUpArrayInputs: IInputsForm[] = [
   {

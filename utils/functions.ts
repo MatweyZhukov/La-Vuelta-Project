@@ -2,7 +2,7 @@
 import { toast } from "react-toastify";
 
 // Types
-import { IChangeModalClassesFunc, ToastStatusType } from "@/types/types";
+import { ToastStatusType } from "@/types/types";
 
 export const showToastMessage = (
   toastStatus: ToastStatusType,
@@ -23,14 +23,4 @@ export const showToastMessage = (
     autoClose: 1500,
     style: toastStyles,
   });
-};
-
-export const changeModalClasses = (params: IChangeModalClassesFunc) => {
-  const { modalActiveClass, modalClass, modalStatus } = params;
-
-  const stringResult = modalStatus
-    ? `${modalClass} ${modalActiveClass}`
-    : modalClass;
-
-  return stringResult;
 };
