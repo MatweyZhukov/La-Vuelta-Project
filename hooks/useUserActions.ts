@@ -1,5 +1,5 @@
 //Global
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
 //Actions
@@ -40,64 +40,73 @@ const useUserActions = () => {
   const [disabled, setDisabled] = useState<boolean>(false);
   const { push } = useRouter();
 
-  const functionSignUpUser = (sighUpParams: IHandleFunctionParams) => {
-    setDisabled(true);
+  const functionSignUpUser = useCallback(
+    (sighUpParams: IHandleFunctionParams) => {
+      setDisabled(true);
 
-    const auth = getAuth(firebase);
+      const auth = getAuth(firebase);
 
-    const { email, password, name, reset } = sighUpParams;
+      const { email, password, name, reset } = sighUpParams;
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        const { email, uid, refreshToken } = user;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(({ user }) => {
+          const { email, uid, refreshToken } = user;
 
-        const userObj: IUser = {
-          name,
-          email,
-          id: uid,
-          token: refreshToken,
-          userCart: [],
-        };
+          const userObj: IUser = {
+            name,
+            email,
+            id: uid,
+            token: refreshToken,
+            userCart: [],
+          };
 
-        dispatch(addUser(userObj));
-        dispatch(setUser(userObj));
+          dispatch(addUser(userObj));
+          dispatch(setUser(userObj));
 
-        showToastMessage("success", "You've successfully created the account!");
-        dispatch(changeModalSignUpStatus(false));
-        reset();
-        push(PROFILE_PAGE);
-      })
-      .catch(() => {
-        showToastMessage("error", "Something went wrong, try again!");
-      })
-      .finally(() => setDisabled(false));
-  };
+          showToastMessage(
+            "success",
+            "You've successfully created the account!"
+          );
+          dispatch(changeModalSignUpStatus(false));
+          reset();
+          push(PROFILE_PAGE);
+        })
+        .catch(() => {
+          showToastMessage("error", "Something went wrong, try again!");
+        })
+        .finally(() => setDisabled(false));
+    },
+    [dispatch, push]
+  );
 
-  const functionLogInUser = (logInParams: IHandleFunctionParams) => {
-    const auth = getAuth(firebase);
+  const functionLogInUser = useCallback(
+    (logInParams: IHandleFunctionParams) => {
+      const auth = getAuth(firebase);
 
-    const { email, password, reset } = logInParams;
+      const { email, password, reset } = logInParams;
 
-    setDisabled(true);
+      setDisabled(true);
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        const foundedUser = users.find(
-          arrUser => arrUser.email === user.email && arrUser.id === user.uid
-        );
+      signInWithEmailAndPassword(auth, email, password)
+        .then(({ user }) => {
+          const foundedUser = users.find(
+            arrUser => arrUser.email === user.email && arrUser.id === user.uid
+          );
 
-        if (foundedUser) dispatch(setUser(foundedUser));
+          if (foundedUser) dispatch(setUser(foundedUser));
 
-        showToastMessage("success", "You've successfully logged in!");
-        dispatch(changeModalLogInStatus(false));
-        reset();
-        push(PROFILE_PAGE);
-      })
-      .catch(() => {
-        showToastMessage("error", "Uncorrect password or email, try again!");
-      })
-      .finally(() => setDisabled(false));
-  };
+          showToastMessage("success", "You've successfully logged in!");
+          dispatch(changeModalLogInStatus(false));
+          reset();
+          push(PROFILE_PAGE);
+        })
+        .catch(() => {
+          showToastMessage("error", "Uncorrect password or email, try again!");
+        })
+        .finally(() => setDisabled(false));
+    },
+    [dispatch, push, users]
+  );
 
   const logOut = () => {
     dispatch(resetUser())
@@ -107,9 +116,9 @@ const useUserActions = () => {
       .catch(error => console.log(error));
   };
 
-  const onSetUsers = () => dispatch(setUsers());
+  const onSetUsers = useCallback(() => dispatch(setUsers()), [dispatch]);
   const onPostUserOrder = (order: IOrder) => dispatch(postUserOrder(order));
-  const onGetUserOrders = () => dispatch(getOrders());
+  const onGetUserOrders = useCallback(() => dispatch(getOrders()), [dispatch]);
 
   return {
     functionLogInUser,

@@ -105,12 +105,17 @@
   font-weight: 300;
 }
 
+.profileContent h1,
+.profileContent button,
+.profileContent p {
+  color: #4b1514;
+}
+
 .profileContent button {
   border: none;
   font-weight: 600;
   background: #ffa500;
   border-radius: 5px 20px 5px 20px;
-  color: white;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.2) 0px -3px 0px inset;

@@ -92,6 +92,7 @@
 }
 
 .footer {
+  color: #4b1514;
   width: 100%;
   background: linear-gradient(to bottom, #fff6e7, #ffdea1, #fff6e7);
   align-items: center;
@@ -113,7 +114,7 @@
 
 .footerLink {
   text-decoration: none;
-  color: black;
+  color: #4b1514;
   cursor: pointer;
 }
 

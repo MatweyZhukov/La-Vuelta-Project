@@ -21,6 +21,7 @@
 
   .modalCartInfo {
     font-size: 20px;
+    color: #4b1514;
   }
 
   .closeBlock {
@@ -358,6 +359,7 @@
 }
 
 .modalCartTitle {
+  color: #4b1514;
   text-decoration: underline;
   text-align: center;
   font-weight: 300;
@@ -411,6 +413,7 @@
 
 .cartProductContentTitle {
   text-align: center;
+  color: #4b1514;
 }
 
 .cartProductContentDescription {
@@ -431,7 +434,7 @@
   align-items: center;
   border: none;
   border-radius: 30px;
-  color: white;
+  color: #4b1514;
   background: #ffa500;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -451,10 +454,11 @@
 
 .blockCounter button {
   cursor: pointer;
+  color: #4b1514;
   transition: 0.3s all;
   border-radius: 30px;
   background: transparent;
-  border: 1px solid rgb(0, 0, 0, 0.1);
+  border: none;
 }
 
 .modalCartButton[data-order] {
@@ -463,7 +467,7 @@
   border: none;
   padding: 10px 0;
   background: #ffa500;
-  color: white;
+  color: #4b1514;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   border-radius: 5px 20px 5px 20px;

@@ -1,528 +1,538 @@
 @media (max-width: 8000px) {
-    .mainPageTitle {
-        font-size: 50px;
-        margin: 50px 0;
-    }
+  .mainPageTitle {
+    font-size: 50px;
+    margin: 50px 0;
+  }
 
-    .navSlider {
-        width: 1380px;
-    }
+  .navSlider {
+    width: 1380px;
+  }
 
-    .offer {
-        width: 850px;
-        padding: 30px;
-    }
+  .offer {
+    width: 850px;
+    padding: 30px;
+  }
 
-    .offerTitle {
-        font-size: 30px;
-    }
+  .offerTitle {
+    font-size: 30px;
+  }
 
-    .offerDescription,
-    .offerOption {
-        line-height: 40px;
-        font-size: 20px;
-        margin-top: 15px;
-    }
+  .offerDescription,
+  .offerOption {
+    line-height: 40px;
+    font-size: 20px;
+    margin-top: 15px;
+  }
 
-    .navTabs {
-        width: 1380px;
-    }
+  .navTabs {
+    width: 1380px;
+  }
 
-    .tabOptions {
-        flex-direction: column;
-        border-right: 1px solid rgb(0, 0, 0, .2);
-        height: 350px;
-        width: 380px;
-    }
+  .tabOptions {
+    flex-direction: column;
+    border-right: 1px solid rgb(0, 0, 0, 0.2);
+    height: 350px;
+    width: 380px;
+  }
 
-    .tabOption {
-        width: 80%;
-        font-size: 32px;
-        padding: 15px;
-    }
+  .tabOption {
+    width: 80%;
+    font-size: 32px;
+    padding: 15px;
+  }
 
-    .tabDescription {
-        border-left: 1px solid rgb(0, 0, 0, .2);
-        width: 600px;
-        height: 350px;
-        padding: 0 40px;
-    }
+  .tabDescription {
+    border-left: 1px solid rgb(0, 0, 0, 0.2);
+    width: 600px;
+    height: 350px;
+    padding: 0 40px;
+  }
 
-    .tabDescriptionText {
-        font-size: 30px;
-        line-height: 70px;
-    }
+  .tabDescriptionText {
+    font-size: 30px;
+    line-height: 70px;
+  }
 
-    .offerToPizzasText {
-        font-size: 40px;
-        line-height: 90px;
-    }
+  .offerToPizzasText {
+    font-size: 40px;
+    line-height: 90px;
+  }
 
-    .offerToPizzasLink {
-        padding: 15px;
-        font-size: 40px;
-    }
+  .offerToPizzasLink {
+    padding: 15px;
+    font-size: 40px;
+  }
 }
 
 @media (max-width: 1380px) {
-    .mainPageTitle {
-        font-size: 35px;
-    }
+  .mainPageTitle {
+    font-size: 35px;
+  }
 
-    .navSlider img {
-        height: 300px !important;
-        width: 300px !important;
-    }
+  .navSlider img {
+    height: 300px !important;
+    width: 300px !important;
+  }
 
-    .offer {
-        width: 550px;
-        padding: 20px;
-    }
+  .offer {
+    width: 550px;
+    padding: 20px;
+  }
 
-    .navSlider {
-        width: 980px;
-    }
+  .navSlider {
+    width: 980px;
+  }
 
-    .offerTitle {
-        font-size: 25px;
-    }
+  .offerTitle {
+    font-size: 25px;
+  }
 
-    .offerDescription,
-    .offerOption {
-        line-height: 20px;
-        font-size: 15px;
-        margin-top: 15px;
-    }
+  .offerDescription,
+  .offerOption {
+    line-height: 20px;
+    font-size: 15px;
+    margin-top: 15px;
+  }
 
-    .navTabs {
-        width: 980px;
-    }
+  .navTabs {
+    width: 980px;
+  }
 
-    .tabOptions {
-        height: 200px;
-        width: 380px;
-    }
+  .tabOptions {
+    height: 200px;
+    width: 380px;
+  }
 
-    .tabOption {
-        font-size: 20px;
-        padding: 10px;
-    }
+  .tabOption {
+    font-size: 20px;
+    padding: 10px;
+  }
 
-    .tabImg {
-        width: 250px !important;
-        height: 250px !important;
-    }
+  .tabImg {
+    width: 250px !important;
+    height: 250px !important;
+  }
 
-    .tabDescription {
-        height: 200px;
-        padding: 0 30px;
-    }
+  .tabDescription {
+    height: 200px;
+    padding: 0 30px;
+  }
 
-    .tabDescriptionText {
-        font-size: 20px;
-        line-height: 50px;
-    }
+  .tabDescriptionText {
+    font-size: 20px;
+    line-height: 50px;
+  }
 
-    .offerToPizzasText {
-        font-size: 20px;
-        line-height: 50px;
-    }
+  .offerToPizzasText {
+    font-size: 20px;
+    line-height: 50px;
+  }
 
-    .offerToPizzasLink {
-        padding: 10px;
-        font-size: 20px;
-    }
+  .offerToPizzasLink {
+    padding: 10px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 980px) {
-    .mainPageTitle {
-        font-size: 30px;
-    }
+  .mainPageTitle {
+    font-size: 30px;
+  }
 
-    .navSlider {
-        width: 850px;
-    }
+  .navSlider {
+    width: 850px;
+  }
 
-    .navSlider img {
-        height: 200px !important;
-        width: 200px !important;
-    }
+  .navSlider img {
+    height: 200px !important;
+    width: 200px !important;
+  }
 
-    .offer {
-        width: 500px;
-        padding: 15px;
-    }
+  .offer {
+    width: 500px;
+    padding: 15px;
+  }
 
-    .offerTitle {
-        font-size: 15px;
-    }
+  .offerTitle {
+    font-size: 15px;
+  }
 
-    .offerDescription,
-    .offerOption {
-        line-height: 20px;
-        margin-top: 10px;
-        font-size: 10px;
-    }
+  .offerDescription,
+  .offerOption {
+    line-height: 20px;
+    margin-top: 10px;
+    font-size: 10px;
+  }
 
-    .navTabs {
-        width: 850px;
-    }
+  .navTabs {
+    width: 850px;
+  }
 
-    .tabOptions {
-        height: 150px;
-        width: 380px;
-    }
+  .tabOptions {
+    height: 150px;
+    width: 380px;
+  }
 
-    .tabOption {
-        padding: 5px;
-    }
+  .tabOption {
+    padding: 5px;
+  }
 
-    .tabImg {
-        width: 200px !important;
-        height: 200px !important;
-    }
+  .tabImg {
+    width: 200px !important;
+    height: 200px !important;
+  }
 
-    .tabDescription {
-        width: 600px;
-        height: 150px;
-    }
+  .tabDescription {
+    width: 600px;
+    height: 150px;
+  }
 
-    .tabDescriptionText {
-        font-size: 18px;
-        line-height: 40px;
-    }
+  .tabDescriptionText {
+    font-size: 18px;
+    line-height: 40px;
+  }
 }
 
 @media (max-width: 860px) {
-    .mainPageTitle {
-        font-size: 25px;
-        margin: 30px 0;
-    }
+  .mainPageTitle {
+    font-size: 25px;
+    margin: 30px 0;
+  }
 
-    .navSlider img {
-        height: 200px !important;
-        width: 200px !important;
-    }
+  .navSlider img {
+    height: 200px !important;
+    width: 200px !important;
+  }
 
-    .offer {
-        width: 350px;
-        padding: 15px;
-    }
+  .offer {
+    width: 350px;
+    padding: 15px;
+  }
 
-    .navSlider {
-        width: auto;
-    }
+  .navSlider {
+    width: auto;
+  }
 
-    .offerTitle {
-        font-size: 15px;
-    }
+  .offerTitle {
+    font-size: 15px;
+  }
 
-    .offerDescription,
-    .offerOption {
-        margin-top: 15px;
-        line-height: 20px;
-        font-size: 10px;
-    }
+  .offerDescription,
+  .offerOption {
+    margin-top: 15px;
+    line-height: 20px;
+    font-size: 10px;
+  }
 
-    .navTabs {
-        width: 650px;
-    }
+  .navTabs {
+    width: 650px;
+  }
 
-    .tabOptions {
-        height: 120px;
-        width: 380px;
-    }
+  .tabOptions {
+    height: 120px;
+    width: 380px;
+  }
 
-    .tabOption {
-        font-size: 15px;
-    }
+  .tabOption {
+    font-size: 15px;
+  }
 
-    .tabImg {
-        width: 150px !important;
-        height: 150px !important;
-    }
+  .tabImg {
+    width: 150px !important;
+    height: 150px !important;
+  }
 
-    .tabDescription {
-        height: 120px;
-        padding: 0 20px;
-    }
+  .tabDescription {
+    height: 120px;
+    padding: 0 20px;
+  }
 
-    .tabDescriptionText {
-        font-size: 15px;
-        line-height: 30px;
-    }
+  .tabDescriptionText {
+    font-size: 15px;
+    line-height: 30px;
+  }
 
-    .offerToPizzasText {
-        font-size: 15px;
-        line-height: 40px;
-    }
+  .offerToPizzasText {
+    font-size: 15px;
+    line-height: 40px;
+  }
 
-    .offerToPizzasLink {
-        padding: 8px;
-        font-size: 15px;
-    }
+  .offerToPizzasLink {
+    padding: 8px;
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 650px) {
-    .mainPageTitle {
-        font-size: 20px;
-        margin: 30px 0;
-    }
+  .mainPageTitle {
+    font-size: 20px;
+    margin: 30px 0;
+  }
 
-    .navSlider img {
-        height: 200px !important;
-        width: 200px !important;
-    }
+  .navSlider img {
+    height: 200px !important;
+    width: 200px !important;
+  }
 
-    .navSlider {
-        flex-direction: column;
-        width: auto;
-    }
+  .navSlider {
+    flex-direction: column;
+    width: auto;
+  }
 
-    .offerTitle {
-        font-size: 15px;
-    }
+  .offerTitle {
+    font-size: 15px;
+  }
 
-    .offerDescription,
-    .offerOption {
-        line-height: 20px;
-        font-size: 10px;
-    }
+  .offerDescription,
+  .offerOption {
+    line-height: 20px;
+    font-size: 10px;
+  }
 
-    .navTabs {
-        width: 350px;
-        flex-direction: column;
-    }
+  .navTabs {
+    width: 350px;
+    flex-direction: column;
+  }
 
-    .tabOptions {
-        padding: 10px 15px;
-        border-right: none;
-        flex-direction: row;
-        width: 350px;
-        height: auto;
-    }
+  .tabOptions {
+    padding: 10px 15px;
+    border-right: none;
+    flex-direction: row;
+    width: 350px;
+    height: auto;
+  }
 
-    .tabOption {
-        width: 80px;
-        font-size: 15px;
-    }
+  .tabOption {
+    width: 80px;
+    font-size: 15px;
+  }
 
-    .tabImg {
-        width: 200px !important;
-        height: 200px !important;
-    }
+  .tabImg {
+    width: 200px !important;
+    height: 200px !important;
+  }
 
-    .tabDescription {
-        padding: 0 15px 10px 15px;
-        border-left: none;
-        width: 350px;
-        height: auto;
-    }
+  .tabDescription {
+    padding: 0 15px 10px 15px;
+    border-left: none;
+    width: 350px;
+    height: auto;
+  }
 
-    .tabDescriptionText {
-        font-size: 15px;
-    }
+  .tabDescriptionText {
+    font-size: 15px;
+  }
 
-    .offerToPizzasText {
-        font-size: 15px;
-        line-height: 40px;
-    }
+  .offerToPizzasText {
+    font-size: 15px;
+    line-height: 40px;
+  }
 
-    .offerToPizzasLink {
-        padding: 8px;
-        font-size: 15px;
-    }
+  .offerToPizzasLink {
+    padding: 8px;
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 350px) {
-    .mainPageTitle {
-        font-size: 15px;
-        margin: 20px 0;
-    }
+  .mainPageTitle {
+    font-size: 15px;
+    margin: 20px 0;
+  }
 
-    .navSlider img {
-        height: 150px !important;
-        width: 150px !important;
-    }
+  .navSlider img {
+    height: 150px !important;
+    width: 150px !important;
+  }
 
-    .offer {
-        width: 250px;
-        padding: 10px;
-    }
+  .offer {
+    width: 250px;
+    padding: 10px;
+  }
 
-    .navSlider {
-        flex-direction: column;
-        width: auto;
-    }
+  .navSlider {
+    flex-direction: column;
+    width: auto;
+  }
 
-    .offerTitle {
-        font-size: 10px;
-    }
+  .offerTitle {
+    font-size: 10px;
+  }
 
-    .offerDescription,
-    .offerOption {
-        margin-top: 10px;
-        line-height: 10px;
-        font-size: 5px;
-    }
+  .offerDescription,
+  .offerOption {
+    margin-top: 10px;
+    line-height: 10px;
+    font-size: 5px;
+  }
 
-    .navTabs {
-        width: 250px;
-        flex-direction: column;
-    }
+  .navTabs {
+    width: 250px;
+    flex-direction: column;
+  }
 
-    .tabOptions {
-        width: 250px;
-    }
+  .tabOptions {
+    width: 250px;
+  }
 
-    .tabOption {
-        width: 70px;
-        font-size: 8px;
-    }
+  .tabOption {
+    width: 70px;
+    font-size: 8px;
+  }
 
-    .tabImg {
-        width: 150px !important;
-        height: 150px !important;
-    }
+  .tabImg {
+    width: 150px !important;
+    height: 150px !important;
+  }
 
-    .tabDescription {
-        width: 250px;
-    }
+  .tabDescription {
+    width: 250px;
+  }
 
-    .tabDescriptionText {
-        font-size: 10px;
-        line-height: 20px;
-    }
+  .tabDescriptionText {
+    font-size: 10px;
+    line-height: 20px;
+  }
 
-    .offerToPizzasText {
-        font-size: 10px;
-        line-height: 20px;
-    }
+  .offerToPizzasText {
+    font-size: 10px;
+    line-height: 20px;
+  }
 
-    .offerToPizzasLink {
-        padding: 5px 8px;
-        font-size: 8px;
-    }
+  .offerToPizzasLink {
+    padding: 5px 8px;
+    font-size: 8px;
+  }
 }
 
 .mainPageContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .navSlider {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navTabs {
-    background: #ffe9ce;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    border-radius: 5px 20px 5px 20px;
+  background: #ffe9ce;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 5px 20px 5px 20px;
 }
 
 .tabImg {
-    margin-top: 2%;
-    margin-left: 2%;
+  margin-top: 2%;
+  margin-left: 2%;
 }
 
 .tabOptions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
 }
 
 .tabOption {
-    background: none;
-    user-select: none;
-    border-radius: 20px 5px 20px 5px;
-    text-align: center;
-    border: 1px solid rgb(255, 166, 0, .5);
-    cursor: pointer;
-    transition: .3s all;
+  background: none;
+  user-select: none;
+  border-radius: 20px 5px 20px 5px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s all;
 }
 
 .tabOptionActive {
-    border-radius: 5px 20px 5px 20px;
-    color: white;
-    background: orange;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 5px 20px 5px 20px;
+  color: white;
+  background: orange;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .fade {
-    animation-name: fade;
-    animation-duration: .3s;
+  animation-name: fade;
+  animation-duration: 0.3s;
 }
 
 @keyframes fade {
-    from {
-        transform: scale(.5);
-        opacity: 0;
-    }
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
 
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .tabDescription {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .tabDescriptionText {
-    text-align: justify;
+  text-align: justify;
 }
 
 .offer {
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px 20px 5px 20px;
-    background-color: rgba(255, 201, 150, 0.3);
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px 20px 5px 20px;
+  background-color: rgba(255, 201, 150, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .offerTitle {
-    text-align: center;
+  text-align: center;
 }
 
 .offerDescription {
-    text-align: justify;
+  text-align: justify;
 }
 
 .offerOptions {
-    list-style: none;
-    text-align: justify;
+  list-style: none;
+  text-align: justify;
 }
 
 .mainPageTitle {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .offerToPizzas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .offerToPizzasText {
-    margin-bottom: 15px;
-    text-align: center;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .offerToPizzasLink {
-    transition: .3s all;
-    background: #ffa500;
-    border-radius: 5px 20px 5px 20px;
-    color: white;
-    text-decoration: none;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  transition: 0.3s all;
+  text-decoration: underline;
+}
+
+.mainPageTitle,
+.offerToPizzasText,
+.offerToPizzasLink,
+.offerOptions,
+.offerDescription,
+.offerTitle,
+.tabDescriptionText,
+.tabOption {
+  color: #4b1514;
 }

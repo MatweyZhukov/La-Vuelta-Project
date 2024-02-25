@@ -26,6 +26,7 @@ import {
 
 //Utils
 import { showToastMessage } from "@/utils/functions";
+import { useCallback } from "react";
 
 const useCart = () => {
   const { doughSizeOption, pizzaSizeOption } = useTypedSelector(
@@ -119,15 +120,20 @@ const useCart = () => {
     resetPizzaOptions();
   };
 
-  const onDeletePizzaFromCart = (id: string) => {
-    dispatch(deletePizzaFromCart(id));
-    showToastMessage("success", "Item deleted from cart!");
-  };
+  const onDeletePizzaFromCart = useCallback(
+    (id: string) => {
+      dispatch(deletePizzaFromCart(id));
+      showToastMessage("success", "Item deleted from cart!");
+    },
+    [dispatch]
+  );
 
-  const onChangePizzaPrice = (pizza: IPizzaCartItem) =>
-    dispatch(changePizzaPrice(pizza));
+  const onChangePizzaPrice = useCallback(
+    (pizza: IPizzaCartItem) => dispatch(changePizzaPrice(pizza)),
+    [dispatch]
+  );
 
-  const onFetchUserCart = () => dispatch(fetchCart());
+  const onFetchUserCart = useCallback(() => dispatch(fetchCart()), [dispatch]);
   const onClearUserCart = () => dispatch(clearUserCart());
 
   return {

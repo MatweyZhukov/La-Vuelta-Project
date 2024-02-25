@@ -1,6 +1,5 @@
 //Global
-import { FC } from "react";
-import { Metadata } from "next";
+import { Metadata, NextPage } from "next";
 
 //Types
 import { IPizzaTileItem } from "@/types/types";
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
   description: "Created by Zhukov Matvey",
 };
 
-const SinglePizza: FC = async () => {
+const SinglePizza: NextPage = async () => {
   const tiles = await requestToAPI<IPizzaTileItem[]>("/cards", "get");
 
   if (!tiles) return <Spinner />;

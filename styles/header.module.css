@@ -171,7 +171,7 @@
   border-radius: 5px 20px 5px 20px;
   font-weight: 600;
   background: #ffa500;
-  color: white;
+  color: #4b1514;
   border: none;
   cursor: pointer;
   transition: 0.3s all;
@@ -180,5 +180,6 @@
 }
 
 .tagline {
+  color: #4b1514;
   text-align: center;
 }
